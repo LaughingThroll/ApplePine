@@ -1,0 +1,272 @@
+@-webkit-keyframes device3 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+      }
+    
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes device3 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+      }
+    
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+.device3{
+    animation-name: device3;
+}
+@-webkit-keyframes device2 {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+      }
+    
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+}
+@keyframes device2 {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+      }
+    
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+}
+.device2{
+    animation-name: device2;
+}
+@keyframes device1 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 400%, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+}
+@keyframes device1 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 400%, 0);
+      }
+      1%{
+        opacity: 1;
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+}
+.device1{
+    animation-name: device1;
+}
+@-webkit-keyframes spray {
+    from {
+        opacity: 0;
+        transform:  translate3d(0, 0, 0);
+      }
+    to {
+        transform:  scale(2);
+        opacity: 1;
+    }
+}
+@keyframes spray {
+    from {
+        opacity: 0;
+        transform:  translate3d(0, 0, 0);
+      }
+    to {
+        transform:  scale(2);
+        opacity: 1;
+    }
+}
+.spray{
+    animation-name: spray;
+}
+@-webkit-keyframes starship {
+    from {
+        opacity: 0;
+        visibility: visible;
+        transform:  translate3d(30%, 200%, 0);
+      }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+@keyframes starship{
+    from {
+        opacity: 0;
+        visibility: visible;
+        transform:  translate3d(-30%, 200%, 0);
+      }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+.starship{
+    animation-name: starship;
+}
+
+
+@keyframes rotateInUpLeft {
+    from {
+      transform-origin: left bottom;
+      visibility: visible;
+      transform: rotate3d(0, 0, 1, 30deg) translate3d(0, 200%, 0);
+      opacity: 0;
+    }
+    to {
+      transform-origin: left bottom;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }   
+  @keyframes rotateInUpLeft {
+    from {
+      transform-origin: left bottom;
+      visibility: visible;
+      transform: rotate3d(0, 0, 1, 30deg) translate3d(0, 200%, 0);
+      opacity: 0;
+    }
+    to {
+      transform-origin: left bottom;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  } 
+  .rotateInUpLeft {
+    animation-name: rotateInUpLeft;
+  }
+
+
+
+  @-webkit-keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .fadeInDown {
+    animation-name: fadeInDown;
+  }
+
+
+  @-webkit-keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .fadeInLeft {
+    animation-name: fadeInLeft;
+  }
+
+
+
+  @keyframes slideInDown {
+    from {
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  } 
+  @keyframes slideInBigDown {
+    from {
+      transform: translate3d(0, -800%, 0);
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+     
+    }
+  }   
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 200%, 0);
+      visibility: visible;
+    }
+    1%{
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .slideInUp {
+    animation-name: slideInUp;
+  }
+  @keyframes slideInLeft {
+    from {
+      transform: translate3d(-100%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideInLeftNav {
+    from {
+      transform: translate3d(-25%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
