@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
   //запускаем прелоадер по загрузкt html
-  $("html,body").css("overflow", "hidden"); 
+  $("html,body").css("overflow", "hidden");
   var
     images = document.images,
     imagesTotalCount = images.length,
@@ -37,80 +37,120 @@ $(document).ready(function () {
     $('.header__menu ').toggleClass('header__menu--active');
   });
   //По истечению этого таймера начнет действовать анимация контента шапки сайта
-  setTimeout(function(){
+  setTimeout(function () {
     $('.header__slider').addClass('header__slider-animation');
   }, 3000);
 
-//Функция отвечает за планвый переход по якорным ссылкам
-  $(function(){
-    $('a[href^="#"]').on('click', function(event) {
-      // отменяем стандартное действие
-      event.preventDefault();
-      
-      var scrollToBlock = $(this).attr("href"),
-          blockPosition = $(scrollToBlock).offset().top;
-      /*
-      scrollToBlock - в переменную заносим информацию о том, к какому блоку надо перейти
-      blockPosition - определяем положение блока на странице
-      */ 
-      $('html, body').animate({scrollTop: blockPosition}, 2000); 
-      // 2000 скорость перехода в миллисекундах
-    });
+  //Функция отвечает за планвый переход по якорным ссылкам
+  $('a[href^="#"]').on('click', function (event) {
+    // отменяем стандартное действие
+    event.preventDefault();
+
+    var scrollToBlock = $(this).attr("href"),
+      blockPosition = $(scrollToBlock).offset().top;
+    /*
+    scrollToBlock - в переменную заносим информацию о том, к какому блоку надо перейти
+    blockPosition - определяем положение блока на странице
+    */
+    $('html, body').animate({ scrollTop: blockPosition }, 2000);
+    // 2000 скорость перехода в миллисекундах
   });
-
-    const MODALCALL = $('[data-modal]');
-
-    MODALCALL.on('click', function(){
-      event.preventDefault();
-      let modalId =  $(this).data('modal');
-      $(modalId).fadeIn();
-      $('body').css('overflow', 'hidden');
+  //hide Modal start
+  $('.modal').on('click', function () {
+    $(this).fadeOut();
+    $('body').css('overflow', 'visible');
+  }).on('click', '.audit, .full-form, .set-form', function (event) {
+    event.stopPropagation();
+  });
+  $('#validate').on('click', function () {
+    $(this).fadeOut();
+  });
+  if ($('#validate > .validate--succses')) {
+    $('#validate').on('click', function () {
+      $('#validate').fadeOut();
+      $('body').css('overflow', 'visible');
     });
-  
+  }
 
+  //hide Modal end
+  //show Modal start
+  const MODALCALL = $('[data-modal]');
+  MODALCALL.on('click', function () {
+    event.preventDefault();
+    let modalId = $(this).data('modal');
+    console.log(modalId);
+    $(modalId).fadeIn();
+    includeModal(modalId);
+    $('body').css('overflow', 'hidden');
+  });
+  //search Modal start 
+  function includeModal(modalId) {
+    switch (modalId) {
+      case '#audit':
+        $(modalId).load('../audit.html .audit', function () {
+          phone();
+        });
+        break;
+      case '#full-form':
+        $(modalId).load('../fullForm.html .full-form', function () {
+          phone();
+          $('input, select').styler();
+        });
+        break;
+      case '#set':
+        $(modalId).load('../setForm.html .set-form', function () {
+          phone();
+          $('input, select').styler();
+        });
+        break;
+    }
+  };
+  //search Modal end 
+  //show Modal end
 
   //close start
-  $('.close').click(function () {
+  $('.modal').on('click', '.close', function () {
     $(this).closest('.modal').fadeOut();
     $('.validate').fadeOut(800);
-    $("body").css('overflow', 'visible');
-  }).mouseenter(function () {
+    $('body').css('overflow', 'visible');
+  }).on('mouseenter', '.close', function () {
     $(this).toggleClass('close--active');
   });
   //close end 
 
+
+
   //mask phone start
   function phone() {
-    let phone = $('input[type="phone"]');
+    let phone = $('.modal, .reviews__form').find('input[type="phone"]');
     phone.mask('+7(999) 999-99-99');
     phone.on('change', function () {
-      console.log(phone.length);
-      if (phone.length == 1) {
+      if (phone.val() !== '') {
         $('input[type="phone"] + span').css('font-size', '0px');
+      } else {
+        $('input[type="phone"] + span').css('font-size', '14px'); 
       }
     });
   }
   phone();
   //mask phone end
- 
-  //FormStyler start
   $('input, select').styler();
-  //FormStyler end
+
   $('.header__slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     dots: false,
-    draggable:false,
+    draggable: false,
     fade: true,
     infinite: false,
     rows: 0
   });
   $('.header-slider__navigation').slick({
-    infinity:false,
+    infinity: false,
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '.header__slider', 
+    asNavFor: '.header__slider',
     arrows: false,
     dots: false,
     focusOnSelect: true,
@@ -129,12 +169,12 @@ $(document).ready(function () {
   });
 
   //участок код отвечает за открытие и переключение списка в секции "question"
-  $('.question__list li').on('click', function(){
+  $('.question__list li').on('click', function () {
     $('.question__list li.active').removeClass('active');
-    if($(this).hasClass('active')){
+    if ($(this).hasClass('active')) {
       $(this).removeClass('active');
-    } 
-    else{
+    }
+    else {
       $(this).addClass('active');
     }
   });
@@ -150,12 +190,12 @@ $(document).ready(function () {
     autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
-        {
-          breakpoint: 1149,
-          settings: {
-            slidesToShow: 3,
-          }
-        },
+      {
+        breakpoint: 1149,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
       {
         breakpoint: 480,
         settings: {
@@ -164,7 +204,7 @@ $(document).ready(function () {
       },
     ]
   });
- 
+
   $('.slider-content').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -212,7 +252,7 @@ $(document).ready(function () {
       },
     ]
   });
- 
+
 
   $('.range-slider').ionRangeSlider({
     postfix: "P",
@@ -224,62 +264,158 @@ $(document).ready(function () {
     grid_num: 9
   });
 
+  function universalValidInput(name) {
+    if (name.val() != '') {
+      $(name).css('border-color', '#c76d02');
+      return true;
+    } else {
+      $(name).css('border-color', '#e93b50');
+    }
+  };
+  function universalValidSelect(name) {
+    if (name.hasClass('changed')) {
+      $('.jq-selectbox__select').css('border-color', '#c76d02');
+      return true;
+    } else {
+      $('.jq-selectbox__select').css('border-color', '#e93b50');
+    }
+  };
+  function universalValidCheck(name) {
+    if (name.hasClass('checked')) {
+      return true;
+    }
+  }
   // validation form start
-    function validForm() {
-      let audit = $('.audit'),
-          reviews = $('.reviews__form'),
-          form = $('form'),
-          subscribe = $('.footer__subscribe-form'),
-          fullForm = $('.full-form__inner'),
-          validName = $('input[type="text"]'),
-          validCheck = $('input[type="check"]'),
-          validPhone = $('input[type="phone"]'),
-          validEmail = $('input[type="email"]'),
-          pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1-6}\.)?[a-z]{2,6}$/i;
-      
-      audit.submit(function(){
-        event.preventDefault();
-        let validName = $('.audit input[type="text"]'),
-            validPhone = $('.audit input[type="phone"]'),
-            validAll = $('.audit input'),
-            validNameBool = false,
-            validPhoneBool = false;
-        if (validName.val() != '') {
-            validNameBool = true;
-        }
-        if (validPhone.val() != '') {
-          validPhoneBool = true;
-        } 
-        if (validNameBool == true && validPhoneBool == true) {
+  function validForm() {
+    let audit = $('#audit'),
+      reviews = $('#reviews'),
+      set = $('#set'),
+      subscribe = $('.footer__subscribe-form'),
+      fullForm = $('#full-form'),
+      pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1-6}\.)?[a-z]{2,6}$/i;
+
+    audit.on('submit', function () {
+      event.preventDefault();
+      let validName = $('.audit input[type="text"]'),
+        validPhone = $('.audit input[type="phone"]');
+      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
+        $.ajax({
+          url: 'send.php',
+          type: 'POST',
+          dataType: 'html'
+        }).done(function () {
+          audit.fadeOut();
+          $('#validate').fadeIn().load('../validate.html #succses-submit');
+        })
+          .fail(function () {
+            $('#validate').fadeIn().load('../validate.html #error-submit');
+          });
+      } else {
+        $('#validate').fadeIn().load('../validate.html #error-fill');
+      }
+    });
+    fullForm.on('submit', function () {
+      event.preventDefault();
+      let validName = $('.full-form input[type="text"]'),
+        validPhone = $('.full-form input[type="phone"]'),
+        validUrl = $('.full-form input[type="url"]'),
+        validSelect = $('.full-form .jq-selectbox.jqselect'),
+        validCheck = $('.full-form .jq-checkbox');
+      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidInput(validUrl) == true && universalValidSelect(validSelect) == true && universalValidCheck(validCheck) == true) {
+        $.ajax({
+          url: 'send.php',
+          type: 'POST',
+          dataType: 'html'
+        }).done(function () {
+          fullForm.fadeOut();
+          $('#validate').fadeIn().load('../validate.html #succses-submit');
+        })
+          .fail(function () {
+            $('#validate').fadeIn().load('../validate.html #error-submit');
+          });
+      } else {
+        $('#validate').fadeIn().load('../validate.html #error-fill');
+      }
+    });
+    set.on('submit', function () {
+      event.preventDefault();
+      let validName = $('.set-form input[type="text"]'),
+        validPhone = $('.set-form input[type="phone"]'),
+        validCheck = $('.set-form .jq-checkbox');
+      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidCheck(validCheck) == true) {
+        $.ajax({
+          url: 'send.php',
+          type: 'POST',
+          dataType: 'html'
+        }).done(function () {
+          set.fadeOut();
+          $('#validate').fadeIn().load('../validate.html #succses-submit');
+        })
+          .fail(function () {
+            $('#validate').fadeIn().load('../validate.html #error-submit');
+          });
+      } else {
+        $('#validate').fadeIn().load('../validate.html #error-fill');
+      }
+    });
+    reviews.on('submit', function () {
+      event.preventDefault();
+      $('body').css('overflow', 'hidden');
+      let validName = $('.reviews__form input[type="text"]'),
+        validPhone = $('.reviews__form input[type="phone"]'),
+        validConfi = $('.reviews__form #input__confidentiality-styler');
+      if (universalValidCheck(validConfi) == true) {
+        if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
           $.ajax({
             url: 'send.php',
-            type: 'GET',
-            dataType: 'html',
-            data: {
-              name: userName,
-              mail: userMail,
-              subject: userSubject,
-              message: userMessage
-            },
-          }).done(function() {
-            audit.fadeOut();
-            audit[0].reset();
-            $('#succses-submit').css('display', 'flex');
-            $('#error-fill').css('display', 'none');
+            type: 'POST',
+            dataType: 'html'
+          }).done(function () {
+            validName.val('');
+            validPhone.val('');
+            validConfi.removeClass('checked');
+            $('#validate').fadeIn().load('../validate.html #succses-submit');
           })
-          .fail(function() {
-            $('#error-fill').css('display', 'flex');
-            $('#succses-submit').css('display', 'none');
-            validAll.css('border-color', '#e93b50');
-          });
-         
+            .fail(function () {
+              $('#validate').fadeIn().load('../validate.html #error-submit');
+            });
         } else {
-          $('#error-fill').css('display', 'flex');
-          validAll.css('border-color', '#e93b50');
+          $('#validate').fadeIn().load('../validate.html #error-fill');
         }
-      });    
-    };
-    validForm();
+      } else {
+        $('#validate').fadeIn().load('../validate.html #error-confidentiality');
+      }
+    });
+    subscribe.on('submit', function () {
+      event.preventDefault();
+      $('body').css('overflow', 'hidden');
+      let validName = $('.footer__subscribe-form input[type="text"]');
+      if (universalValidInput(validName) == true) {
+        if (validName.val().search(pattern) == 0) {
+          $.ajax({
+            url: 'send.php',
+            type: 'POST',
+            dataType: 'html'
+          }).done(function () {
+            validName.val('');
+            $('#validate').fadeIn().load('../validate.html #succses-subscribe');
+          })
+            .fail(function () {
+              $('#validate').fadeIn().load('../validate.html #error-submit');
+            });
+        } else {
+          $('#validate').fadeIn().load('../validate.html #error-email');
+        }
+      } else {
+        $('#validate').fadeIn().load('../validate.html #error-fill');
+      }
+    });
+  };
+
+
+
+  validForm();
+
   // validation form end
 
   // $('.header__item-subtitle').textillate();
@@ -291,26 +427,27 @@ $(document).ready(function () {
   // function repeatAnimateNavSlider(e){
   //       $('.header__item-subtitle').textillate();
   // };
-  
+
   // repeatAnimateNavSlider();
-  $(window).on('resize', function(){
+
+  $(window).on('resize', function () {
     var win = $(this);
     if (win.width() <= 800) {
       //about start
       $('#about__btn').appendTo('.about .container');
-        $('.about__inner').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: false,
-          variableWidth: true,
-          infinite: true,
-          rows: 0
-        });
-      
+      $('.about__inner').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: false,
+        variableWidth: true,
+        infinite: true,
+        rows: 0
+      });
+
       //about end
       //services start 
-      for (let i = 0; i < 2;i++) {
-        $('.services-slider__item[data-slick-index="'+ i +'"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="'+ i +'"] .services-slider__item-inner');
+      for (let i = 0; i < 2; i++) {
+        $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-inner');
       };
       //services end
     }
@@ -320,21 +457,15 @@ $(document).ready(function () {
       $('#about__btn').appendTo('.about__inner');
       //about end 
       //services start 
-      for (let i = 0; i < 2;i++) {
-        $('.services-slider__item[data-slick-index="'+ i +'"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="'+ i +'"] .services-slider__item-content');
+      for (let i = 0; i < 2; i++) {
+        $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-content');
       };
       //services end 
-    } 
+    }
   });
 
-  $('.modal').on('click', function() {
-    $(this).fadeOut();
-    $('.validate').fadeOut();
-    $('body').css('overflow', 'visible');  
-  });
-  $('.audit, .full-form, .set-form').on('click', function(){
-    event.stopPropagation();
-  });
+
+
 });
 
 

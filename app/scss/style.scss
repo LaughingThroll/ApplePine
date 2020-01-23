@@ -1396,7 +1396,7 @@ ul.question__list {
 //audit start
 .audit {
   position: fixed;
-  bottom: 30%;
+  bottom: 50%;
   left: 0;
   right: 0;
   max-width: 1170px;
@@ -1420,6 +1420,7 @@ ul.question__list {
   }
   .btn {
     margin-left: 100px;
+    outline: none;
   }
   .close {
     margin-left: 62px;
@@ -1442,7 +1443,7 @@ ul.question__list {
   z-index: 58;
   user-select: none;
   position: fixed;
-  top: 25%;
+  top: 50%;
   left: 0;
   right: 0;
   margin: 0 auto; 
@@ -1457,18 +1458,28 @@ ul.question__list {
   }
   &--succses {
     background-color: #209b2c;
-    display: none;
     &::before {
       background-image: url(../images/icon/validate--succses.svg);
     }
   }
   &--error {
     background-color: #e93b50;
-    display: none;
     &::before {
       background-image: url(../images/icon/validate--error.svg);
     }
   }
+}
+#validate {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 57;
+    background-color: rgba(#000, .5);
+    display: none;
 }
 //validate end
 
@@ -1607,6 +1618,9 @@ ul.question__list {
     border-bottom: 2px solid #666;
     border-left: 2px solid #666;
     transform: rotate(-50deg);
+  }
+  .btn {
+    outline: none;
   }
   &__check {
     .form-title {
