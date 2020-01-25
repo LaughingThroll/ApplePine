@@ -379,7 +379,7 @@
         top: 95px;
         left: -300px;
         bottom: 0;
-        height: 100vh;
+        height: 140vh;
         width: 220px;
         z-index: 100;
         background-color: rgba(#b9b9b9, .8);
@@ -396,6 +396,10 @@
           display: block;
           padding: 5px;
           font-weight: 700;
+          border-width: 0px;
+          &:hover {
+            border-width: 0px;
+          }
         }
         &--active {
           left: -15px;
@@ -697,6 +701,7 @@
     }
     .audit {
       border-radius: 0;
+      bottom: 20%;
       &__inner {
         flex-direction:  column;
         margin-top: 25px;

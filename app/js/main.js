@@ -55,6 +55,26 @@ $(document).ready(function () {
     $('html, body').animate({ scrollTop: blockPosition }, 2000);
     // 2000 скорость перехода в миллисекундах
   });
+
+  //animation text header start
+  $('.header__item-subtitle').textillate({
+    in: {
+      effect: 'fadeIn'
+    },
+  });
+  $('.header-slider__navigation-item').on('click', function () {
+    if ($(this).hasClass('slick-current')) {
+      $('.header__item-subtitle > span[style]').remove();
+      $('.header__item-subtitle .texts .current > span[style]').remove();
+      $('.header__item-subtitle .texts').css('display', 'block');
+      $('.header__item-subtitle .texts .current').textillate({
+        in: {
+          effect: 'fadeIn'
+        },
+      });
+    }
+  });
+  //animation text header end
   //hide Modal start
   $('.modal').on('click', function () {
     $(this).fadeOut();
@@ -63,15 +83,13 @@ $(document).ready(function () {
     event.stopPropagation();
   });
   $('#validate').on('click', function () {
+    let modal = $('.modal').attr('style');
     $(this).fadeOut();
+    $('body').css('overflow', 'visible');
+    if (modal == 'display: block;') {
+      $('body').css('overflow', 'hidden');
+    }
   });
-  if ($('#validate > .validate--succses')) {
-    $('#validate').on('click', function () {
-      $('#validate').fadeOut();
-      $('body').css('overflow', 'visible');
-    });
-  }
-
   //hide Modal end
   //show Modal start
   const MODALCALL = $('[data-modal]');
@@ -85,21 +103,22 @@ $(document).ready(function () {
   });
   //search Modal start 
   function includeModal(modalId) {
+    let modal = $('.modal');
     switch (modalId) {
       case '#audit':
         $(modalId).load('../audit.html .audit', function () {
-          phone();
+          phone(modal);
         });
         break;
       case '#full-form':
         $(modalId).load('../fullForm.html .full-form', function () {
-          phone();
+          phone(modal);
           $('input, select').styler();
         });
         break;
       case '#set':
         $(modalId).load('../setForm.html .set-form', function () {
-          phone();
+          phone(modal);
           $('input, select').styler();
         });
         break;
@@ -121,18 +140,18 @@ $(document).ready(function () {
 
 
   //mask phone start
-  function phone() {
-    let phone = $('.modal, .reviews__form').find('input[type="phone"]');
+  function phone(name) {
+    let phone = $(name).find('input[type="phone"]');
     phone.mask('+7(999) 999-99-99');
     phone.on('change', function () {
-      if (phone.val() !== '') {
+      if (phone.val() != '') {
         $('input[type="phone"] + span').css('font-size', '0px');
       } else {
         $('input[type="phone"] + span').css('font-size', '14px');
       }
     });
   }
-  phone();
+  phone($('.reviews__form'));
   //mask phone end
   $('input, select').styler();
 
@@ -417,23 +436,12 @@ $(document).ready(function () {
   validForm();
 
   // validation form end
-  $('.header__item-subtitle').textillate({
-    in: {
-      effect: 'fadeIn'
-    },
-  });
-  $('.header-slider__navigation-item').on('click', function () {
-    if ($(this).hasClass('slick-current')) {
-      $('.header__item-subtitle > span[style]').remove();
-      $('.header__item-subtitle .texts .current > span[style]').remove();
-      $('.header__item-subtitle .texts').css('display', 'block');
-      $('.header__item-subtitle .texts .current').textillate({
-        in: {
-          effect: 'fadeIn'
-        },
-      });
-    }
-  });
+  function plusDotsInTheEnd() {
+    let footerText = $('.footer-slider__content-text').data('index');
+  }
+  plusDotsInTheEnd();
+  
+  
 
   $(window).on('resize', function () {
     var win = $(this);
@@ -468,9 +476,6 @@ $(document).ready(function () {
       //services end 
     }
   });
-
-
-
 });
 
 
