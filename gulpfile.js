@@ -65,8 +65,6 @@ gulp.task('export', function () {
     let buildCss = gulp.src('app/css/**/*.css')
         .pipe(gulp.dest('dist/css'))
     let buildJs = gulp.src('app/js/**/*.js')
-        .pipe(rename({suffix: '.min'}))
-        .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
     let buildFonts = gulp.src('app/fonts/**/*.*')
         .pipe(gulp.dest('dist/fonts'))
