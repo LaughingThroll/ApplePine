@@ -106,18 +106,18 @@ $(document).ready(function () {
     let modal = $('.modal');
     switch (modalId) {
       case '#audit':
-        $(modalId).load('../audit.html .audit', function () {
+        $(modalId).load('audit.html .audit', function () {
           phone(modal);
         });
         break;
       case '#full-form':
-        $(modalId).load('../fullForm.html .full-form', function () {
+        $(modalId).load('fullForm.html .full-form', function () {
           phone(modal);
           $('input, select').styler();
         });
         break;
       case '#set':
-        $(modalId).load('../setForm.html .set-form', function () {
+        $(modalId).load('setForm.html .set-form', function () {
           phone(modal);
           $('input, select').styler();
         });
@@ -324,13 +324,13 @@ $(document).ready(function () {
           dataType: 'html'
         }).done(function () {
           audit.fadeOut();
-          $('#validate').fadeIn().load('../validate.html #succses-submit');
+          $('#validate').fadeIn().load('validate.html #succses-submit');
         })
           .fail(function () {
-            $('#validate').fadeIn().load('../validate.html #error-submit');
+            $('#validate').fadeIn().load('validate.html #error-submit');
           });
       } else {
-        $('#validate').fadeIn().load('../validate.html #error-fill');
+        $('#validate').fadeIn().load('validate.html #error-fill');
       }
     });
     fullForm.on('submit', function () {
@@ -347,13 +347,13 @@ $(document).ready(function () {
           dataType: 'html'
         }).done(function () {
           fullForm.fadeOut();
-          $('#validate').fadeIn().load('../validate.html #succses-submit');
+          $('#validate').fadeIn().load('validate.html #succses-submit');
         })
           .fail(function () {
-            $('#validate').fadeIn().load('../validate.html #error-submit');
+            $('#validate').fadeIn().load('validate.html #error-submit');
           });
       } else {
-        $('#validate').fadeIn().load('../validate.html #error-fill');
+        $('#validate').fadeIn().load('validate.html #error-fill');
       }
     });
     set.on('submit', function () {
@@ -368,13 +368,13 @@ $(document).ready(function () {
           dataType: 'html'
         }).done(function () {
           set.fadeOut();
-          $('#validate').fadeIn().load('../validate.html #succses-submit');
+          $('#validate').fadeIn().load('validate.html #succses-submit');
         })
           .fail(function () {
-            $('#validate').fadeIn().load('../validate.html #error-submit');
+            $('#validate').fadeIn().load('validate.html #error-submit');
           });
       } else {
-        $('#validate').fadeIn().load('../validate.html #error-fill');
+        $('#validate').fadeIn().load('validate.html #error-fill');
       }
     });
     reviews.on('submit', function () {
@@ -393,16 +393,16 @@ $(document).ready(function () {
             validName.val('');
             validPhone.val('');
             validConfi.removeClass('checked');
-            $('#validate').fadeIn().load('../validate.html #succses-submit');
+            $('#validate').fadeIn().load('validate.html #succses-submit');
           })
             .fail(function () {
-              $('#validate').fadeIn().load('../validate.html #error-submit');
+              $('#validate').fadeIn().load('validate.html #error-submit');
             });
         } else {
-          $('#validate').fadeIn().load('../validate.html #error-fill');
+          $('#validate').fadeIn().load('validate.html #error-fill');
         }
       } else {
-        $('#validate').fadeIn().load('../validate.html #error-confidentiality');
+        $('#validate').fadeIn().load('validate.html #error-confidentiality');
       }
     });
     subscribe.on('submit', function () {
@@ -417,16 +417,16 @@ $(document).ready(function () {
             dataType: 'html'
           }).done(function () {
             validName.val('');
-            $('#validate').fadeIn().load('../validate.html #succses-subscribe');
+            $('#validate').fadeIn().load('validate.html #succses-subscribe');
           })
             .fail(function () {
-              $('#validate').fadeIn().load('../validate.html #error-submit');
+              $('#validate').fadeIn().load('validate.html #error-submit');
             });
         } else {
-          $('#validate').fadeIn().load('../validate.html #error-email');
+          $('#validate').fadeIn().load('validate.html #error-email');
         }
       } else {
-        $('#validate').fadeIn().load('../validate.html #error-fill');
+        $('#validate').fadeIn().load('validate.html #error-fill');
       }
     });
   };
@@ -434,15 +434,6 @@ $(document).ready(function () {
 
 
   validForm();
-
-  // validation form end
-  function plusDotsInTheEnd() {
-    let footerText = $('.footer-slider__content-text').data('index');
-  }
-  plusDotsInTheEnd();
-  
-  
-
   $(window).on('resize', function () {
     var win = $(this);
     if (win.width() <= 800) {
