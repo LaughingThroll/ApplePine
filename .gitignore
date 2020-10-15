@@ -3,7 +3,10 @@
 .LSOverride
 .vs
 
-layout
+/dist
+/build
+/layout
+/PineApple
 
 node_modules
-package-lock.json
+

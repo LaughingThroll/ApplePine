@@ -4,21 +4,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>PineApple</title>
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
 		rel="stylesheet">
+	<link rel="icon" href="/images/favicon/favicon-16x16.ico">
+
+
+	<link rel="manifest" href="/manifest.json">
+
 	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/style.min.css">
 
 </head>
 
 <body>
+
+
 	<div class="wrapper">
 		<div id="page-preloader" class="preloader">
 			<div id="loader" class="loader">
-				<a href="#header" id="header__logo" class="header__logo">
-					<img src="images/PineApple-logo.png" alt="">
+				<a href="#header" id="header__logo" class="header__logo logo">
+					<div class="logo__inner">
+						<img src="images/content/logo/logo--1.svg" alt="Glass with juice">
+						<img src="images/content/logo/logo--2.svg" alt="logo text JUICE">
+					</div>
 				</a>
 				<div id="load-border"></div>
 			</div>
@@ -73,8 +82,27 @@
 								</div>
 							</div>
 							<div class="header__item-images">
-								<img class="header__image-spray" src="images/spray.png" alt="spray">
-								<img class="header__image-girl" src="images/header-girl-slide.png">
+								<div class="header__image-spray img-wrapper">
+									<picture>
+										<source
+											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/spray.png" alt=""
+											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+									</picture>
+
+									<div class="img-wrapper header__image-girl">
+
+										<picture>
+											<source
+												srcset="images/content/header-girl.webp 1x, images/content/header-girl@2x.webp 2x, images/content/header-girl@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/header-girl.png" alt="Girl in mobile"
+												srcset="images/content/header-girl.png 1x, images/content/header-girl@2x.png 2x, images/content/header-girl@3x.png 3x">
+										</picture>
+
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="header__item">
@@ -95,14 +123,31 @@
 								</div>
 							</div>
 							<div class="header__item-images">
-								<img class="header__image-spray" src="images/spray.png" alt="spray">
-								<img class="header__image-starship" src="images/header-starship-slide.png">
+								<div class="img-wrapper header__image-spray">
+									<picture>
+										<source
+											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/spray.png" alt=""
+											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+									</picture>
+								</div>
+
+								<div class="img-wrapper header__image-starship">
+									<picture>
+										<source
+											srcset="images/content/header-starship.webp 1x, images/content/header-starship@2x.webp 2x, images/content/header-starship@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/header-starship.png" alt=""
+											srcset="images/content/header-starship.png 1x, images/content/header-starship@2x.png 2x, images/content/header-starship@3x.png 3x">
+									</picture>
+								</div>
 							</div>
 						</div>
 						<div class="header__item">
 							<div class="header__item-content">
 								<div class="header__item-title">
-									УМНОЕ <br> 
+									УМНОЕ <br>
 									SEO
 								</div>
 								<div class="header__item-subtitle">
@@ -118,10 +163,45 @@
 								</div>
 							</div>
 							<div class="header__item-images header__image-devices">
-								<img class="header__image-spray" src="images/spray.png" alt="spray">
-								<img class="header__image-devices1" src="images/header-devices-slide1.png">
-								<img class="header__image-devices2" src="images/header-devices-slide2.png">
-								<img class="header__image-devices3" src="images/header-devices-slide3.png">
+								<div class="img-wrapper header__image-spray">
+									<picture>
+										<source
+											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/spray.png" alt=""
+											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+									</picture>
+								</div>
+								<div class="img-wrapper header__image-devices1">
+									<picture>
+										<source
+											srcset="images/content/header-tablet.webp 1x, images/content/header-tablet@2x.webp 2x, images/content/header-tablet@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/header-tablet.png" alt=""
+											srcset="images/content/header-tablet.png 1x, images/content/header-tablet@2x.png 2x, images/content/header-tablet@3x.png 3x">
+									</picture>
+								</div>
+
+								<div class="img-wrapper header__image-devices2">
+									<picture>
+										<source
+											srcset="images/content/header-mobile--diagonal.webp 1x, images/content/header-mobile--diagonal@2x.webp 2x, images/content/header-mobile--diagonal@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/header-mobile--diagonal.png" alt=""
+											srcset="images/content/header-mobile--diagonal.png 1x, images/content/header-mobile--diagonal@2x.png 2x, images/content/header-mobile--diagonal@3x.png 3x">
+									</picture>
+								</div>
+
+								<div class="img-wrapper header__image-devices3">
+									<picture>
+										<source
+											srcset="images/content/header-mobile--horizontal.webp 1x, images/content/header-mobile--horizontal@2x.webp 2x, images/content/header-mobile--horizontal@3x.webp 3x"
+											type="image/webp">
+										<img src="images/content/header-mobile--horizontal.png" alt=""
+											srcset="images/content/header-mobile--horizontal.png 1x, images/content/header-mobile--horizontal@2x.png 2x, images/content/header-mobile--horizontal@3x.png 3x">
+									</picture>
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -143,9 +223,37 @@
 						</div>
 					</div>
 				</div>
-				<img class="header__pine-images header__pine-images--1" src="images/pineapple-up.png" alt="">
-				<img class="header__pine-images header__pine-images--2" src="images/pineapple-center.png" alt="">
-				<img class="header__pine-images header__pine-images--3" src="images/pineapple-right.png" alt="">
+
+				<div class="img-wrapper header__pine-images header__pine-images--1">
+					<picture>
+						<source
+							srcset="images/content/lobe--up.webp 1x, images/content/lobe--up@2x.webp 2x, images/content/lobe--up@3x.webp 3x"
+							type="image/webp">
+						<img src="images/content/lobe--up.png" alt=""
+							srcset="images/content/lobe--up.png 1x, images/content/lobe--up@2x.png 2x, images/content/lobe--up@3x.png 3x">
+					</picture>
+				</div>
+
+
+				<div class="img-wrapper header__pine-images header__pine-images--2">
+					<picture>
+						<source
+							srcset="images/content/lobe--center.webp 1x, images/content/lobe--center@2x.webp 2x, images/content/lobe--center@3x.webp 3x"
+							type="image/webp">
+						<img src="images/content/lobe--center.png" alt=""
+							srcset="images/content/lobe--center.png 1x, images/content/lobe--center@2x.png 2x, images/content/lobe--center@3x.png 3x">
+					</picture>
+				</div>
+				<div class="img-wrapper header__pine-images header__pine-images--3">
+					<picture>
+						<source
+							srcset="images/content/lobe--right.webp 1x, images/content/lobe--right@2x.webp 2x, images/content/lobe--right@3x.webp 3x"
+							type="image/webp">
+						<img src="images/content/lobe--right.png" alt=""
+							srcset="images/content/lobe--right.png 1x, images/content/lobe--right@2x.png 2x, images/content/lobe--right@3x.png 3x">
+					</picture>
+				</div>
+
 			</header>
 			<section class="about" id="about">
 				<div class="container">
@@ -179,9 +287,9 @@
 					</div>
 					<div class="about__inner">
 						<div class="about__item">
-							<div class="about__item-img">
+							<!-- <div class="about__item-img">
 								<img src="images/hourglass.png" alt="hourglass">
-							</div>
+							</div> -->
 							<div class="about__item-content">
 								<div class="about__item-title">
 									Сроки
@@ -193,9 +301,9 @@
 							</div>
 						</div>
 						<div class="about__item">
-							<div class="about__item-img">
+							<!-- <div class="about__item-img">
 								<img src="images/rocket.png" alt="hourglass">
-							</div>
+							</div> -->
 							<div class="about__item-content">
 								<div class="about__item-title">
 									Развитие
@@ -206,9 +314,9 @@
 							</div>
 						</div>
 						<div class="about__item">
-							<div class="about__item-img">
+							<!-- <div class="about__item-img">
 								<img src="images/cup.png" alt="hourglass">
-							</div>
+							</div> -->
 							<div class="about__item-content">
 								<div class="about__item-title">
 									Результат
@@ -220,9 +328,9 @@
 							</div>
 						</div>
 						<div class="about__item">
-							<div class="about__item-img">
+							<!-- <div class="about__item-img">
 								<img src="images/magnifier.png" alt="hourglass">
-							</div>
+							</div> -->
 							<div class="about__item-content">
 								<div class="about__item-title">
 									Прозрачность
@@ -234,9 +342,9 @@
 							</div>
 						</div>
 						<div class="about__item">
-							<div class="about__item-img">
+							<!-- <div class="about__item-img">
 								<img src="images/signature.png" alt="hourglass">
-							</div>
+							</div> -->
 							<div class="about__item-content">
 								<div class="about__item-title">
 									Гарантия
@@ -247,7 +355,9 @@
 							</div>
 						</div>
 						<button class="about__item about__btn" id="about__btn" type="button" data-modal="#full-form">
-							<img src="images/document-icon.svg" alt="">
+							<svg>
+								<use xlink:href="images/icons/sprite.svg#document"></use>
+							</svg>
 							Получить коммерческое
 							предложение
 						</button>
@@ -663,8 +773,10 @@
 							<div class="reviews__form-buttons">
 								<button class="btn btn--trans-white reviews__form-btn" type="submit"><span>Получить
 										предложение</span></button>
-								<button class="reviews__form-settings" type="button"><img src="images/icon/setting.svg"
-										alt="Settings"></button>
+								<button class="reviews__form-settings" type="button">
+									<svg>
+										<use xlink:href="images/icons/sprite.svg#setting"></use>
+									</svg>
 							</div>
 						</form>
 					</div>
@@ -711,151 +823,188 @@
 							</li>
 						</ul>
 					</div>
-					<img src="images/question-girl.png" alt="girl" class="question__girl">
+
+
+					<!-- <img src="images/question-girl.png" alt="girl" class="question__girl"> -->
 				</div>
 			</section>
+
+
 		</div>
-		<footer class="footer">
-			<div class="footer__top">
-				<div class="container">
-					<div class="footer__top-inner">
-						<div class="footer__item footer__info">
-							<a class="footer__info-logo" href="#header">
-								<img src="images/PineApple-logo.png" alt="">
-							</a>
-							<p class="footer__info-text">Вы можете дальше думать над планом
-								побега от проблем или изменить свой
-								бизнес кардинально, просто написав
-								нам. А Ваши первые вкусные клиенты
-								уберегут Вас от нервных срывов.</p>
-							<div class="footer__contacts">
-								<a class="footer__contacts-phone footer__contacts-link" href="tel:79005889979"><span> +7 (900)
-										588-99-79 </span></a>
-								<a class="footer__contacts-email footer__contacts-link"
-									href="mailto:info@jcy-dm.ru"><span>info@jcy-dm.ru</span></a>
+		<div class="footer__top">
+			<div class="container">
+				<div class="footer__top-inner">
+					<div class="footer__item footer__info">
+
+						<a href="#header" class="footer__info-logo logo">
+							<div class="logo__inner">
+								<img src="images/content/logo/logo--1.svg" alt="Glass with juice">
+								<img src="images/content/logo/logo--2.svg" alt="logo text JUICE">
 							</div>
+						</a>
+						<p class="footer__info-text">Вы можете дальше думать над планом
+							побега от проблем или изменить свой
+							бизнес кардинально, просто написав
+							нам. А Ваши первые вкусные клиенты
+							уберегут Вас от нервных срывов.</p>
+						<div class="footer__contacts">
+							<a class="footer__contacts-phone footer__contacts-link" href="tel:79005889979"><span> +7 (900)
+									588-99-79 </span></a>
+							<a class="footer__contacts-email footer__contacts-link"
+								href="mailto:info@jcy-dm.ru"><span>info@jcy-dm.ru</span></a>
 						</div>
-						<div class="footer__item--xl">
-							<nav class="footer__navigation navigation">
-								<ul>
-									<li><a href="#about">О нас</a></li>
-									<li><a href="#services">Услуги</a></li>
-									<li><a href="#team">Команда</a></li>
-									<li><a href="#reviews">Отзывы</a></li>
-									<li><a href="#question">FAQ</a></li>
-								</ul>
-							</nav>
-							<h5 class="footer__news-title">Статьи и новости</h5>
-							<div class="footer-slider">
-								<div class="footer-slider__item">
-									<div class="footer-slider__content">
-										<div class="footer-slider__content-left">
-											<img class="footer-slider__content-image" src="images/content/footer/footer__slider-1.jpg"
-												alt="news images">
-											<div class="footer-slider__content-data">04 дек.</div>
+					</div>
+					<div class="footer__item--xl">
+						<nav class="footer__navigation navigation">
+							<ul>
+								<li><a href="#about">О нас</a></li>
+								<li><a href="#services">Услуги</a></li>
+								<li><a href="#team">Команда</a></li>
+								<li><a href="#reviews">Отзывы</a></li>
+								<li><a href="#question">FAQ</a></li>
+							</ul>
+						</nav>
+						<h5 class="footer__news-title">Статьи и новости</h5>
+						<div class="footer-slider">
+							<div class="footer-slider__item">
+								<div class="footer-slider__content">
+									<div class="footer-slider__content-left">
+										<div class="img-wrapper footer-slider__content-image">
+											<picture>
+												<source
+													srcset="images/content/footer/footer-slide-1.webp 1x, images/content/footer/footer-slide-1@2x.webp 2x, images/content/footer/footer-slide-1@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/footer/footer-slide-1.jpg" alt="news images"
+													srcset="images/content/footer/footer-slide-1.jpg 1x, images/content/footer/footer-slide-1@2x.png 2x, images/content/footer/footer-slide-1@3x.png 3x">
+											</picture>
 										</div>
-										<article class="footer-slider__content-right">
-											<h6 class="footer-slider__content-title">Как текст влияет</h6>
-											<p class="footer-slider__content-text" data-index="1">
-												Для продвижения Вашего
-												бизнеса в интернете
-												кроме яркого и прикольного))
-											</p>
-											<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
-										</article>
+										<div class="footer-slider__content-data">04 дек.</div>
 									</div>
+									<article class="footer-slider__content-right">
+										<h6 class="footer-slider__content-title">Как текст влияет</h6>
+										<p class="footer-slider__content-text" data-index="1">
+											Для продвижения Вашего
+											бизнеса в интернете
+											кроме яркого и прикольного))
+										</p>
+										<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
+									</article>
 								</div>
-								<div class="footer-slider__item">
-									<div class="footer-slider__content">
-										<div class="footer-slider__content-left">
-											<img class="footer-slider__content-image" src="images/content/footer/footer__slider-2.jpg"
-												alt="girl with keyboard">
-											<div class="footer-slider__content-data">03 дек.</div>
-										</div>
-										<article class="footer-slider__content-right">
-											<h6 class="footer-slider__content-title">Нововведения</h6>
-											<p class="footer-slider__content-text" data-index="2">А Вы уже слышали?
-												ВКонтакте приготовил
-												для нас глобальные изменения</p>
-											<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
-									</div>
-								</div>
-								</article>
-								<div class="footer-slider__item">
-									<div class="footer-slider__content">
-										<div class="footer-slider__content-left">
-											<img class="footer-slider__content-image" src="images/content/footer/footer__slider-3.png"
-												alt="news images">
-											<div class="footer-slider__content-data">24 янв.</div>
-										</div>
-										<article class="footer-slider__content-right">
-											<h6 class="footer-slider__content-title">Зачем нужна таргетированная реклама в инстаграм</h6>
-											<p class="footer-slider__content-text" data-index="3">
-												Таргет в инстаграме можно считать мощнейшим инструментом продвижения, потому что именно с его
-												помощью вы получаете большую часть клиентов и потенциальных покупателей
-											</p>
-											<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
-										</article>
-									</div>
-								</div>
-								<div class="footer-slider__item">
-									<div class="footer-slider__content">
-										<div class="footer-slider__content-left">
-											<img class="footer-slider__content-image" src="images/content/footer/footer__slider-4.jpg"
-												alt="girl with keyboard">
-											<div class="footer-slider__content-data">20 дек.</div>
-										</div>
-										<article class="footer-slider__content-right">
-											<h6 class="footer-slider__content-title">Лид-магнит</h6>
-											<p class="footer-slider__content-text" data-index="4">Знаете ли вы, что лид-магнит использовался еще до того, как
-												это понятие стало ассоциироваться со сферой продаж?</p>
-											<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
-									</div>
-								</div>
-								</article>
 							</div>
-						</div>
-						<div class="footer__item footer__subscribe">
-							<h4 class="footer__subscribe-title">Подписывайтесь
-								на новости!</h4>
-							<div class="footer__subscribe-subtitle">Будьте вкурсе свежих идей
-								в маркетинге</div>
-							<form class="footer__subscribe-form" action="#" method="POST">
-								<input type="text" placeholder="Ваша почта">
-								<button class="footer__subscribe-form-btn" type="submit"><img class="footer__subscribe-form-img"
-										src="images/icon/f-envelope.svg" alt=""></button>
-							</form>
-							<div class="footer__subscribe-socials">
-								<a class="icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"
-									target="_blank"></a>
-								<a class="icon-vk" href="https://vk.com/jcy_dm" target="_blank"></a>
-								<a class="icon-facebook" href="https://www.facebook.com/" target="_blank"></a>
+							<div class="footer-slider__item">
+								<div class="footer-slider__content">
+									<div class="footer-slider__content-left">
+										<div class="img-wrapper footer-slider__content-image">
+											<picture>
+												<source
+													srcset="images/content/footer/footer-slide-2.webp 1x, images/content/footer/footer-slide-2@2x.webp 2x, images/content/footer/footer-slide-2@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/footer/footer-slide-2.jpg" alt="news images"
+													srcset="images/content/footer/footer-slide-2.jpg 1x, images/content/footer/footer-slide-2@2x.png 2x, images/content/footer/footer-slide-2@3x.png 3x">
+											</picture>
+										</div>
+										<div class="footer-slider__content-data">03 дек.</div>
+									</div>
+									<article class="footer-slider__content-right">
+										<h6 class="footer-slider__content-title">Нововведения</h6>
+										<p class="footer-slider__content-text" data-index="2">А Вы уже слышали?
+											ВКонтакте приготовил
+											для нас глобальные изменения</p>
+										<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
+								</div>
 							</div>
-							<a class="footer__privacy" href="#" target="_blank"><span>Политика конфеденциальности</span></a>
+							</article>
+							<div class="footer-slider__item">
+								<div class="footer-slider__content">
+									<div class="footer-slider__content-left">
+										<div class="img-wrapper footer-slider__content-image">
+											<picture>
+												<source
+													srcset="images/content/footer/footer-slide-3.webp 1x, images/content/footer/footer-slide-3@2x.webp 2x, images/content/footer/footer-slide-3@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/footer/footer-slide-3.png" alt="news images"
+													srcset="images/content/footer/footer-slide-3.png 1x, images/content/footer/footer-slide-3@2x.png 2x, images/content/footer/footer-slide-3@3x.png 3x">
+											</picture>
+										</div>
+										<div class="footer-slider__content-data">24 янв.</div>
+									</div>
+									<article class="footer-slider__content-right">
+										<h6 class="footer-slider__content-title">Зачем нужна таргетированная реклама в инстаграм</h6>
+										<p class="footer-slider__content-text" data-index="3">
+											Таргет в инстаграме можно считать мощнейшим инструментом продвижения, потому что именно с его
+											помощью вы получаете большую часть клиентов и потенциальных покупателей
+										</p>
+										<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
+									</article>
+								</div>
+							</div>
+							<div class="footer-slider__item">
+								<div class="footer-slider__content">
+									<div class="footer-slider__content-left">
+										<div class="img-wrapper footer-slider__content-image">
+											<picture>
+												<source
+													srcset="images/content/footer/footer-slide-4.webp 1x, images/content/footer/footer-slide-4@2x.webp 2x, images/content/footer/footer-slide-4@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/footer/footer-slide-4.jpg" alt="news images"
+													srcset="images/content/footer/footer-slide-4.jpg 1x, images/content/footer/footer-slide-4@2x.png 2x, images/content/footer/footer-slide-4@3x.png 3x">
+											</picture>
+										</div>
+										<div class="footer-slider__content-data">20 дек.</div>
+									</div>
+									<article class="footer-slider__content-right">
+										<h6 class="footer-slider__content-title">Лид-магнит</h6>
+										<p class="footer-slider__content-text" data-index="4">Знаете ли вы, что лид-магнит использовался еще
+											до того, как
+											это понятие стало ассоциироваться со сферой продаж?</p>
+										<a class="footer-slider__content-link" href="#" target="_blank">Подробнее</a>
+								</div>
+							</div>
+							</article>
 						</div>
+					</div>
+					<div class="footer__item footer__subscribe">
+						<h4 class="footer__subscribe-title">Подписывайтесь
+							на новости!</h4>
+						<div class="footer__subscribe-subtitle">Будьте вкурсе свежих идей
+							в маркетинге</div>
+						<form class="footer__subscribe-form" action="#" method="POST">
+							<input type="text" placeholder="Ваша почта">
+							<button class="footer__subscribe-form-btn" type="submit">
+								
+								<svg class="footer__subscribe-form-img">
+								<use xlink:href="images/icons/sprite.svg#envelop"></use>
+								</svg>
+								</button>
+						</form>
+						<div class="footer__subscribe-socials">
+							<a class="icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"
+								target="_blank"></a>
+							<a class="icon-vk" href="https://vk.com/jcy_dm" target="_blank"></a>
+							<a class="icon-facebook" href="https://www.facebook.com/" target="_blank"></a>
+						</div>
+						<a class="footer__privacy" href="#" target="_blank"><span>Политика конфеденциальности</span></a>
 					</div>
 				</div>
 			</div>
-			<div class="footer__copy">
-				Juice. Все права защещены. 2019
-			</div>
+		</div>
+		<div class="footer__copy">
+			Juice. Все права защещены. 2019
+		</div>
 		</footer>
+
+
 		<div class="modal" id="audit"></div>
 		<div class="modal" id="full-form"></div>
 		<div class="modal" id="set"></div>
 		<div id="validate"></div>
 
 
-
 	</div>
 
 
-
-
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="js/libs.min.js"></script>
-	<script src="js/main.js"></script>
-
+	<script src="js/vendors.min.js"></script>
+	<script src="js/main.min.js"></script>
 </body>
 
 </html>

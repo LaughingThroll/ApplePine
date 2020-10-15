@@ -1,82 +1,73 @@
-let gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    rename = require('gulp-rename'),
-    browserSync = require('browser-sync'),
-    autoprefixer = require('gulp-autoprefixer'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    cssmin = require('gulp-cssmin'),
-    del = require('del');
+/*global G process */
+global.G = {
+  // common gulp
+  isDevelopment: !process.env.NODE_ENV || process.env.NODE_ENV == 'development',
+  gulp: require('gulp'),
+  gulpLoadPlugins: require('gulp-load-plugins')(),
+  config: {
+    src: require('./gulp-tasks/config/src.js')
+  },
 
-gulp.task('sass', function(){
-    return  gulp.src('app/scss/style.scss')
-                .pipe(sass({outputStyle: 'compressed'}))
-                .pipe(autoprefixer({overrideBrowserslist: ['last 8 versions']}))
-                .pipe(rename({suffix: '.min'}))
-                .pipe(gulp.dest('app/css'))
-                .pipe(browserSync.reload({stream: true}))
-});
-gulp.task('style', function(){
-    return gulp.src([
-      'node_modules/normalize.css/normalize.css',
-      'node_modules/slick-carousel/slick/slick.css',
-      'node_modules/ion-rangeslider/css/ion.rangeSlider.css',
-      'node_modules/textillate/assets/animate.css'
-    ])
-    .pipe(concat('libs.min.css'))
-    .pipe(cssmin())
-    .pipe(gulp.dest('app/css'))
-});
-gulp.task('script', function(){
-  return gulp.src([
-    'node_modules/slick-carousel/slick/slick.js',
-    'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
-    'node_modules/jquery.formstyler/jquery.formstyler.js',
-    'node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
-    'node_modules/textillate/assets/jquery.lettering.js',
-    'node_modules/textillate/jquery.textillate.js'
-  ])
-  .pipe(concat('libs.min.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('app/js'))
-});
-gulp.task('html', function(){
-    return gulp.src('app/*.html')
-        .pipe(browserSync.reload({stream: true}))
+  changed: require('gulp-changed'),
+  if: require('gulp-if'),
+  filter: require('gulp-filter'),
+  rename: require('gulp-rename'),
+  browserSync: require('browser-sync'),
+  del: require('del'),
+  path: require('path'),
+  // scss or sass or stylus
+  sass: require('gulp-sass'),
+  autoprefixer: require('gulp-autoprefixer'),
+  cssmin: require('gulp-cssmin'),
+  csscomb: require('gulp-csscomb'),
+  cleanCSS: require('gulp-clean-css'),
+  sourcemaps: require('gulp-sourcemaps'),
+  concat: require('gulp-concat'),
+  // webpack only js 
+  webpack: require('webpack-stream'),
+  terserPlugin: require('terser-webpack-plugin'),
+  // images
+  responsive: require('gulp-responsive'),
+  imagemin: require('gulp-imagemin'),
+  imageminPngquant: require('imagemin-pngquant'),
+  imageminMozjpeg: require('imagemin-mozjpeg'),
+  webpcss: require('gulp-webpcss'),
+  spriteSmith: require('gulp.spritesmith'),
+  webp: require('gulp-webp'),
+  // SVG
+  spriteSvg: require('gulp-svg-sprite'),
+  svgMin: require('gulp-svgmin')
+}
+
+G.config.src.forEach(task => {
+  require(task)()
 });
 
-gulp.task('js', function(){
-    return gulp.src('app/js/*.js')
-        .pipe(browserSync.reload({stream: true}))
-});
+G.gulp.task('images', G.gulp.series(
+  'clean:images',
+  'favicon',
+  'content',
+  'icon'
+  ))
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-       proxy: 'pineapple'
-    });
-});
 
-gulp.task('clean', async function(){
-    del.sync('dist')
-});
+G.gulp.task('default', G.gulp.series(
+  'export',
+  'styleLibs',
+  G.gulp.parallel(
+    'sass',
+    'browser-sync',
+    'html',
+    'webpackJs',
+    'watch'
+  )
+))
 
-gulp.task('export', function () {
-    let buildHtml = gulp.src('app/*.html')
-        .pipe(gulp.dest('dist'))
-    let buildCss = gulp.src('app/css/**/*.css')
-        .pipe(gulp.dest('dist/css'))
-    let buildJs = gulp.src('app/js/**/*.js')
-        .pipe(gulp.dest('dist/js'))
-    let buildFonts = gulp.src('app/fonts/**/*.*')
-        .pipe(gulp.dest('dist/fonts'))
-});
-
-gulp.task('build', gulp.series('clean', 'export'))
-
-gulp.task('watch', function(){
-    gulp.watch('app/scss/**/*.scss', gulp.parallel('sass'))
-    gulp.watch('app/*.html', gulp.parallel('html'))
-    gulp.watch('app/js/*.js', gulp.parallel('js'))
-});
-
-gulp.task('default', gulp.parallel('sass', 'style', 'script', 'watch', 'browser-sync'))
+G.gulp.task('build', G.gulp.series(
+  'clean',
+  'images',
+  'styleLibs',
+  'sass',
+  'html',
+  'webpackJs',
+))

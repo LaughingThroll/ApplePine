@@ -1,0 +1,134 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$cup-name: 'cup';
+$cup-x: 0px;
+$cup-y: 85px;
+$cup-offset-x: 0px;
+$cup-offset-y: -85px;
+$cup-width: 75px;
+$cup-height: 93px;
+$cup-total-width: 242px;
+$cup-total-height: 178px;
+$cup-image: '../../../../../../../sprite.png';
+$cup: (0px, 85px, 0px, -85px, 75px, 93px, 242px, 178px, '../../../../../../../sprite.png', 'cup', );
+$hourglass-name: 'hourglass';
+$hourglass-x: 85px;
+$hourglass-y: 81px;
+$hourglass-offset-x: -85px;
+$hourglass-offset-y: -81px;
+$hourglass-width: 72px;
+$hourglass-height: 85px;
+$hourglass-total-width: 242px;
+$hourglass-total-height: 178px;
+$hourglass-image: '../../../../../../../sprite.png';
+$hourglass: (85px, 81px, -85px, -81px, 72px, 85px, 242px, 178px, '../../../../../../../sprite.png', 'hourglass', );
+$magnifier-name: 'magnifier';
+$magnifier-x: 85px;
+$magnifier-y: 0px;
+$magnifier-offset-x: -85px;
+$magnifier-offset-y: 0px;
+$magnifier-width: 81px;
+$magnifier-height: 81px;
+$magnifier-total-width: 242px;
+$magnifier-total-height: 178px;
+$magnifier-image: '../../../../../../../sprite.png';
+$magnifier: (85px, 0px, -85px, 0px, 81px, 81px, 242px, 178px, '../../../../../../../sprite.png', 'magnifier', );
+$rocket-name: 'rocket';
+$rocket-x: 0px;
+$rocket-y: 0px;
+$rocket-offset-x: 0px;
+$rocket-offset-y: 0px;
+$rocket-width: 85px;
+$rocket-height: 85px;
+$rocket-total-width: 242px;
+$rocket-total-height: 178px;
+$rocket-image: '../../../../../../../sprite.png';
+$rocket: (0px, 0px, 0px, 0px, 85px, 85px, 242px, 178px, '../../../../../../../sprite.png', 'rocket', );
+$signature-name: 'signature';
+$signature-x: 166px;
+$signature-y: 0px;
+$signature-offset-x: -166px;
+$signature-offset-y: 0px;
+$signature-width: 76px;
+$signature-height: 77px;
+$signature-total-width: 242px;
+$signature-total-height: 178px;
+$signature-image: '../../../../../../../sprite.png';
+$signature: (166px, 0px, -166px, 0px, 76px, 77px, 242px, 178px, '../../../../../../../sprite.png', 'signature', );
+$spritesheet-width: 242px;
+$spritesheet-height: 178px;
+$spritesheet-image: '../../../../../../../sprite.png';
+$spritesheet-sprites: ($cup, $hourglass, $magnifier, $rocket, $signature, );
+$spritesheet: (242px, 178px, '../../../../../../../sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

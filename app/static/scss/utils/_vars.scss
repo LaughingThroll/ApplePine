@@ -1,0 +1,52 @@
+// ALL_COLOR 
+$main-color: #454545;
+
+$white: #fff;
+$black: #000;
+
+// OLD 
+$placeholder: #a9a8a8;
+$text: #441110;
+$orange: #f88600;
+
+
+
+// FONT
+$main-font: '';
+// + or - size * on number [.5, .75, 1.25, 1.5]
+$main-fz: 14px;
+
+
+// CONTAINER
+$main-width: 1170px;
+// H1-H6
+h1 {
+  font-size: 42px;
+  line-height: 42px;
+}
+h2 {
+  font-size: 32px;
+  line-height: 32px;
+}
+h3 {
+  font-size: 28px;
+  line-height: 28px;
+}
+h4 {
+  font-size: 22px;
+  line-height: 22px;
+}
+h5 {
+  font-size: 18px;
+  line-height: 18px;
+}
+h6 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+// SPRITE
+$pathS: '../images/icons/sprite.png';
+
+// TRANSITION_TIMES
+$fast: .5s;
