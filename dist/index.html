@@ -7,7 +7,7 @@
 	<title>PineApple</title>
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
 		rel="stylesheet">
-	<link rel="icon" href="/images/favicon/favicon-16x16.ico">
+	<link rel="icon" href="images/favicon/favicon-16x16.ico">
 
 
 	<link rel="manifest" href="/manifest.json">
@@ -21,7 +21,7 @@
 
 
 	<div class="wrapper">
-		<div id="page-preloader" class="preloader">
+		<!-- <div id="page-preloader" class="preloader">
 			<div id="loader" class="loader">
 				<a href="#header" id="header__logo" class="header__logo logo">
 					<div class="logo__inner">
@@ -31,68 +31,79 @@
 				</a>
 				<div id="load-border"></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="content">
 			<header class="header" id="header">
-				<div class="container">
-					<div class="header__top">
+				<div class="header__top">
+					<div class="container header__container">
 						<nav class="header__navigation navigation">
-							<div class="header__menu-btn">
-								<div class="header__menu-row"></div>
-								<div class="header__menu-row"></div>
-								<div class="header__menu-row"></div>
-							</div>
-							<ul class="header__menu">
-								<li><a href="#about">О нас</a></li>
-								<li><a href="#services">Услуги</a></li>
-								<li><a href="#team">Команда</a></li>
-								<li><a href="#reviews">Отзывы</a></li>
-								<li><a href="#question">FAQ</a></li>
+							<button type="button" class="header__menu-btn navigation__btn">
+								<div class="navigation__row"></div>
+								<div class="navigation__row"></div>
+								<div class="header__menu-row navigation__row"></div>
+							</button>
+							<ul class="header__menu navigation__list">
+								<li class="navigation__item"><a class="navigation__link" href="#about"><span
+											class="span-animation-border">Наша</span></a></li>
+								<li class="navigation__item"><a class="navigation__link" href="#services"><span
+											class="span-animation-border">Услуги</span></a></li>
+								<li class="navigation__item"><a class="navigation__link" href="#team"><span
+											class="span-animation-border">Команда</span></a></li>
+								<li class="navigation__item"><a class="navigation__link" href="#reviews"><span
+											class="span-animation-border">Отзывы</span></a></li>
+								<li class="navigation__item"><a class="navigation__link" href="#question"><span
+											class="span-animation-border">FAQ</span></a></li>
 							</ul>
 						</nav>
 						<div class="header__contacts">
-							<ul class="header__socials">
-								<li><a class="icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"
-										target="_blank"></a></li>
-								<li><a class="icon-vk" href="https://vk.com/jcy_dm" target="_blank"></a></li>
+							<ul class="header__socials socials">
+								<li class="socials__item">
+									<a class="socials__link icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"
+										target="_blank">
+									</a>
+								</li>
+								<li class="socials__item"><a class="socials__link icon-vk" href="https://vk.com/jcy_dm" target="_blank">
+									</a>
+								</li>
 							</ul>
-							<a class="header__number btn btn--trans-orange" href="tel:79997100751">
-								<span> +7 (999) 710-07-51</span>
+							<a class="header__phone btn btn--trans-orange" href="tel:79997100751">
+								<span class="span-animation-border"> +7 (999) 710-07-51</span>
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="header-sliders__wrapper">
-					<div class="header__slider">
-						<div class="header__item">
-							<div class="header__item-content">
-								<div class="header__item-title">
-									СОЧНЫЙ МАРКЕТИНГ
-								</div>
-								<div class="header__item-subtitle">
-									Создаем поток клиентов из социальных сетей
-								</div>
-								<div class="header__item-animate">
-									<div class="header__item-result">
-										Увеличиваем прибыль, а не просмотры и лайки
+				<div class="header__hero hero">
+					<div class="container">
+						<div class="hero__slider" id="hero-slider">
+
+							<div class="hero__item hero-item">
+								<div class="hero-item__content ">
+									<h1 class="hero-item__title">
+										СОЧНЫЙ МАРКЕТИНГ
+									</h1>
+									<h2 class="hero-item__subtitle">
+										Создаем поток клиентов из социальных сетей
+									</h2>
+									<div class="header__item-animate hero-item__animate">
+										<div class="hero-item__result">
+											Увеличиваем прибыль, а не просмотры и лайки
+										</div>
+										<button class="hero-item__btn btn btn--orange" type="button" data-modal="#audit">
+											<span class="span-animation-border">Заказать бесплатный аудит </span>
+										</button>
 									</div>
-									<button class="header__item-btn btn btn--orange" type="button" data-modal="#audit">
-										<span>Заказать бесплатный аудит </span>
-									</button>
 								</div>
-							</div>
-							<div class="header__item-images">
-								<div class="header__image-spray img-wrapper">
-									<picture>
-										<source
-											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/spray.png" alt=""
-											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
-									</picture>
-
-									<div class="img-wrapper header__image-girl">
-
+								<div class="hero-item__images">
+									<div class="hero-image hero-image--spray img-wrapper">
+										<picture>
+											<source
+												srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/spray.png" alt=""
+												srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+										</picture>									
+									</div>
+									<div class="img-wrapper hero-image hero-image--girl">
 										<picture>
 											<source
 												srcset="images/content/header-girl.webp 1x, images/content/header-girl@2x.webp 2x, images/content/header-girl@3x.webp 3x"
@@ -100,131 +111,131 @@
 											<img src="images/content/header-girl.png" alt="Girl in mobile"
 												srcset="images/content/header-girl.png 1x, images/content/header-girl@2x.png 2x, images/content/header-girl@3x.png 3x">
 										</picture>
-
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="header__item">
-							<div class="header__item-content">
-								<div class="header__item-title">
-									СОЗДАНИЕ САЙТА
-								</div>
-								<div class="header__item-subtitle">
-									Создаем поток клиентов из социальных сетей
-								</div>
-								<div class="header__item-animate">
-									<div class="header__item-result">
-										Увеличиваем прибыль, а не просмотры и лайки
+
+							<div class="hero__item hero-item">
+								<div class="hero-item__content">
+									<h1 class="hero-item__title">
+										СОЗДАНИЕ САЙТА
+									</h1>
+									<h2 class="hero-item__subtitle">
+										Создаем поток клиентов из социальных сетей
+									</h2>
+									<div class="header__item-animate hero-item__animate">
+										<div class="hero-item__result">
+											Увеличиваем прибыль, а не просмотры и лайки
+										</div>
+										<button class="hero-item__btn btn btn--orange" type="button" data-modal="#audit">
+											<span class="span-animation-border"> Заказать бесплатный аудит </span>
+										</button>
 									</div>
-									<button class="header__item-btn btn btn--orange" type="button" data-modal="#audit">
-										<span> Заказать бесплатный аудит </span>
-									</button>
 								</div>
-							</div>
-							<div class="header__item-images">
-								<div class="img-wrapper header__image-spray">
-									<picture>
-										<source
-											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/spray.png" alt=""
-											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
-									</picture>
-								</div>
-
-								<div class="img-wrapper header__image-starship">
-									<picture>
-										<source
-											srcset="images/content/header-starship.webp 1x, images/content/header-starship@2x.webp 2x, images/content/header-starship@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/header-starship.png" alt=""
-											srcset="images/content/header-starship.png 1x, images/content/header-starship@2x.png 2x, images/content/header-starship@3x.png 3x">
-									</picture>
-								</div>
-							</div>
-						</div>
-						<div class="header__item">
-							<div class="header__item-content">
-								<div class="header__item-title">
-									УМНОЕ <br>
-									SEO
-								</div>
-								<div class="header__item-subtitle">
-									Комплексный подход к продвижению
-								</div>
-								<div class="header__item-animate">
-									<div class="header__item-result">
-										Увеличиваем прибыль, а не просмотры и лайки
+								<div class="hero-item__images">
+									<div class="img-wrapper hero-image hero-image--spray">
+										<picture>
+											<source
+												srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/spray.png" alt=""
+												srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+										</picture>
 									</div>
-									<button class="header__item-btn btn btn--orange" type="button" data-modal="#audit">
-										<span> Заказать бесплатный аудит </span>
-									</button>
+
+									<div class="img-wrapper hero-image hero-image--starship">
+										<picture>
+											<source
+												srcset="images/content/header-starship.webp 1x, images/content/header-starship@2x.webp 2x, images/content/header-starship@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/header-starship.png" alt=""
+												srcset="images/content/header-starship.png 1x, images/content/header-starship@2x.png 2x, images/content/header-starship@3x.png 3x">
+										</picture>
+									</div>
 								</div>
 							</div>
-							<div class="header__item-images header__image-devices">
-								<div class="img-wrapper header__image-spray">
-									<picture>
-										<source
-											srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/spray.png" alt=""
-											srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
-									</picture>
+							<div class="hero__item hero-item">
+								<div class="hero-item__content">
+									<h1 class="hero-item__title">
+										УМНОЕ <br>
+										SEO
+									</h1>
+									<h2 class="hero-item__subtitle">
+										Комплексный подход к продвижению
+									</h2>
+									<div class="hero-item__animate header__item-animate">
+										<div class="hero-item__result">
+											Увеличиваем прибыль, а не просмотры и лайки
+										</div>
+										<button class="hero-item__btn btn btn--orange" type="button" data-modal="#audit">
+											<span class="span-animation-border"> Заказать бесплатный аудит </span>
+										</button>
+									</div>
 								</div>
-								<div class="img-wrapper header__image-devices1">
-									<picture>
-										<source
-											srcset="images/content/header-tablet.webp 1x, images/content/header-tablet@2x.webp 2x, images/content/header-tablet@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/header-tablet.png" alt=""
-											srcset="images/content/header-tablet.png 1x, images/content/header-tablet@2x.png 2x, images/content/header-tablet@3x.png 3x">
-									</picture>
-								</div>
+								<div class="hero-item__images">
+									<div class="img-wrapper hero-image--spray">
+										<picture>
+											<source
+												srcset="images/content/spray.webp 1x, images/content/spray@2x.webp 2x, images/content/spray@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/spray.png" alt=""
+												srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
+										</picture>
+									</div>
+									<div class="img-wrapper hero-image hero-image--tablet header__image-devices1">
+										<picture>
+											<source
+												srcset="images/content/header-tablet.webp 1x, images/content/header-tablet@2x.webp 2x, images/content/header-tablet@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/header-tablet.png" alt=""
+												srcset="images/content/header-tablet.png 1x, images/content/header-tablet@2x.png 2x, images/content/header-tablet@3x.png 3x">
+										</picture>
+									</div>
 
-								<div class="img-wrapper header__image-devices2">
-									<picture>
-										<source
-											srcset="images/content/header-mobile--diagonal.webp 1x, images/content/header-mobile--diagonal@2x.webp 2x, images/content/header-mobile--diagonal@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/header-mobile--diagonal.png" alt=""
-											srcset="images/content/header-mobile--diagonal.png 1x, images/content/header-mobile--diagonal@2x.png 2x, images/content/header-mobile--diagonal@3x.png 3x">
-									</picture>
-								</div>
+									<div class="img-wrapper hero-image hero-image--mobile-diagonal">
+										<picture>
+											<source
+												srcset="images/content/header-mobile--diagonal.webp 1x, images/content/header-mobile--diagonal@2x.webp 2x, images/content/header-mobile--diagonal@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/header-mobile--diagonal.png" alt=""
+												srcset="images/content/header-mobile--diagonal.png 1x, images/content/header-mobile--diagonal@2x.png 2x, images/content/header-mobile--diagonal@3x.png 3x">
+										</picture>
+									</div>
 
-								<div class="img-wrapper header__image-devices3">
-									<picture>
-										<source
-											srcset="images/content/header-mobile--horizontal.webp 1x, images/content/header-mobile--horizontal@2x.webp 2x, images/content/header-mobile--horizontal@3x.webp 3x"
-											type="image/webp">
-										<img src="images/content/header-mobile--horizontal.png" alt=""
-											srcset="images/content/header-mobile--horizontal.png 1x, images/content/header-mobile--horizontal@2x.png 2x, images/content/header-mobile--horizontal@3x.png 3x">
-									</picture>
+									<div class="img-wrapper hero-image hero-image--mobile-horizontal">
+										<picture>
+											<source
+												srcset="images/content/header-mobile--horizontal.webp 1x, images/content/header-mobile--horizontal@2x.webp 2x, images/content/header-mobile--horizontal@3x.webp 3x"
+												type="image/webp">
+											<img src="images/content/header-mobile--horizontal.png" alt=""
+												srcset="images/content/header-mobile--horizontal.png 1x, images/content/header-mobile--horizontal@2x.png 2x, images/content/header-mobile--horizontal@3x.png 3x">
+										</picture>
+									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-					<div class="header-slider__navigation">
-						<div class="header-slider__navigation-item header-slider__navigation-item--1">
-							<div class="backnumber">01</div>
-							<div class="first-word">СОЧНЫЙ</div>
-							<div class="second-word">МАРКЕТИНГ</div>
+
+					<div class="hero__navigation hero-navigation" id="hero-navigation">
+						<div class="hero-navigation__item">
+							<div class="hero-navigation__backnumber">01</div>
+							<div class="hero-navigation__first-word">СОЧНЫЙ</div>
+							<div class="hero-navigation__second-word">МАРКЕТИНГ</div>
 						</div>
-						<div class="header-slider__navigation-item header-slider__navigation-item--2">
-							<div class="backnumber">02</div>
-							<div class="first-word">СОЗДАНИЕ</div>
-							<div class="second-word">САЙТА</div>
+						<div class="hero-navigation__item">
+							<div class="hero-navigation__backnumber">02</div>
+							<div class="hero-navigation__first-word">СОЗДАНИЕ</div>
+							<div class="hero-navigation__second-word">САЙТА</div>
 						</div>
-						<div class="header-slider__navigation-item header-slider__navigation-item--3">
-							<div class="backnumber">03</div>
-							<div class="first-word">УМНОЕ</div>
-							<div class="second-word">SEO</div>
+						<div class="hero-navigation__item">
+							<div class="hero-navigation__backnumber">03</div>
+							<div class="hero-navigation__first-word">УМНОЕ</div>
+							<div class="hero-navigation__second-word">SEO</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="img-wrapper header__pine-images header__pine-images--1">
+				<div class="img-wrapper header__lobe header__lobe--up">
 					<picture>
 						<source
 							srcset="images/content/lobe--up.webp 1x, images/content/lobe--up@2x.webp 2x, images/content/lobe--up@3x.webp 3x"
@@ -235,7 +246,7 @@
 				</div>
 
 
-				<div class="img-wrapper header__pine-images header__pine-images--2">
+				<div class="img-wrapper header__lobe header__lobe--center">
 					<picture>
 						<source
 							srcset="images/content/lobe--center.webp 1x, images/content/lobe--center@2x.webp 2x, images/content/lobe--center@3x.webp 3x"
@@ -244,7 +255,7 @@
 							srcset="images/content/lobe--center.png 1x, images/content/lobe--center@2x.png 2x, images/content/lobe--center@3x.png 3x">
 					</picture>
 				</div>
-				<div class="img-wrapper header__pine-images header__pine-images--3">
+				<div class="img-wrapper header__lobe header__lobe--right">
 					<picture>
 						<source
 							srcset="images/content/lobe--right.webp 1x, images/content/lobe--right@2x.webp 2x, images/content/lobe--right@3x.webp 3x"
@@ -971,11 +982,11 @@
 						<form class="footer__subscribe-form" action="#" method="POST">
 							<input type="text" placeholder="Ваша почта">
 							<button class="footer__subscribe-form-btn" type="submit">
-								
+
 								<svg class="footer__subscribe-form-img">
-								<use xlink:href="images/icons/sprite.svg#envelop"></use>
+									<use xlink:href="images/icons/sprite.svg#envelop"></use>
 								</svg>
-								</button>
+							</button>
 						</form>
 						<div class="footer__subscribe-socials">
 							<a class="icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"

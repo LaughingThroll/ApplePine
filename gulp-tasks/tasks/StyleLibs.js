@@ -2,7 +2,8 @@
 module.exports = () => {
   G.gulp.task('styleLibs', function () {
     return G.gulp.src([
-      'node_modules/normalize.css/normalize.css'
+      'node_modules/normalize.css/normalize.css',
+      'node_modules/slick-carousel/slick/slick.css'
   
     ])
       .pipe(G.concat('libs.min.css'))

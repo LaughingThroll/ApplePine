@@ -5,11 +5,16 @@
 @import 'utils/fonts';
 @import 'utils/global';
 
-@import './sub-modules/logo';
 
+@import './sub-modules/btn';
+@import './sub-modules/logo';
+@import './sub-modules/navigation';
+@import './sub-modules/socials';
+@import './sub-modules/span-animation';
+@import './sub-modules/hero-navigation';
 
 @import 'modules/header';
-
+@import './modules/hero';
 
 @import 'modules/footer';
 

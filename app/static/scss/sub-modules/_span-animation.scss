@@ -1,0 +1,12 @@
+.span-animation-border {
+	display: block;
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		transition: width $fast ease-in;
+	}	
+}

@@ -1,32 +1,34 @@
 // ALL_COLOR 
-$main-color: #454545;
+$main-color: #441110;
 
 $white: #fff;
 $black: #000;
-
-// OLD 
+$alto: #d2d2d2;
+$gray: #878686; 
 $placeholder: #a9a8a8;
-$text: #441110;
 $orange: #f88600;
+$mango-tango: #dd7700;
 
 
 
 // FONT
-$main-font: '';
+$main-font: 'Montserrat', sans-serif;
 // + or - size * on number [.5, .75, 1.25, 1.5]
-$main-fz: 14px;
+$main-fz: 16px;
 
 
 // CONTAINER
-$main-width: 1170px;
+$main-width: 1200px;
 // H1-H6
 h1 {
-  font-size: 42px;
-  line-height: 42px;
+  font-size: 72px;
+  line-height: 82px;
+  font-weight: 900;
 }
 h2 {
   font-size: 32px;
   line-height: 32px;
+  font-weight: 600;
 }
 h3 {
   font-size: 28px;

@@ -1,6 +1,8 @@
 html {
 	box-sizing: border-box;
-	font-size: $main-fz;
+  font-size: $main-fz;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 html,
 body {
@@ -12,12 +14,19 @@ body {
 *::after {
 	box-sizing: inherit;
 }
+::-webkit-scrollbar { 
+  width: 0px;      
+  background: transparent;  
+}
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: $main-font;
-	color: $main-color;
+  color: $main-color;
+  background-color: #fff;
+  font-weight: 400;
+  overflow-x: hidden;
 }
 // start reset CSS
 h1,
@@ -43,7 +52,20 @@ button {
 	background-color: transparent;
 	cursor: pointer;
 }
-
+input {
+  &::placeholder{
+    color: $placeholder;
+    font-size: 14px;
+  }
+}
+input:focus {
+  &::placeholder{
+    font-size: 0;
+  }
+  & + span {
+    font-size: 0;
+  }
+}
 textarea {
 	resize: none;
 }
@@ -56,8 +78,10 @@ li {
 
 a {
 	display: inline-block;
-	text-decoration: none;
-	cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  font-family: $main-font;
+  cursor: pointer;
 }
 
 .img-wrapper {
@@ -73,7 +97,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
-	overflow-x: hidden;
+	
 }
 .content {
 	flex: 1 0 auto;
@@ -88,66 +112,7 @@ a {
 }
 
 
-// OLD   
-
-@import 'vars';
-html{
-    box-sizing: border-box;
-    -ms-overflow-style: none;  /* IE 10+ */
-    scrollbar-width: none; /* Firefox */
-}
-*,
-*::before,
-*::after{
-    box-sizing: inherit;
-}
-html,
-body {
-    height: 100%;
-}
-::-webkit-scrollbar { /* chrome based */
-    width: 0px;  /* ширина scrollbar'a */
-    background: transparent;  /* опционально */
-}
-.wrapper {
-    display: flex;
-	  flex-direction: column;
-	  min-height: 100%;
-    background-color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: $text;
-    a{
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        display: inline-block;
-        text-decoration: none;
-        font-size: 16px;
-    }
-    h1,h2,h3,h4,h5,h6,p{
-        margin: 0;
-        padding: 0;
-    }
-    ul,
-    li{
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-}
-.content {
-	flex: 1 0 auto;
-}
-.footer {
-	flex: 0 0 auto;
-}
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+// OLD  ======================= 
 .subtitle-slogan{
     margin-top: 15px;
     font-size: 18px;
@@ -158,27 +123,7 @@ body {
   font-size: 48px;
 }
 
-button {
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    cursor: pointer;
-}
 
-input {
-  &::placeholder{
-    color: $placeholder;
-    font-size: 14px;
-  }
-}
-input:focus {
-  &::placeholder{
-    font-size: 0;
-  }
-  & + span {
-    font-size: 0;
-  }
-}
 
 .input {
   height: 61px;
@@ -259,58 +204,3 @@ input:focus {
     }
   }
 } 
-
-
-//button start
-.btn {
-	padding: 17px 45px;
-	border: 3px solid transparent;
-	border-radius: 40px;
-	color: #fff;
-  font-weight: 700;
-  transition: all .3s ease-out;
-	&--orange {
-		background-color: $orange;
-		&:active {
-			border-color: $orange;
-			background-color: #dd7700;
-			span {
-				border-bottom: 0;
-			}
-		}
-	}
-	&--white {
-		background-color: #fff;
-		color: $orange;
-		&:active {
-			border-color: #fff;
-			background-color: #dfdfdf;
-			span {
-				border-bottom: 0;
-			}
-		}
-	}			 
-	&--trans-white {
-		border-color: #fff;
-		&:active {
-			border-color: #fff;
-			background-color: #dfdfdf;
-			span {
-				border-bottom: 0;
-			}
-		}
-	}
-	&--trans-orange {
-		border-color: $orange;
-		color: $orange;
-		&:active {
-			border-color: $orange;
-      background-color: #dd7700;
-      color: #fff;
-			span {
-				border-bottom: 0;
-			}
-		}
-	}
-}
-//button end
