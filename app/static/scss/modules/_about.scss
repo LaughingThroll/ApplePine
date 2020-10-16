@@ -1,0 +1,98 @@
+.about {
+  position: relative;
+  padding-top: 80px;
+  background-image: url("../images/content/about-green.png");
+  background-image: image-set(
+    url("../images/content/about-green.png") 1x,
+    url("../images/content/about-green.png") 2x,
+    url("../images/content/about-green.png") 3x
+  );
+  background-repeat: no-repeat;
+  background-size: 278px 375px;
+  background-position: right top;
+  min-height: 1011px;
+  &__title {
+    margin-bottom: 45px;
+  }
+  &__text {
+    font-size: 18px;
+    color: $dove-gray;
+    margin-bottom: 60px;
+  }
+  &__items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+
+.about-item {
+  display: flex;
+  max-width: 465px;
+  width: 100%;
+  margin-bottom: 40px;
+  outline: none;
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 136px;
+    border: 5px solid $gallery;
+    border-radius: 25px;
+    background-color: $white;
+    margin-right: 30px;
+  }
+  &__content {
+    max-width: 300px;
+  }
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    max-width: 250px;
+  }
+  &__text {
+    color: $tundora;
+  }
+}
+
+
+.about-btn {
+  padding: 0px 10px 0px 48px;
+  font-size: 20px;
+  font-weight: 900;
+  border: 5px solid $gallery;
+  border-radius: 25px;
+  outline: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: $main-color;
+  background-color: $white;
+  max-width: 465px;
+  width: 100%;
+  transition: all $fast ease-in;
+  &__icon {
+    fill: $orange;
+  }
+  &:hover {
+    background-color: $alto;
+    border: 5px solid $alto;
+    color: $orange;
+  }
+  &:active {
+    border: 5px solid $white;
+  }
+
+}
+.about__content-mobile {
+  color: #131313;
+  display: none;
+  .content-mobile__text {
+    font-size: 14px;
+    text-align: center;
+    & + .content-mobile__text {
+      margin-top: 20px;
+    }
+  }
+}
