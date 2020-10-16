@@ -1,0 +1,27 @@
+.navigation {
+  &__list {
+    display: flex;
+  }
+  &__item + .navigation__item {
+    margin-left: 15px;
+  }
+
+  &__link {
+    position: relative;
+    padding: 0px 3px;
+    color: $main-color;
+    span {
+      transition: all 0.1s ease-in;
+    }
+    &:hover {
+      span {
+        text-shadow: 0 0 0.9px $main-color;
+        &::before {
+          height: 3px;
+          width: 100%;
+          background-color: $orange;
+        }
+      }
+    }
+  }
+}

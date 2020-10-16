@@ -1,39 +1,39 @@
 import './utils/modernizr'
 import * as $ from 'jquery'
-import slick from 'slick-carousel/slick/slick'
+import 'slick-carousel/slick/slick'
 // document.addEventListener('DOMContentLoaded', function() {
-  const percDisplay = document.getElementById('load-border')
+//   const percDisplay = document.getElementById('load-border')
 $(document).ready(function () {
-  //запускаем прелоадер по загрузкt html
-  // $("html,body").css("overflow", "hidden");
-  var
-    images = document.images,
-    imagesTotalCount = images.length,
-    imagesLoadedCount = 0;
+//   //запускаем прелоадер по загрузкt html
+//   // $("html,body").css("overflow", "hidden");
+//   var
+//     images = document.images,
+//     imagesTotalCount = images.length,
+//     imagesLoadedCount = 0;
   
-  for (var i = 0; i < imagesTotalCount; i++) {
-    let imageClone = new Image();
-    imageClone.onload = imageLoaded;
-    imageClone.onerror = imageLoaded;
-    imageClone.src = images[i].src;
-  }
-  //функция полосы загрузки в зависимости от количества загруженных картинок с минимальным временем в 1 секунду
-  function imageLoaded() {
-    imagesLoadedCount++;
-    percDisplay.style.width = (((100 / imagesTotalCount) * imagesLoadedCount) << 0) + '%';
-    if (imagesLoadedCount >= imagesTotalCount) {
-      setTimeout(function () {
-        var preloader = document.getElementById('page-preloader');
-        /*   var loader = document.getElementById('loader'); */
-        if (!preloader.classList.contains('done')) {
-          preloader.classList.add('done');
-          $("html, body").css("overflow", "visible");
-          $('.preloader').css('background-image', 'none');
-          /* loader.classList.add('loader-static'); */
-        }
-      }, 1000);
-    }
-  }
+//   for (var i = 0; i < imagesTotalCount; i++) {
+//     let imageClone = new Image();
+//     imageClone.onload = imageLoaded;
+//     imageClone.onerror = imageLoaded;
+//     imageClone.src = images[i].src;
+//   }
+//   //функция полосы загрузки в зависимости от количества загруженных картинок с минимальным временем в 1 секунду
+//   function imageLoaded() {
+//     imagesLoadedCount++;
+//     percDisplay.style.width = (((100 / imagesTotalCount) * imagesLoadedCount) << 0) + '%';
+//     if (imagesLoadedCount >= imagesTotalCount) {
+//       setTimeout(function () {
+//         var preloader = document.getElementById('page-preloader');
+//         /*   var loader = document.getElementById('loader'); */
+//         if (!preloader.classList.contains('done')) {
+//           preloader.classList.add('done');
+//           $("html, body").css("overflow", "visible");
+//           $('.preloader').css('background-image', 'none');
+//           /* loader.classList.add('loader-static'); */
+//         }
+//       }, 1000);
+//     }
+//   }
 
   //События кликак на бургер меню
   $('.header__menu-btn').on('click', function () {
@@ -57,7 +57,7 @@ $(document).ready(function () {
     blockPosition - определяем положение блока на странице
     */
     $('html, body').animate({ scrollTop: blockPosition }, 2000);
-    // 2000 скорость перехода в миллисекундах
+    
   });
 
   //animation text header start
@@ -158,7 +158,7 @@ $(document).ready(function () {
   //mask phone end
   // $('input, select').styler();
 
-  $('.header__slider').slick({
+  $('#hero-slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -168,11 +168,11 @@ $(document).ready(function () {
     infinite: false,
     rows: 0
   });
-  $('.header-slider__navigation').slick({
+  $('#hero-navigation').slick({
     infinity: false,
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '.header__slider',
+    asNavFor: '#hero-slider',
     arrows: false,
     dots: false,
     focusOnSelect: true,

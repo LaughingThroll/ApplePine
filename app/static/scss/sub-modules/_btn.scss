@@ -1,0 +1,41 @@
+.btn {
+	padding: 17px 45px;
+	border-radius: 40px;
+	border: 3px solid transparent; 
+	color: $white;
+  font-weight: 700;
+  transition: all $fast ease-out;
+	&--orange {
+		background-color: $orange;
+		&:active {
+			border-color: $orange;
+			background-color: $mango-tango;
+		}
+	}
+	&--white {
+		background-color: $white;
+		color: $orange;
+		&:active {
+			border-color: currentColor;
+			background-color: currentColor;
+		}
+	}			 
+	&--trans-white {
+		border-color: $white;
+		&:active {
+			border-color: currentColor;
+			background-color: currentColor;
+		}
+	}
+	&--trans-orange {
+		border-color: $orange;
+		color: $orange;
+		&:active {
+			border-color: currentColor;
+      background-color: currentColor;
+      color: $white;
+		}
+	}
+}
+
+
