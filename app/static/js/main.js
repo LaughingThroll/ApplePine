@@ -104,6 +104,12 @@ $(document).ready(function () {
     includeModal(modalId);
     $('body').css('overflow', 'hidden');
   });
+
+ $('.services-item__text').text(function(_, text)  {
+   if (text.length > 205) {
+    $(this).text(text.substring(0, 205))  
+  }
+ })
   //search Modal start 
   // function includeModal(modalId) {
   //   let modal = $('.modal');
