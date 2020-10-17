@@ -1,0 +1,105 @@
+.team {
+  padding-top: 110px 0 125px;
+  text-align: center;
+  background-image: url("../images/content/lobe--up.png");
+  background-image: image-set(
+    url("../images/content/lobe--up.png") 1x,
+    url("../images/content/lobe--up.png") 2x,
+    url("../images/content/lobe--up.png") 3x
+  );
+  background-repeat: no-repeat;
+  background-color: $alabaster;
+  background-size: 198px 205px;
+  background-position: top right 5%;
+  &__subtitle {
+    margin-bottom: 70px;
+  }
+  &__slider {
+    margin-bottom: 45px;
+  }
+  &__btn {
+    font-weight: 700;
+    outline: none;
+  }
+}
+
+.team-item {
+  display: flex;
+  flex-direction: column;
+  width: 262px;
+  margin-right: 30px;
+  border: 5px solid $silver-chalice;
+  border-radius: 19px;
+  outline: none;
+  text-align: left;
+  transition: all $fast ease-in;
+  overflow: hidden;
+  &__img {
+    height: 272px;
+    transition: all $fast .5s ease-in;
+    img {
+      object-fit: cover;
+    }
+  }
+  &__info {
+    background-color: $white;
+    padding: 12px 20px 25px;
+  }
+  &__contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 0;
+    opacity: 0;
+    transition: all $fast 0s ease-out;
+    
+  } 
+  &__btn {
+    color: $orange;
+    outline: none;
+  }
+  &__name {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 20px 0 10px;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      margin: 0 auto;
+      background-color: $silver-chalice;
+      transition: width $fast ease-in;
+    }
+  }
+  &__status {
+    text-align: center;
+    padding-top: 8px;
+    color: $silver-chalice;
+  }
+
+  &--hover {
+    .team-item {
+      &__contacts {
+        height: 20px;
+        opacity: 1;
+        transition: all $fast .5s ease-out;
+      }
+      &__img {
+        height: 252px;
+        transition: all $fast 0s ease-out;
+      }
+    }
+  }
+  &:hover {
+    border-color: $orange;
+    .team-item__name::after {
+      width: 60px;
+    }
+  }
+}

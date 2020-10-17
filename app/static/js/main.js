@@ -186,7 +186,10 @@ $(document).ready(function () {
     rows: 0
   });
 
-  $('.team__slider').slick({
+
+  const $teamSlider = $('#team-slider')
+
+  $teamSlider.slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -195,6 +198,18 @@ $(document).ready(function () {
     variableWidth: true,
     rows: 0
   });
+
+  $teamSlider.on('mouseenter', '.team-item', function() {
+    if ($(this).hasClass('team-item--unhover')) {
+      $(this).removeClass('team-item--unhover')
+    }
+    $(this).addClass('team-item--hover')
+    
+  })
+
+  $teamSlider.on('mouseleave', '.team-item', function() {
+    $(this).removeClass('team-item--hover')
+  })
 
   //участок код отвечает за открытие и переключение списка в секции "question"
   $('.question__list li').on('click', function () {

@@ -19,3 +19,20 @@
     }
   }
 }
+
+
+.team-socials {
+  display: flex;
+  &__item + .team-socials__item {
+    margin-left: 10px;
+  }
+  &__link {
+    font-size: 18px;
+    transition: all $fast ease-out;
+    outline: none;
+    color: $gray;
+    &:hover {
+      color: $dove-gray;
+    }
+  }
+}

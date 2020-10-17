@@ -665,6 +665,25 @@ a {
 .socials__link:hover {
   color: #f88600
 }
+.team-socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex
+}
+.team-socials__item + .team-socials__item {
+  margin-left: 10px
+}
+.team-socials__link {
+  font-size: 18px;
+  -webkit-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  outline: none;
+  color: #878686
+}
+.team-socials__link:hover {
+  color: #707070
+}
 .span-animation-border {
   display: block;
   position: relative
@@ -836,144 +855,6 @@ a {
   right: -50px;
   -webkit-transform: translate3d(0, -800%, 0);
           transform: translate3d(0, -800%, 0)
-}
-.no-webp .team {
-  background-image: url(../images/pineapple-up.png)
-}
-.team {
-  padding-top: 110px;
-  padding-bottom: 125px;
-  background-color: #f9f9f9;
-  background-repeat: no-repeat;
-  background-size: 198px 205px;
-  background-position: top right 5%;
-  text-align: center
-}
-.team__subtitle {
-  margin-bottom: 70px
-}
-.team .team__btn {
-  font-weight: 700;
-  outline: none
-}
-.team__slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 45px
-}
-.team__slider-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 262px;
-  margin-right: 30px;
-  border: 5px solid #b1b1b1;
-  border-radius: 19px;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  outline: none;
-  text-align: left
-}
-.team__slider-item:hover {
-  border-color: #f88600
-}
-.team__slider-item:hover .team__slider-contacts {
-  height: 20px;
-  overflow: visible
-}
-.team__slider-item:hover .team__slider-img {
-  height: 252px
-}
-.team__slider-item:hover .team__slider-name:after {
-  opacity: 1
-}
-.team__slider-img {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  height: 272px;
-  border-top-right-radius: 13px;
-  border-top-left-radius: 13px
-}
-.team__slider-info {
-  background-color: #fff;
-  padding: 12px 20px 25px;
-  border-bottom-left-radius: 19px;
-  border-bottom-right-radius: 19px
-}
-.team__slider-contacts {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  height: 0;
-  overflow: hidden
-}
-.team__slider-contacts li + li {
-  margin-left: 10px
-}
-.team__slider-contacts a {
-  color: #878686;
-  font-size: 18px;
-  -webkit-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  outline: none
-}
-.team__slider-contacts a:hover {
-  color: #707070
-}
-.team__slider-btn {
-  color: #f88600;
-  outline: none
-}
-.team__slider-name {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 900;
-  position: relative;
-  padding-bottom: 7px
-}
-.team__slider-name::after {
-  content: "";
-  width: 60px;
-  height: 1px;
-  background-color: #b1b1b1;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  opacity: 0;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s
-}
-.team__slider-status {
-  padding-top: 8px;
-  text-align: center;
-  color: #b1b1b1
 }
 .no-webp .reviews {
   background-image: url(../images/reviews-green.png)
@@ -2467,6 +2348,129 @@ ul.question__list li.active .question__list-text {
   color: #fff;
   z-index: 1
 }
+.no-webp .team {
+  background-image: url("../images/content/lobe--up.png")
+}
+.no-webp .team {
+  background-image: -webkit-image-set(url("../images/content/lobe--up.png") 1x, url("../images/content/lobe--up.png") 2x, url("../images/content/lobe--up.png") 3x);
+  background-image: image-set(url("../images/content/lobe--up.png") 1x, url("../images/content/lobe--up.png") 2x, url("../images/content/lobe--up.png") 3x)
+}
+.team {
+  padding-top: 110px 0 125px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-color: #f9f9f9;
+  background-size: 198px 205px;
+  background-position: top right 5%
+}
+.team__subtitle {
+  margin-bottom: 70px
+}
+.team__slider {
+  margin-bottom: 45px
+}
+.team__btn {
+  font-weight: 700;
+  outline: none
+}
+.team-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 262px;
+  margin-right: 30px;
+  border: 5px solid #b1b1b1;
+  border-radius: 19px;
+  outline: none;
+  text-align: left;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  overflow: hidden
+}
+.team-item__img {
+  height: 272px;
+  -webkit-transition: all 0.5s 0.5s ease-in;
+  -o-transition: all 0.5s 0.5s ease-in;
+  transition: all 0.5s 0.5s ease-in
+}
+.team-item__img img {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+.team-item__info {
+  background-color: #fff;
+  padding: 12px 20px 25px
+}
+.team-item__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out
+}
+.team-item__btn {
+  color: #f88600;
+  outline: none
+}
+.team-item__name {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  margin: 20px 0 10px
+}
+.team-item__name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  right: 0;
+  width: 0;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #b1b1b1;
+  -webkit-transition: width 0.5s ease-in;
+  -o-transition: width 0.5s ease-in;
+  transition: width 0.5s ease-in
+}
+.team-item__status {
+  text-align: center;
+  padding-top: 8px;
+  color: #b1b1b1
+}
+.team-item--hover .team-item__contacts {
+  height: 20px;
+  opacity: 1;
+  -webkit-transition: all 0.5s 0.5s ease-out;
+  -o-transition: all 0.5s 0.5s ease-out;
+  transition: all 0.5s 0.5s ease-out
+}
+.team-item--hover .team-item__img {
+  height: 252px;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out
+}
+.team-item:hover {
+  border-color: #f88600
+}
+.team-item:hover .team-item__name::after {
+  width: 60px
+}
 @media (hover),
 (min-width: 0\0),
 (min--moz-device-pixel-ratio: 0) {
@@ -3355,9 +3359,6 @@ ul.question__list li.active .question__list-text {
   background-image: -webkit-image-set(url(../images/content/header-bg.webp) 1x, url(../images/content/header-bg.webp) 2x, url(../images/content/header-bg.webp) 3x);
   background-image: image-set(url(../images/content/header-bg.webp) 1x, url(../images/content/header-bg.webp) 2x, url(../images/content/header-bg.webp) 3x)
 }
-.team {
-  background-image: url(../images/pineapple-up.webp)
-}
 .reviews {
   background-image: url(../images/reviews-green.webp)
 }
@@ -3380,5 +3381,12 @@ ul.question__list li.active .question__list-text {
 .services {
   background-image: -webkit-image-set(url(../images/content/services-pine.webp) 1x, url(../images/content/services-pine.webp) 2x, url(../images/content/services-pine.webp) 3x);
   background-image: image-set(url(../images/content/services-pine.webp) 1x, url(../images/content/services-pine.webp) 2x, url(../images/content/services-pine.webp) 3x)
+}
+.team {
+  background-image: url(../images/content/lobe--up.webp)
+}
+.team {
+  background-image: -webkit-image-set(url(../images/content/lobe--up.webp) 1x, url(../images/content/lobe--up.webp) 2x, url(../images/content/lobe--up.webp) 3x);
+  background-image: image-set(url(../images/content/lobe--up.webp) 1x, url(../images/content/lobe--up.webp) 2x, url(../images/content/lobe--up.webp) 3x)
 }
 /*# sourceMappingURL=style.min.css.map */
