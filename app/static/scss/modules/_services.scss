@@ -1,0 +1,176 @@
+.services {
+  padding-top: 5px 0 155px;
+  background-image: url("../images/content/services-pine.png");
+  background-image: image-set(
+    url("../images/content/services-pine.png") 1x,
+    url("../images/content/services-pine.png") 2x,
+    url("../images/content/services-pine.png") 3x
+  );
+  background-repeat: no-repeat;
+  background-size: 198px 205px;
+  background-position: center left;
+  &__subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+.services-item {
+  outline: none;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    max-width: 425px;
+    padding: 45px 55px 35px 60px;
+    text-align: center;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+  &__text {
+    position: relative;
+    padding-bottom: 33px;
+    margin-bottom: 55px;
+    text-align: left;
+    color: $mine-shaft;
+    height: 120px;
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 193px;
+      height: 2px;
+      background-color: $orange;
+    }
+  }
+  &__subtext {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    div,
+    span {
+      font-weight: 400;
+      margin-top: 5px;
+    }
+  }
+  &__btn {
+    outline: none;
+  }
+}
+.services-slider {
+  .slick-btn {
+    height: 44px;
+    width: 44px;
+    border: 1px solid $flamingo;
+    position: absolute;
+    bottom: 195px;
+    border-radius: 10px;
+    outline: none;
+    z-index: 1;
+    transition: all $fast ease-out;
+    &::before {
+      font-family: "icomoon";
+      color: $flamingo;
+      position: absolute;
+      top: 50%;
+      transform: translate(-45%, -53%);
+      font-size: 40px;
+      transition: all 0.3s ease-out;
+    }
+    &:hover {
+      background-color: $flamingo;
+    }
+    &:hover::before {
+      color: $white;
+    }
+  }
+  .slick-prev {
+    left: 300px;
+    &::before {
+      content: "\f104";
+      left: 45%;
+    }
+  }
+  .slick-next {
+    left: 350px;
+    &::before {
+      content: "\f105";
+      left: 50%;
+    }
+  }
+}
+
+
+.slider-works {
+  max-width: 650px;
+  width: 100%;
+  .slick-dots {
+    display: flex;
+    position: absolute;
+    left: 36px;
+    bottom: 20px;
+    button {
+      width: 45px;
+      height: 2px;
+      background-color: $east-bay;
+      font-size: 0;
+      transition: all 0.5s;
+      outline: none;
+    }
+    li + li {
+      margin-left: 6px;
+    }
+    li.slick-active {
+      button {
+        background-color: $orange;
+      }
+    }
+  }
+ 
+}
+
+.slider-works-item {
+  $border: 20px;
+  position: relative;
+  outline: none;
+  height: 430px;
+  border-radius: $border;
+  &__images {
+    width: 100%;
+    height: 100%;
+    border-radius: $border;
+    img {
+      border-radius: $border;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      border-radius: inherit;
+      background-color: rgba($east-bay, 0.6);
+    }
+  }
+  &__title {
+    position: absolute;
+    bottom: 35px;
+    left: 40px;
+    font-size: 24px;
+    font-weight: 900;
+    color: $white;
+    z-index: 1;
+  }
+  
+} 
+
+

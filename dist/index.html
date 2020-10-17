@@ -409,107 +409,178 @@
 				</div>
 			</section>
 
-			<section id="services" class="services">
-				<div class="services__wrapper">
-					<div class="services__title title">
+			<section class="services" id="services">
+				<div class="container">
+					<h2 class="services__title between-h1-h2">
 						Выберите услугу
-					</div>
-					<div class="services__subtitle subtitle-slogan">
+					</h2>
+					<div class="services__subtitle subtitle">
 						Наша работа — наше достоинство
 					</div>
-					<div class="services-slider">
-						<div class="services-slider__item">
-							<div class="services-slider__item-inner">
-								<div class="services-slider__item-content">
-									<h5 class="services-slider__item-title">Web-дизайн</h5>
-									<p class="services-slider__item-text">Одно из сложнейших направлений
+					<div class="services-slider" id="services-slider">
+						<div class="services-item">
+							<div class="services-item__inner">
+								<div class="services-item__content">
+									<h3 class="services-item__title">Web-дизайн</h3>
+									<p class="services-item__text">Одно из сложнейших направлений
 										в сфере графического дизайна.
 										Тут необходимо учитывать все
 										нюансы в проработке
 										индивидуального стиля для
 										Вашего проекта. </p>
-									<div class="services-slider__item-action">
-										<div class="services-slider__item-subtext">
+									<div class="services-item__action">
+										<div class="services-item__subtext">
 											Поставьте нам задачу,
 											<div>и мы найдем </div>
 										</div>
-										<button class="services-slider__item-btn btn btn--orange" type="button"
-											data-modal="#set"><span>Поставить</span></button>
+										<button class="services-item__btn btn btn--orange" type="button" data-modal="#set"><span
+												class="span-animation-border">Поставить</span></button>
 									</div>
 								</div>
 								<div class="slider-works">
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-1.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-1.webp 1x, images/content/services/services-1@2x.webp 2x, images/content/services/services-1@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-1.jpg" alt="anything"
+													srcset="images/content/services/services-1.jpg 1x, images/content/services/services-1@2x.png 2x, images/content/services/services-1@3x.png 3x">
+											</picture>
+										</div>
+										<div class="slider-works-item__title">
 											Организация
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-2.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-2.webp 1x, images/content/services/services-2@2x.webp 2x, images/content/services/services-2@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-2.jpg" alt="anything"
+													srcset="images/content/services/services-2.jpg 1x, images/content/services/services-2@2x.png 2x, images/content/services/services-2@3x.png 3x">
+											</picture>
+										</div>
+
+										<!-- <div class="slider-works-item__images"
+											style="background-image: url(images/content/services/services-2.jpg);"></div> -->
+										<div class="slider-works-item__title">
 											Новый сайт
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-3.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-3.webp 1x, images/content/services/services-3@2x.webp 2x, images/content/services/services-3@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-3.jpg" alt="anything"
+													srcset="images/content/services/services-3.jpg 1x, images/content/services/services-3@2x.png 2x, images/content/services/services-3@3x.png 3x">
+											</picture>
+										</div>
+
+										<div class="slider-works-item__title">
 											Продвижение
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-4.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-4.webp 1x, images/content/services/services-4@2x.webp 2x, images/content/services/services-4@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-4.jpg" alt="anything"
+													srcset="images/content/services/services-4.jpg 1x, images/content/services/services-4@2x.png 2x, images/content/services/services-4@3x.png 3x">
+											</picture>
+										</div>
+										<div class="slider-works-item__title">
 											Аналитика
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="services-slider__item">
-							<div class="services-slider__item-inner">
-								<div class="services-slider__item-content">
-									<h5 class="services-slider__item-title">Контент-стратегия</h5>
-									<p class="services-slider__item-text">Как бренду лучше взаимодействовать с аудиторией.
-										Определяем стоимость и измеримые показатели целей, которых хотим достигнуть. </p>
-									<div class="services-slider__item-action">
-										<div class="services-slider__item-subtext">
+						<div class="services-item">
+							<div class="services-item__inner">
+								<div class="services-item__content">
+									<h3 class="services-item__title">Контент-стратегия</h3>
+									<p class="services-item__text">Как бренду лучше взаимодействовать с аудиторией.
+										Определяем стоимость и измеримые показатели целей, которых хотим достигнуть.</p>
+									<div class="services-item__action">
+										<div class="services-item__subtext">
 											Поставьте нам задачу,
 											<div>и мы найдем решение</div>
 										</div>
-										<button class="services-slider__item-btn btn btn--orange" type="button"
-											data-modal="#set"><span>Поставить</span></button>
+										<button class="services-item__btn btn btn--orange" type="button" data-modal="#set"><span
+												class="span-animation-border">Поставить</span></button>
 									</div>
 								</div>
 								<div class="slider-works">
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-5.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-5.webp 1x, images/content/services/services-5@2x.webp 2x, images/content/services/services-5@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-5.jpg" alt="anything"
+													srcset="images/content/services/services-5.jpg 1x, images/content/services/services-5@2x.png 2x, images/content/services/services-5@3x.png 3x">
+											</picture>
+										</div>
+
+										<div class="slider-works-item__title">
 											Исследование
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-6.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-6.webp 1x, images/content/services/services-6@2x.webp 2x, images/content/services/services-6@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-6.jpg" alt="anything"
+													srcset="images/content/services/services-6.jpg 1x, images/content/services/services-6@2x.png 2x, images/content/services/services-6@3x.png 3x">
+											</picture>
+										</div>
+										<div class="slider-works-item__title">
 											Выбор каналов
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-7.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-7.webp 1x, images/content/services/services-7@2x.webp 2x, images/content/services/services-7@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-7.jpg" alt="anything"
+													srcset="images/content/services/services-7.jpg 1x, images/content/services/services-7@2x.png 2x, images/content/services/services-7@3x.png 3x">
+											</picture>
+										</div>
+
+										<div class="slider-works-item__title">
 											Дизайн-концепция
 										</div>
 									</div>
-									<div class="slider-works__item">
-										<div class="slider-works__item-images"
-											style="background-image: url(images/content/services/services-8.jpg);"></div>
-										<div class="slider-works__item-title">
+									<div class="slider-works-item">
+
+										<div class="img-wrapper slider-works-item__images">
+											<picture>
+												<source
+													srcset="images/content/services/services-8.webp 1x, images/content/services/services-8@2x.webp 2x, images/content/services/services-8@3x.webp 3x"
+													type="image/webp">
+												<img src="images/content/services/services-8.jpg" alt="anything"
+													srcset="images/content/services/services-8.jpg 1x, images/content/services/services-8@2x.png 2x, images/content/services/services-8@3x.png 3x">
+											</picture>
+										</div>
+
+										<div class="slider-works-item__title">
 											Медиаплан
 										</div>
 									</div>
