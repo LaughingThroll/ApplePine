@@ -1,39 +1,86 @@
 import './utils/modernizr'
 import * as $ from 'jquery'
+window.$ = window.jQuery = $;
 import 'slick-carousel/slick/slick'
+import 'jquery.maskedinput/src/jquery.maskedinput'
+import 'ion-rangeslider/js/ion.rangeSlider'
+
+
+const $servicesItem = $('.services-item__text')
+const $reviewsContentItemText = $('.reviews-content-item__text')
+
+function cutText(node, length, separator = '') {
+  node.text(function (_, text) {
+    if (text.length > length) {
+      $(this).text(text.substring(0, length) + separator)
+    }
+  })
+}
+
+cutText($servicesItem, 205, '')
+cutText($reviewsContentItemText, 500, '...')
+
+// ===================
+const $inputPhone = $('input[type="phone"]')
+
+//  mask phone start
+function maskedPhone(jQnode, mask = '+7(999) 999-99-99') {
+  jQnode.mask(mask)
+  jQnode.on('change', function () {
+    const $phoneStars = $(this).next();
+    /\d/.test($(this).val()) ?
+      $phoneStars.css('display', 'none') :
+      $phoneStars.css('display', 'block')
+  })
+}
+maskedPhone($inputPhone)
+// mask phone end
+
+
+$('.range-slider').ionRangeSlider({
+  postfix: "P",
+  min: 0,
+  max: 90000,
+  from: 0,
+  grid: true,
+  step: 10000,
+  grid_num: 9
+})
+
+
 // document.addEventListener('DOMContentLoaded', function() {
 //   const percDisplay = document.getElementById('load-border')
 $(document).ready(function () {
-//   //запускаем прелоадер по загрузкt html
-//   // $("html,body").css("overflow", "hidden");
-//   var
-//     images = document.images,
-//     imagesTotalCount = images.length,
-//     imagesLoadedCount = 0;
-  
-//   for (var i = 0; i < imagesTotalCount; i++) {
-//     let imageClone = new Image();
-//     imageClone.onload = imageLoaded;
-//     imageClone.onerror = imageLoaded;
-//     imageClone.src = images[i].src;
-//   }
-//   //функция полосы загрузки в зависимости от количества загруженных картинок с минимальным временем в 1 секунду
-//   function imageLoaded() {
-//     imagesLoadedCount++;
-//     percDisplay.style.width = (((100 / imagesTotalCount) * imagesLoadedCount) << 0) + '%';
-//     if (imagesLoadedCount >= imagesTotalCount) {
-//       setTimeout(function () {
-//         var preloader = document.getElementById('page-preloader');
-//         /*   var loader = document.getElementById('loader'); */
-//         if (!preloader.classList.contains('done')) {
-//           preloader.classList.add('done');
-//           $("html, body").css("overflow", "visible");
-//           $('.preloader').css('background-image', 'none');
-//           /* loader.classList.add('loader-static'); */
-//         }
-//       }, 1000);
-//     }
-//   }
+  //   //запускаем прелоадер по загрузкt html
+  //   // $("html,body").css("overflow", "hidden");
+  //   var
+  //     images = document.images,
+  //     imagesTotalCount = images.length,
+  //     imagesLoadedCount = 0;
+
+  //   for (var i = 0; i < imagesTotalCount; i++) {
+  //     let imageClone = new Image();
+  //     imageClone.onload = imageLoaded;
+  //     imageClone.onerror = imageLoaded;
+  //     imageClone.src = images[i].src;
+  //   }
+  //   //функция полосы загрузки в зависимости от количества загруженных картинок с минимальным временем в 1 секунду
+  //   function imageLoaded() {
+  //     imagesLoadedCount++;
+  //     percDisplay.style.width = (((100 / imagesTotalCount) * imagesLoadedCount) << 0) + '%';
+  //     if (imagesLoadedCount >= imagesTotalCount) {
+  //       setTimeout(function () {
+  //         var preloader = document.getElementById('page-preloader');
+  //         /*   var loader = document.getElementById('loader'); */
+  //         if (!preloader.classList.contains('done')) {
+  //           preloader.classList.add('done');
+  //           $("html, body").css("overflow", "visible");
+  //           $('.preloader').css('background-image', 'none');
+  //           /* loader.classList.add('loader-static'); */
+  //         }
+  //       }, 1000);
+  //     }
+  //   }
 
   //События кликак на бургер меню
   $('.header__menu-btn').on('click', function () {
@@ -57,7 +104,7 @@ $(document).ready(function () {
     blockPosition - определяем положение блока на странице
     */
     $('html, body').animate({ scrollTop: blockPosition }, 2000);
-    
+
   });
 
   //animation text header start
@@ -105,11 +152,10 @@ $(document).ready(function () {
     $('body').css('overflow', 'hidden');
   });
 
- $('.services-item__text').text(function(_, text)  {
-   if (text.length > 205) {
-    $(this).text(text.substring(0, 205))  
-  }
- })
+
+
+
+
   //search Modal start 
   // function includeModal(modalId) {
   //   let modal = $('.modal');
@@ -148,21 +194,8 @@ $(document).ready(function () {
 
 
 
-  //mask phone start
-  // function phone(name) {
-  //   let phone = $(name).find('input[type="phone"]');
-  //   phone.mask('+7(999) 999-99-99');
-  //   phone.on('change', function () {
-  //     if (phone.val() != '') {
-  //       $('input[type="phone"] + span').css('font-size', '0px');
-  //     } else {
-  //       $('input[type="phone"] + span').css('font-size', '14px');
-  //     }
-  //   });
-  // }
-  // phone($('.reviews__form'));
-  //mask phone end
-  // $('input, select').styler();
+
+  // 
 
   $('#hero-slider').slick({
     slidesToShow: 1,
@@ -199,15 +232,15 @@ $(document).ready(function () {
     rows: 0
   });
 
-  $teamSlider.on('mouseenter', '.team-item', function() {
+  $teamSlider.on('mouseenter', '.team-item', function () {
     if ($(this).hasClass('team-item--unhover')) {
       $(this).removeClass('team-item--unhover')
     }
     $(this).addClass('team-item--hover')
-    
+
   })
 
-  $teamSlider.on('mouseleave', '.team-item', function() {
+  $teamSlider.on('mouseleave', '.team-item', function () {
     $(this).removeClass('team-item--hover')
   })
 
@@ -221,13 +254,32 @@ $(document).ready(function () {
       $(this).addClass('active');
     }
   });
+
+  $('#services-slider').slick({
+    prevArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--prev slick-btn slick-prev"></button>',
+    nextArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--next slick-btn slick-next"></button>',
+    dots: false,
+    arrows: true,
+    rows: 0
+  })
+
+  $('.slider-works').slick({
+    fade: true,
+    dots: true,
+    arrows: false,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    rows: 0
+  })
+
   //reviews sliders start
-  $('.slider-images').slick({
+  $('#slider-images').slick({
     slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
     arrows: false,
-    asNavFor: '.slider-content',
+    asNavFor: '#reviews-slider-content',
     infinite: true,
     focusOnSelect: true,
     autoplay: true,
@@ -248,36 +300,21 @@ $(document).ready(function () {
     ]
   });
 
-  $('.slider-content').slick({
+  $('#reviews-slider-content').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    asNavFor: '.slider-images',
+    asNavFor: '#slider-images',
     fade: true,
-    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
-    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
+    prevArrow: '.reviews-main-btns .main-slider-btn--prev',
+    nextArrow: '.reviews-main-btns .main-slider-btn--next',
     infinite: true,
     autoplay: true,
     autoplaySpeed: 2000
   });
   //reviews sliders end
   //services start 
-  $('.services-slider').slick({
-    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
-    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
-    dots: false,
-    arrows: true,
-    rows: 0
-  });
 
-  $('.services-slider .slider-works').slick({
-    fade: true,
-    dots: true,
-    arrows: false,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    rows: 0
-  });
+
 
   $('.footer-slider').slick({
     slidesToShow: 2,
@@ -297,15 +334,7 @@ $(document).ready(function () {
   });
 
 
-  // $('.range-slider').ionRangeSlider({
-  //   postfix: "P",
-  //   min: 0,
-  //   max: 90000,
-  //   from: 0,
-  //   grid: true,
-  //   step: 10000,
-  //   grid_num: 9
-  // });
+
 
   function universalValidInput(name) {
     if (name.val() != '') {

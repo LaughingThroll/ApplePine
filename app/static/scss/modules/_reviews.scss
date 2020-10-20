@@ -1,0 +1,242 @@
+.reviews {
+  padding: 125px 0 55px;
+  background-image: url("../images/content/reviews-green.png");
+  background-image: image-set(
+    url("../images/content/reviews-green.png") 1x,
+    url("../images/content/reviews-green.png") 2x,
+    url("../images/content/reviews-green.png") 3x
+  );
+  background-repeat: no-repeat;
+  background-position: top 70% left;
+  background-size: 221px 331px;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 55px;
+  }
+  &__box {
+    position: relative;
+    max-width: 653px;
+    margin-right: 10px;
+  }
+  &__form {
+    max-width: 457px;
+    width: 100%;
+  }
+  &__subtitle {
+    font-weight: 400;
+    font-size: 30px;
+  }
+}
+.slider-images {
+  margin-bottom: 45px;
+  &__item {
+    outline: none;
+  }
+  img {
+    width: 68px;
+    height: 68px;
+    border-radius: 15px;
+    margin: 0 auto;
+    object-fit: cover;
+    filter: url("filter.svg#grayscale");
+    filter: gray;
+    -webkit-filter: grayscale(0.8);
+    transition: all $fast ease-out;
+    cursor: pointer;
+  }
+  .slick-list {
+    height: 106px;
+    padding: 10px 49px 0px !important;
+  }
+  .slick-current {
+    img {
+      filter: none;
+      -webkit-filter: grayscale(0);
+      width: 96px;
+      height: 96px;
+      margin: -10px auto 0px;
+    }
+  }
+}
+
+.reviews-content-item {
+  outline: none;
+  &__text {
+    height: 126px;
+    overflow: hidden;
+    text-align: left;
+    color: $steel-gray;
+    margin-bottom: 20px;
+  }
+  &__link {
+    color: $steel-gray;
+    transition: all $fast ease-in;
+    margin-top: 5px;
+    padding-bottom: 4px;
+    &:hover {
+      span::before {
+        width: 100%;
+        height: 1px;
+        background-color: lighten($steel-gray, 40%);
+      }
+    }
+  }
+}
+.reviews-slider-content {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $flamingo;
+    z-index: -1;
+  }
+}
+
+.reviews-main-btns {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 54px;
+  max-width: 150px;
+  background-color: $white;
+  margin: 0 auto;
+  .main-slider-btn {
+    &--prev {
+      left: 15px;
+    }
+    &--next {
+      right: 15px;
+    }
+  }
+}
+.reviews-form {
+  background-color: $orange;
+  border-radius: 10px;
+  padding: 55px 50px 35px;
+  color: $white;
+  &__title {
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+  }
+  &__suptitle {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  &__input {
+    max-width: 100%;
+    outline: none;
+  }
+  &__phone {
+    margin: 21px 0px 30px;
+  }
+  &__range {
+    padding: 0 20px;
+    text-align: left;
+    margin-bottom: 25px;
+    .irs--flat {
+      margin-top: 10px;
+      &:active {
+        .irs-line {
+          background-color: darken($mango-tango, 10%);
+        }
+        .irs-grid-pol {
+          height: 8px;
+          background-color: darken($mango-tango, 10%);
+          top: -23px;
+        }
+      }
+      .irs-min,
+      .irs-max {
+        display: none;
+      }
+      .irs-line {
+        height: 4px;
+        top: 25px;
+        background-color: $mango-tango;
+        border-radius: 0px;
+        transition: all 0.3s;
+      }
+      .irs-bar {
+        display: none;
+      }
+      .irs-single {
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        text-shadow: none;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0px;
+        top: -30px;
+        left: 80% !important;
+        &::before {
+          display: none;
+        }
+      }
+      .irs-handle {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background-color: #fff;
+        top: 14px;
+        cursor: pointer;
+      }
+      .irs-handle > i:first-child {
+        display: none;
+      }
+      .irs-grid-text {
+        display: none;
+      }
+      .irs-grid-pol.small {
+        display: none;
+      }
+      .irs-grid-pol {
+        position: absolute;
+        top: -21px;
+        left: 0;
+        width: 2px;
+        height: 6px;
+        background: $mango-tango;
+      }
+    }
+  }
+
+  &__politycal {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+  }
+  &__confidentiality {
+    width: 222px;
+    cursor: pointer;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+  &__btn {
+    padding: 17px 24px;
+    outline: none;
+  }
+  &__settings {
+    margin-left: auto;
+  }
+}
+
+.jq-checkbox {
+}
+.jq-checkbox.checked .jq-checkbox__div {
+}

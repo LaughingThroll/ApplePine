@@ -65,46 +65,22 @@
   }
 }
 .services-slider {
-  .slick-btn {
-    height: 44px;
-    width: 44px;
-    border: 1px solid $flamingo;
-    position: absolute;
+  .main-slider-btn {
     bottom: 195px;
-    border-radius: 10px;
-    outline: none;
-    z-index: 1;
-    transition: all $fast ease-out;
-    &::before {
-      font-family: "icomoon";
-      color: $flamingo;
-      position: absolute;
-      top: 50%;
-      transform: translate(-45%, -53%);
-      font-size: 40px;
-      transition: all 0.3s ease-out;
-    }
     &:hover {
       background-color: $flamingo;
     }
     &:hover::before {
       color: $white;
     }
-  }
-  .slick-prev {
-    left: 300px;
-    &::before {
-      content: "\f104";
-      left: 45%;
+    &--prev {
+      left: 300px;
+    }
+    &--next {
+      left: 350px;
     }
   }
-  .slick-next {
-    left: 350px;
-    &::before {
-      content: "\f105";
-      left: 50%;
-    }
-  }
+
 }
 
 
@@ -137,18 +113,14 @@
 }
 
 .slider-works-item {
-  $border: 20px;
   position: relative;
   outline: none;
   height: 430px;
-  border-radius: $border;
+  overflow: hidden;
+  border-radius: 20px;
   &__images {
     width: 100%;
     height: 100%;
-    border-radius: $border;
-    img {
-      border-radius: $border;
-    }
     &::before {
       content: "";
       position: absolute;
@@ -156,8 +128,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 20px;
-      border-radius: inherit;
       background-color: rgba($east-bay, 0.6);
     }
   }

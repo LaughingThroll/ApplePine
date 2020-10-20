@@ -1,10 +1,10 @@
 .btn {
 	padding: 17px 45px;
 	border-radius: 40px;
-	border: 3px solid transparent; 
+	border: 3px solid transparent;
 	color: $white;
-  font-weight: 700;
-  transition: all $fast ease-out;
+	font-weight: 700;
+	transition: all $fast ease-out;
 	&--orange {
 		background-color: $orange;
 		&:active {
@@ -19,7 +19,7 @@
 			border-color: currentColor;
 			background-color: currentColor;
 		}
-	}			 
+	}
 	&--trans-white {
 		border-color: $white;
 		&:active {
@@ -32,10 +32,71 @@
 		color: $orange;
 		&:active {
 			border-color: currentColor;
-      background-color: currentColor;
-      color: $white;
+			background-color: currentColor;
+			color: $white;
 		}
 	}
 }
 
+.main-slider-btn {
+	border: 1px solid $flamingo;
+	position: absolute;
+	border-radius: 10px;
+	outline: none;
+	z-index: 100;
+	transition: all $fast ease-out;
+	&::before {
+		font-family: "icomoon";
+		color: $flamingo;
+		position: absolute;
+		top: 50%;
+		transform: translate(-45%, -53%);
+		font-size: 40px;
+		transition: all $fast ease-out;
+	}
+	&:hover {
+		background-color: $flamingo;
+	}
+	&:hover::before {
+		color: $white;
+	}
+	&--big {
+		height: 54px;
+		width: 54px;
+	}
+	&--small {
+		height: 44px;
+		width: 44px;
+	}
+	&--prev::before {
+		content: "\f104";
+		left: 45%;
+	}
+	&--next::before {
+		content: "\f105";
+		left: 50%;
+	}
+}
 
+.settings-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 58px;
+	height: 58px;
+	background-color: $white;
+	border-radius: 50%;
+	transition: all $fast ease-in;
+	outline: none;
+	&__icon {
+		width: 30px;
+		fill: $gray;
+		transition: all $fast ease-in;
+	}
+	&:hover {
+		background-color: darken($white, 10%);
+		.settings-btn__icon {
+			transform: rotate(90deg);
+		}
+	}
+}
