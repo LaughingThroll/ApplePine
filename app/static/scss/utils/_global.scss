@@ -110,40 +110,46 @@ a {
 	padding: 0 15px;
 	margin: 0 auto;
 }
-
-
-// OLD  ======================= 
 .subtitle {
-    margin-top: 15px;
-    font-size: 18px;
-    color: $dove-gray;
+  margin-top: 15px;
+  font-size: 18px;
+  color: $dove-gray;
 }
 .between-h1-h2 {
-  font-weight: 900;
-  font-size: 48px;
+font-weight: 900;
+font-size: 48px;
 }
+
+.service-svg {
+	display: none;
+}
+
+// OLD  ======================= 
+
 
 
 
 .input {
-  height: 61px;
-  width: 100%;
   max-width: 325px;
-  border: 1px solid #c76d02;
-  border-radius: 10px;
+  width: 100%;
+  height: 61px;
   padding: 0 22px;
+  border-radius: 10px;
+  border: 1px solid $tenne;
 }
 
 .phone {
   position: relative;
-  span{
+  &__stars {
     position: absolute;
     top: 24px;
     left: 136px;
-    color: #dd4141;
+    color: $cinnabar;
     font-size: 14px; 
   }
 }
+
+
 .modal__headline {
   text-align: center;
   .modal__title {
@@ -185,9 +191,7 @@ a {
   }
 }
 
-.reviews svg{
-	display: none;
-}
+
 .breadcrumbs {
   padding-top: 65px;
   text-align: center;
