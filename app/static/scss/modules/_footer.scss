@@ -1,3 +1,162 @@
 .footer {
-    
+  position: relative;
+  color: $rose-white;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: 200px;
+    background-image: url("../images/content/lobe--center.png");
+    background-image: image-set(
+      url("../images/content/lobe--center.png") 1x,
+      url("../images/content/lobe--center.png") 2x,
+      url("../images/content/lobe--center.png") 3x
+    );
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    transform: rotate(45deg);
+  }
+  &__top {
+    padding: 40px 0 30px;
+  }
+  &__item {
+    flex: 0 1 265px;
+    &--xl {
+      flex: 0 1 auto;
+    }
+  }
+  &__navigation {
+    margin-bottom: 45px;
+    li + li {
+      margin-left: 25px;
+    }
+  }
+  &__copy {
+    text-align: center;
+    padding: 25px 0px;
+    background-color: $aubergine;
+  }
 }
+
+
+.footer-top {
+  background-color: $main-color;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.footer-info {
+  &__text {
+    font-size: 12px;
+    margin: 28px 0px;
+  }
+  &__contacts {
+  }
+}
+
+.footer-contacts {
+  &__link {
+    position: relative;
+    padding-left: 40px;
+    line-height: 24px;
+    color: $white;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      background-color: $orange;
+      transition: background-color $fast ease-in;
+    }
+    & + .footer-contacts__link {
+      margin-top: 6px;
+    }
+    &:hover {
+      &::before {
+        background-color: darken($orange, 5%);
+      }
+      span::before,
+      div::before {
+        bottom: -2px;
+        height: 2px;
+        background-color: $white;
+        width: 100%;
+      }
+    }
+    &--email::after,
+    &--phone::after {
+      position: absolute;
+    }
+    &--phone::after {
+      content: url("../images/icons/sprite.svg#phone");
+      width: 15px;
+      height: 15px;
+      top: 2px;
+      left: 5px;
+    }
+    &--email::after {
+      content: url("../images/icons/sprite.svg#envelop");
+      width: 20px;
+      height: 20px;
+      top: 0;
+      left: 1px;
+    }
+  }
+}
+
+.footer-news {
+  &__title {
+    margin-bottom: 25px;
+  }
+  &__slider {
+    max-width: 555px;
+  } 
+}
+
+.footer-slider {
+  
+}
+
+
+.footer-subscribe {
+  &__title {
+    font-weight: 900;
+    max-width: 180px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  &__subtitle {
+    max-width: 230px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  &__form {
+    margin-bottom: 30px;
+  }
+  &__socials {
+    margin-bottom: 11px;
+  }
+  &__privacy {
+    margin-top: 11px;
+    font-size: 12px;
+    color: $au-chico;
+    &:hover {
+      span::before {
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background-color: $au-chico;
+      }
+    }
+  }
+}
+
+
