@@ -453,6 +453,16 @@ a {
   padding: 0 15px;
   margin: 0 auto
 }
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden
+}
 .subtitle {
   margin-top: 15px;
   font-size: 18px;
@@ -509,9 +519,9 @@ a {
   height: 18px;
   width: 2px;
   background-color: #fffcf9;
-  -webkit-transition: all .5s;
-  -o-transition: all .5s;
-  transition: all .5s
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s
 }
 .close span:first-child {
   -webkit-transform: translate(-50%, -50%) rotate(45deg);
@@ -542,7 +552,7 @@ a {
   position: relative
 }
 .breadcrumbs__list li + li::before {
-  content: '/';
+  content: "/";
   position: absolute;
   top: 0;
   left: 0
@@ -840,16 +850,8 @@ a {
   -o-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in
 }
-input[type="checkbox"] {
-  position: absolute;
-  z-index: -3;
-  width: 1px;
-  height: 1px;
-  opacity: 0
-}
 .custom-checkbox {
   position: relative;
-  margin-right: 23px;
   width: 18px;
   height: 18px;
   border: 1px solid #f26522;
@@ -896,12 +898,10 @@ input[type="checkbox"] {
           transform: translate(calc(-50% - 2px), 1px) rotate(50deg)
 }
 input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::before {
-  width: 9px;
-  right: 0
+  width: 9px
 }
 input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after {
-  width: 4px;
-  right: 0
+  width: 4px
 }
 .no-webp .header {
   background-image: url("../images/content/header-bg.png")
@@ -2486,6 +2486,9 @@ ul.question__list li.active .question__list-text {
       -ms-flex-align: center;
           align-items: center;
   font-size: 12px
+}
+.reviews-form__checkbox {
+  margin-right: 23px
 }
 .reviews-form__confidentiality {
   width: 222px;

@@ -1,13 +1,5 @@
-input[type="checkbox"] {
-  position: absolute;
-  z-index: -3;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
 .custom-checkbox {
   position: relative;
-  margin-right: 23px;
   width: 18px;
   height: 18px;
   border: 1px solid $flamingo;
@@ -44,10 +36,8 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked + .custom-checkbox  {
   .custom-checkbox__icon::before {
     width: 9px;
-    right: 0;
   } 
   .custom-checkbox__icon::after {
     width: 4px;
-    right: 0;
   } 
 }
