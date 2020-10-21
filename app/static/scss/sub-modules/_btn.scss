@@ -100,3 +100,22 @@
 		}
 	}
 }
+
+
+.subscribe-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $orange;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	transition: background-color $fast ease-in;
+	&:hover {
+		background-color: darken($orange, 10%);
+	}
+	&__icon {
+		width: 45px;
+		height: 45px;
+		fill: $white;
+	}
+}

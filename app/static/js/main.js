@@ -8,6 +8,7 @@ import 'ion-rangeslider/js/ion.rangeSlider'
 
 const $servicesItem = $('.services-item__text')
 const $reviewsContentItemText = $('.reviews-content-item__text')
+const $newsSliderArticleText = $('.news-slider-article__text')
 
 function cutText(node, length, separator = '') {
   node.text(function (_, text) {
@@ -19,6 +20,7 @@ function cutText(node, length, separator = '') {
 
 cutText($servicesItem, 205, '')
 cutText($reviewsContentItemText, 500, '...')
+cutText($newsSliderArticleText, 65, '...')
 
 // ===================
 const $inputPhone = $('input[type="phone"]')
@@ -313,7 +315,7 @@ $(document).ready(function () {
 
 
 
-  $('.footer-slider').slick({
+  $('#news-slider').slick({
     slidesToShow: 2,
     slidesToScroll: 2,
     prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',

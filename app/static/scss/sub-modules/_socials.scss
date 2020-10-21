@@ -8,15 +8,23 @@
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    color: $white;
     width: 32px;
     height: 32px;
-    background-color: $main-color;
     border-radius: 10px;
     transition: color $fast ease-out;
     &:hover {
       color: $orange;
     }
+    &--dark {
+      color: $white;
+      background-color: $main-color;
+    
+    }
+    &--light {
+      color: $main-color;
+      background-color: $white;
+    }
+   
   }
 }
 
