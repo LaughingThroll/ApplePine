@@ -170,76 +170,7 @@
 // reviews start
 
 // reviews end
-// question start
-.question{
-		background-image: url(../images/question-bg.png);
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
-		min-height: 665px;
-		padding-top: 150px;
-		position: relative;
-		&__subtitle{
-				margin-bottom: 50px;
-		}
-		&__content{
-				max-width: 750px;
-		}
-		&__girl{
-				position: absolute;
-				bottom: 0;
-				right: 5%;
-		}
-}
-ul.question__list {
-  display: flex;
-  flex-direction: column;
-  transition: all 5s ease-out;
-  li {
-    font-size: 18px;
-    border: 2px solid #d9d9d9;
-    border-radius: 10px;
-    padding: 20px 45px 20px 35px;
-    background-color: #fff;
-    height: 60px;
-    transition: all 0.8s;
-    cursor: pointer;
-    position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      border: 9px solid transparent; 
-      border-top: 13px solid #b8b8b8; 
-    }
-    & + li {
-      margin-top: 7px;
-    }
-  }
-  .question__list-text {
-    display: none;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #1a1a1a;
-    opacity: 0;
-  }
-  li.active {
-    height: 162px;
-	  overflow: scroll;
-	&::before {
-		right: 17px;
-		border: 9px solid transparent;
-    border-left: 13px solid $orange; 
-	  }
-    .question__list-text {
-      display: block;
-      transition: all 2s;
-      opacity: 1;
-    }
-  }
-}
-// question end
+
 // footer start
 .footer {
 	color: #fffefe;
