@@ -48,6 +48,12 @@ $('.range-slider').ionRangeSlider({
 })
 
 
+$('#question-accordion').on('click', function ({ target }) {
+  let item = target.closest('.question-accordion__item')
+  $('.question-accordion__item--active').removeClass('question-accordion__item--active')
+  $(item).addClass('question-accordion__item--active')
+})
+
 // document.addEventListener('DOMContentLoaded', function() {
 //   const percDisplay = document.getElementById('load-border')
 $(document).ready(function () {
@@ -244,16 +250,7 @@ $(document).ready(function () {
     $(this).removeClass('team-item--hover')
   })
 
-  //участок код отвечает за открытие и переключение списка в секции "question"
-  $('.question__list li').on('click', function () {
-    $('.question__list li.active').removeClass('active');
-    if ($(this).hasClass('active')) {
-      $(this).removeClass('active');
-    }
-    else {
-      $(this).addClass('active');
-    }
-  });
+
 
   $('#services-slider').slick({
     prevArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--prev slick-btn slick-prev"></button>',

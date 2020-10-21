@@ -1,0 +1,84 @@
+.question {
+  padding-top: 150px;
+  background-image: url("../images/content/question-bg.png");
+  background-image: image-set(
+    url("../images/content/question-bg.png") 1x,
+    url("../images/content/question-bg.png") 2x,
+    url("../images/content/question-bg.png") 3x
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 665px;
+  position: relative;
+  &__subtitle {
+    margin-bottom: 50px;
+  }
+  &__list {
+    max-width: 750px;
+    width: 100%;
+  }
+  &__girl {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+  }
+
+}
+
+.question-accordion {
+  &__item {
+    position: relative;
+    height: 60px;
+    border-radius: 10px;
+    padding: 0 45px 20px 35px;
+    background-color: $white;
+    border: 2px solid $alto;
+    cursor: pointer;
+    transition: all $fast ease-in;
+    & + .question-accordion__item {
+      margin-top: 7px;
+    }
+    &--active {
+      height: 160px;
+      overflow: scroll;
+      .question-accordion__title::before {
+        border: 9px solid transparent;
+        border-left: 13px solid $orange;
+        animation: fadeInRight $fast ease-in forwards;
+      } 
+      .question-accordion__text {
+        display: block;
+        transition: all 2s;
+        opacity: 1;
+      }
+    }
+  }
+  &__title {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    width: 100%;
+    padding: 10px 0;
+    font-weight: 400;
+    font-size: 18px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-25%);
+      border: 9px solid transparent;
+      border-top: 13px solid $silver;
+    }
+  }
+  &__text {
+    display: none;
+    font-size: 14px;
+    margin-top: 20px;
+    color: $god-gray;
+    opacity: 0;
+  }
+}
+
