@@ -1,28 +1,28 @@
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
   font-size: $main-fz;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
-::-webkit-scrollbar { 
-  width: 0px;      
-  background: transparent;  
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font-family: $main-font;
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
   color: $main-color;
   background-color: #fff;
   font-weight: 400;
@@ -36,30 +36,30 @@ h4,
 h5,
 h6,
 p {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 input,
 button,
 textarea,
 select {
-	border: none;
+  border: none;
 }
 
 button {
-	padding: 0;
-	background-color: transparent;
-	cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 input {
-  &::placeholder{
+  &::placeholder {
     color: $placeholder;
     font-size: 14px;
   }
 }
 input:focus {
-  &::placeholder{
+  &::placeholder {
     font-size: 0;
   }
   & + span {
@@ -67,17 +67,17 @@ input:focus {
   }
 }
 textarea {
-	resize: none;
+  resize: none;
 }
 ul,
 li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-	display: inline-block;
+  display: inline-block;
   text-decoration: none;
   font-weight: 400;
   font-family: $main-font;
@@ -85,31 +85,43 @@ a {
 }
 
 .img-wrapper {
-	img {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 // end reset CSS
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 .content {
-	flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 .footer {
-	flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 .container {
-	max-width: $main-width;
-	padding: 0 15px;
-	margin: 0 auto;
+  max-width: $main-width;
+  padding: 0 15px;
+  margin: 0 auto;
 }
+
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
 .subtitle {
   margin-top: 15px;
   font-size: 18px;
@@ -124,10 +136,7 @@ font-size: 48px;
 	display: none;
 }
 
-// OLD  ======================= 
-
-
-
+// OLD  =======================
 
 .input {
   max-width: 325px;
@@ -145,10 +154,10 @@ font-size: 48px;
     top: 24px;
     left: 136px;
     color: $cinnabar;
-    font-size: 14px; 
+
+    font-size: 14px;
   }
 }
-
 
 .modal__headline {
   text-align: center;
@@ -173,7 +182,7 @@ font-size: 48px;
     height: 18px;
     width: 2px;
     background-color: #fffcf9;
-    transition: all .5s;
+    transition: all 0.5s;
   }
   span:first-child {
     transform: translate(-50%, -50%) rotate(45deg);
@@ -200,11 +209,11 @@ font-size: 48px;
       padding-left: 10px;
       position: relative;
       &::before {
-        content: '/';
+        content: "/";
         position: absolute;
         top: 0;
         left: 0;
       }
     }
   }
-} 
+}
