@@ -1,71 +1,12 @@
-// .reviews__wrapper,
-// .services__wrapper,
-// .header-sliders__wrapper {
-//     max-width: 1200px;
-//     margin: 0 auto;
-//     padding: 0 15px;
-// }
-// //preloader start
-// .preloader {
-//   background-image: url(../images/header-bg.png);
-//   background-repeat: repeat;
-//   background-size: cover;
-//   position: fixed;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   overflow: hidden;
-//   z-index: 50;
-//   transition: all 1s;
-//   opacity: 1;
-//   visibility: visible;
-//   &.done {
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     height: 100px;
-//     width: 100px;
-//     margin: 0 auto;
-//     transition: all 1s;
-//     #load-border {
-//       display: none;
-//     }
-//   }
-//   // img {
-//   //   width: 80px; 
-//   // }
-// }
-// .loader {
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   #load-border {
-//     backface-visibility: hidden;
-//     height: 2px;
-//     background-color: #f88600;
-//     bottom: 0px;
-//     content: " ";
-//     display: block;
-//     margin: 0 auto;
-//     position: relative;
-//     transition: all 280ms ease-in-out;
-//     width: 20px;
-//   }
-// }
-//preloader end
-// header start
-
 .header {
+  position: relative;
   padding-top: 30px;
-  overflow: hidden;
   background-image: url('../images/content/header-bg.png');
   background-image: image-set(url('../images/content/header-bg.png') 1x, url('../images/content/header-bg.png') 2x, url('../images/content/header-bg.png') 3x);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
+  overflow: hidden;
   &::before,
   &::after {
     content: "";
@@ -74,6 +15,7 @@
     height: 500px;
     width: 500px;
     border-radius: 50%;
+    opacity: 0;
   } 
   &::before {
     top: -215px;
@@ -85,7 +27,9 @@
   }
   &__top {
     min-height: 96px;
-    animation: $fast fadeInDown 2.5s forwards;
+    opacity: 0;
+    // transform: translate3d(0, -100%, 0);
+    // animation: $fast fadeInDown 2.5s forwards;
   }
   &__container {
     display: flex;
@@ -109,7 +53,7 @@
   }
   &__lobe {
     position: absolute;
-    animation: 2s slideIn 3s forwards;
+    // animation: 2s slideIn 3s forwards;
     &--up {
       top: 92px;
       left: 5%;
@@ -158,22 +102,6 @@
 //     }
 //   }
 // }
-// header end
-// about start
-
-// about end
-// services start
-	
-// services end
-// team start
-
-// reviews start
-
-// reviews end
-
-// footer start
-
-// footer end
 
 //audit start
 .audit {
