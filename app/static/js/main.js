@@ -1,3 +1,4 @@
+/*global Image  Promise */
 import './utils/modernizr'
 import * as $ from 'jquery'
 window.$ = window.jQuery = $;
@@ -5,10 +6,50 @@ import 'slick-carousel/slick/slick'
 import 'jquery.maskedinput/src/jquery.maskedinput'
 import 'ion-rangeslider/js/ion.rangeSlider'
 
+const HEADER_ANIMATION = 'header-animation' 
+const HERO_ANIMATION = 'hero-animation'
+const TEAM_ITEM_UNHOVER = 'team-item--unhover'
+const TEAM_ITEM_HOVER = 'team-item--hover'
 
+
+
+
+const images = Array.from(document.images)
+const $header = $('#header')
+const $heroSlider = $('#hero-slider')
+const $heroNavigation = $('#hero-navigation')
 const $servicesItem = $('.services-item__text')
 const $reviewsContentItemText = $('.reviews-content-item__text')
 const $newsSliderArticleText = $('.news-slider-article__text')
+const $teamSlider = $('#team-slider')
+const $rangeSlider = $('.range-slider')
+const $inputPhone = $('input[type="phone"]')
+
+
+// FUNCTIONS_START
+function countLoadedImages(selector) {
+  const $loadLine = document.querySelector(selector)
+  const imagesTotal = images.length
+  // eslint-disable-next-line no-unused-vars
+  let imagesLoaded = 0
+  function counterWidth() {
+    imagesLoaded++
+    $loadLine.style.width = ((100 / imagesTotal) * imagesTotal) + '%'
+  }
+  counterWidth()
+}
+
+function succsesLoad(selector, ms) {
+  window.setTimeout(function () {
+    const preloader = $(selector)
+    if (!preloader.hasClass('preloader--done')) {
+      preloader.addClass('preloader--done')
+      $header.addClass(HEADER_ANIMATION)
+      $heroSlider.slick('getSlick').$slides.first().addClass(HERO_ANIMATION)
+      $("body").css("overflow", "visible")
+    }
+  }, ms)
+}
 
 function cutText(node, length, separator = '') {
   node.text(function (_, text) {
@@ -17,78 +58,227 @@ function cutText(node, length, separator = '') {
     }
   })
 }
+// FUNCTIONS_END
 
-cutText($servicesItem, 205, '')
-cutText($reviewsContentItemText, 500, '...')
-cutText($newsSliderArticleText, 65, '...')
 
-// ===================
-const $inputPhone = $('input[type="phone"]')
 
-//  mask phone start
-function maskedPhone(jQnode, mask = '+7(999) 999-99-99') {
-  jQnode.mask(mask)
-  jQnode.on('change', function () {
-    const $phoneStars = $(this).next();
-    /\d/.test($(this).val()) ?
-      $phoneStars.css('display', 'none') :
-      $phoneStars.css('display', 'block')
+// PRELOADER
+$(window).on('load', function () {
+  
+  $('body').css('overflow', 'hidden')
+  countLoadedImages('#load-line')
+
+  function cloneImages() {
+    return new Promise(resolve => {
+      images.forEach(() => {
+        let imageClone = new Image()
+        imageClone.onload = imageClone.onerror = countLoadedImages
+      })
+      resolve(true)
+    })
+
+  }
+  
+  cloneImages().then(succsesLoad.bind(this, '#preloader', 1000))
+
+})
+
+
+// MAIN_CONTENT
+$(document).on('DOMContentLoaded', function () {
+
+  $heroSlider.slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    draggable: false,
+    fade: true,
+    infinite: false,
+    rows: 0
   })
-}
-maskedPhone($inputPhone)
-// mask phone end
 
 
-$('.range-slider').ionRangeSlider({
-  postfix: "P",
-  min: 0,
-  max: 90000,
-  from: 0,
-  grid: true,
-  step: 10000,
-  grid_num: 9
+
+  $heroNavigation.slick({
+    infinity: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '#hero-slider',
+    arrows: false,
+    dots: false,
+    focusOnSelect: true,
+    variableWidth: true,
+    rows: 0
+  })
+
+  // add active class currentSlider for animations
+  $heroNavigation.on('afterChange', (_, __, nextSlide) => {
+    const currentSlide = $([...$heroSlider.slick('getSlick').$slides][nextSlide])
+
+    if (!currentSlide.hasClass(HERO_ANIMATION)) {
+      $('.' + HERO_ANIMATION).removeClass(HERO_ANIMATION)
+      window.requestAnimationFrame(() => {
+        currentSlide.addClass(HERO_ANIMATION)
+      })
+    }
+  })
+
+
+  cutText($servicesItem, 205, '')
+  cutText($reviewsContentItemText, 500, '...')
+  cutText($newsSliderArticleText, 65, '...')
+
+  $teamSlider.slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    variableWidth: true,
+    rows: 0
+  });
+
+
+
+  function showTeamSocials() {
+    if ($(this).hasClass(TEAM_ITEM_UNHOVER)) {
+      $(this).removeClass(TEAM_ITEM_UNHOVER)
+    }
+    $(this).addClass(TEAM_ITEM_HOVER)
+  }
+
+  function hideShowSocials() {
+    $(this).removeClass(TEAM_ITEM_HOVER)
+  }
+
+  $teamSlider.on('mouseenter', '.team-item', showTeamSocials).on('mouseleave', '.team-item', hideShowSocials)
+
+  
+
+  function maskedPhone(jQnode, mask = '+7(999) 999-99-99') {
+    jQnode.mask(mask)
+    jQnode.on('change', function () {
+      const $phoneStars = $(this).next();
+      /\d/.test($(this).val()) ?
+        $phoneStars.css('display', 'none') :
+        $phoneStars.css('display', 'block')
+    })
+  }
+  maskedPhone($inputPhone)
+
+
+  $rangeSlider.ionRangeSlider({
+    postfix: "P",
+    min: 0,
+    max: 90000,
+    from: 0,
+    grid: true,
+    step: 10000,
+    grid_num: 9
+  })
+
+
+  $('#services-slider').slick({
+    prevArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--prev slick-btn slick-prev"></button>',
+    nextArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--next slick-btn slick-next"></button>',
+    dots: false,
+    arrows: true,
+    rows: 0
+  })
+
+  $('.slider-works').slick({
+    fade: true,
+    dots: true,
+    arrows: false,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    rows: 0
+  })
+
+  //reviews sliders start
+  $('#slider-images').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    centerMode: true,
+    arrows: false,
+    asNavFor: '#reviews-slider-content',
+    infinite: true,
+    focusOnSelect: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1149,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          variableWidth: true
+        }
+      },
+    ]
+  });
+
+  $('#reviews-slider-content').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    asNavFor: '#slider-images',
+    fade: true,
+    prevArrow: '.reviews-main-btns .main-slider-btn--prev',
+    nextArrow: '.reviews-main-btns .main-slider-btn--next',
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000
+  })
+  //reviews sliders end
+  //services start 
+
+
+
+  $('#news-slider').slick({
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
+    infinite: false,
+    responsive: [
+      {
+        breakpoint: 876,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+    ]
+  })
+
+
+
+  function accordion(itemTarget, activeClass, e) {
+      let item = e.target.closest('.' + itemTarget)
+      $('.' + activeClass).removeClass(activeClass)
+      $(item).addClass(activeClass) 
+  }
+  $('#question-accordion').on('click', accordion.bind(this, 'question-accordion__item', 'question-accordion__item--active'))
+
+  
+
+
+
 })
 
 
-$('#question-accordion').on('click', function ({ target }) {
-  let item = target.closest('.question-accordion__item')
-  $('.question-accordion__item--active').removeClass('question-accordion__item--active')
-  $(item).addClass('question-accordion__item--active')
-})
+
 
 // document.addEventListener('DOMContentLoaded', function() {
-//   const percDisplay = document.getElementById('load-border')
-$(document).ready(function () {
-  //   //запускаем прелоадер по загрузкt html
-  //   // $("html,body").css("overflow", "hidden");
-  //   var
-  //     images = document.images,
-  //     imagesTotalCount = images.length,
-  //     imagesLoadedCount = 0;
 
-  //   for (var i = 0; i < imagesTotalCount; i++) {
-  //     let imageClone = new Image();
-  //     imageClone.onload = imageLoaded;
-  //     imageClone.onerror = imageLoaded;
-  //     imageClone.src = images[i].src;
-  //   }
-  //   //функция полосы загрузки в зависимости от количества загруженных картинок с минимальным временем в 1 секунду
-  //   function imageLoaded() {
-  //     imagesLoadedCount++;
-  //     percDisplay.style.width = (((100 / imagesTotalCount) * imagesLoadedCount) << 0) + '%';
-  //     if (imagesLoadedCount >= imagesTotalCount) {
-  //       setTimeout(function () {
-  //         var preloader = document.getElementById('page-preloader');
-  //         /*   var loader = document.getElementById('loader'); */
-  //         if (!preloader.classList.contains('done')) {
-  //           preloader.classList.add('done');
-  //           $("html, body").css("overflow", "visible");
-  //           $('.preloader').css('background-image', 'none');
-  //           /* loader.classList.add('loader-static'); */
-  //         }
-  //       }, 1000);
-  //     }
-  //   }
+$(document).ready(function () {
+
 
   //События кликак на бургер меню
   $('.header__menu-btn').on('click', function () {
@@ -96,9 +286,7 @@ $(document).ready(function () {
     $('.header__menu ').toggleClass('header__menu--active');
   });
   //По истечению этого таймера начнет действовать анимация контента шапки сайта
-  window.setTimeout(function () {
-    $('.header__slider').addClass('header__slider-animation');
-  }, 3000);
+
 
   //Функция отвечает за планвый переход по якорным ссылкам
   $('a[href^="#"]').on('click', function (event) {
@@ -199,141 +387,6 @@ $(document).ready(function () {
     $(this).toggleClass('close--active');
   });
   //close end 
-
-
-
-
-  // 
-
-  $('#hero-slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    draggable: false,
-    fade: true,
-    infinite: false,
-    rows: 0
-  });
-  $('#hero-navigation').slick({
-    infinity: false,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '#hero-slider',
-    arrows: false,
-    dots: false,
-    focusOnSelect: true,
-    variableWidth: true,
-    rows: 0
-  });
-
-
-  const $teamSlider = $('#team-slider')
-
-  $teamSlider.slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    variableWidth: true,
-    rows: 0
-  });
-
-  $teamSlider.on('mouseenter', '.team-item', function () {
-    if ($(this).hasClass('team-item--unhover')) {
-      $(this).removeClass('team-item--unhover')
-    }
-    $(this).addClass('team-item--hover')
-
-  })
-
-  $teamSlider.on('mouseleave', '.team-item', function () {
-    $(this).removeClass('team-item--hover')
-  })
-
-
-
-  $('#services-slider').slick({
-    prevArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--prev slick-btn slick-prev"></button>',
-    nextArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--next slick-btn slick-next"></button>',
-    dots: false,
-    arrows: true,
-    rows: 0
-  })
-
-  $('.slider-works').slick({
-    fade: true,
-    dots: true,
-    arrows: false,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    rows: 0
-  })
-
-  //reviews sliders start
-  $('#slider-images').slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    centerMode: true,
-    arrows: false,
-    asNavFor: '#reviews-slider-content',
-    infinite: true,
-    focusOnSelect: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 1149,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          variableWidth: true
-        }
-      },
-    ]
-  });
-
-  $('#reviews-slider-content').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    asNavFor: '#slider-images',
-    fade: true,
-    prevArrow: '.reviews-main-btns .main-slider-btn--prev',
-    nextArrow: '.reviews-main-btns .main-slider-btn--next',
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 2000
-  });
-  //reviews sliders end
-  //services start 
-
-
-
-  $('#news-slider').slick({
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
-    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
-    infinite: false,
-    responsive: [
-      {
-        breakpoint: 876,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-    ]
-  });
-
-
-
 
   function universalValidInput(name) {
     if (name.val() != '') {
@@ -515,7 +568,7 @@ $(document).ready(function () {
       //services start 
       for (let i = 0; i < 2; i++) {
         $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-content');
-      };
+      }
       //services end 
     }
   });

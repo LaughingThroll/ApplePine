@@ -5,7 +5,7 @@
 @import 'utils/fonts';
 @import 'utils/global';
 
-
+@import './sub-modules/preloader';
 @import './sub-modules/btn';
 @import './sub-modules/logo';
 @import './sub-modules/navigation';
@@ -15,6 +15,7 @@
 @import './sub-modules/custom-checkbox';
 @import './sub-modules/news-slider';
 @import './sub-modules/subscribe-form';
+@import './sub-modules/header-animation';
 
 @import './modules/header';
 @import './modules/hero';

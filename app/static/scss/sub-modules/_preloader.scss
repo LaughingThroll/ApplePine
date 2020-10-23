@@ -1,0 +1,48 @@
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-image: url("../images/content/header-bg.png");
+  background-image: image-set(
+    url("../images/content/header-bg.png") 1x,
+    url("../images/content/header-bg.png") 2x,
+    url("../images/content/header-bg.png") 3x
+  );
+  background-repeat: repeat;
+  background-size: cover;
+  z-index: 888;
+  visibility: visible;
+  overflow: hidden;
+  &__inner {
+  }
+  &--done {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 200px;
+    margin: 0 auto;
+    transition: all $fast ease-in;
+    background-image: none !important;
+    .preloader__line {
+      width: 0 !important;
+    }
+  }
+  &__line {
+    display: block;
+    position: relative;
+    width: 0;
+    height: 2px;
+    margin: 0 auto;
+    background-color: $orange;
+    transition: all $fast ease-in-out;
+  }
+}

@@ -18,56 +18,28 @@
   }
 }
 
+
 .hero-item {
   overflow: hidden;
-  &.slick-active {
-    .hero-item {
-      &__title {
-        animation: 1.5s fadeInLeft 1s forwards;
-      }
-      &__animate {
-        animation: 1s slideInUp 3.5s forwards;
-      }
-      // &__btn {
-        // animation: 1s slideInUp 1.5s forwards;
-      // }
-      }
-      .hero-image {
-        &--spray {
-          animation: 1s scale 1s forwards;
-        }
-        &--girl {
-          animation: 1s rotateInUpLeft .5s forwards;
-        }
-        &--starship {
-          animation: 1s starship .5s forwards;
-        }
-        &--tablet {
-          animation: 1s slideInUp .5s forwards;
-        }
-        &--mobile-diagonal {
-          animation: 1s slidePlusLeft .5s forwards;
-        }
-        &--mobile-horizontal {
-          animation: 1s slideInDown .5s forwards;
-        }
-    }
-   
+  &__title,
+  &__subtitle,
+  &__animate {
+    opacity: 0;
   }
- 
   &__content {
     max-width: 500px;
     width: 100%;
     padding-top: 75px;
   }
+
   &__title {
-    opacity: 0;
     margin-bottom: 20px;
-   
+  }
+  &__subtitle {
+    transition: opacity $fast 1s ease-in;
   }
   &__animate {
     margin-top: 30px;
-    opacity: 0;
   }
   &__result {
     font-size: 18px;

@@ -176,6 +176,30 @@ h6 {
             transform: translate3d(0, 0, 0)
   }
 }
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+  }
+}
 @-webkit-keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -581,6 +605,66 @@ a {
   top: 0;
   left: 0
 }
+.no-webp .preloader {
+  background-image: url("../images/content/header-bg.png")
+}
+.no-webp .preloader {
+  background-image: -webkit-image-set(url("../images/content/header-bg.png") 1x, url("../images/content/header-bg.png") 2x, url("../images/content/header-bg.png") 3x);
+  background-image: image-set(url("../images/content/header-bg.png") 1x, url("../images/content/header-bg.png") 2x, url("../images/content/header-bg.png") 3x)
+}
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-repeat: repeat;
+  background-size: cover;
+  z-index: 888;
+  visibility: visible;
+  overflow: hidden
+}
+.preloader--done {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  width: 200px;
+  margin: 0 auto;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  background-image: none !important
+}
+.preloader--done .preloader__line {
+  width: 0 !important
+}
+.preloader__line {
+  display: block;
+  position: relative;
+  width: 0;
+  height: 2px;
+  margin: 0 auto;
+  background-color: #f88600;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out
+}
 .btn {
   padding: 17px 45px;
   border-radius: 40px;
@@ -853,24 +937,10 @@ a {
   color: #878686;
   cursor: pointer;
   outline: none;
-  opacity: 0;
-  -webkit-animation: 2s slideInLeft forwards;
-          animation: 2s slideInLeft forwards
+  opacity: 0
 }
 .hero-navigation__item + .hero-navigation__item {
-  margin-right: 40px
-}
-.hero-navigation__item:nth-child(1) {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s
-}
-.hero-navigation__item:nth-child(2) {
-  -webkit-animation-delay: 3.5s;
-          animation-delay: 3.5s
-}
-.hero-navigation__item:nth-child(3) {
-  -webkit-animation-delay: 4s;
-          animation-delay: 4s
+  margin-left: 30px
 }
 .hero-navigation__item.slick-current {
   color: #441110
@@ -1083,6 +1153,73 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   margin-left: 5px;
   outline: none
 }
+.header-animation::before {
+  -webkit-animation: 2s fadeInDown .5s forwards;
+          animation: 2s fadeInDown .5s forwards
+}
+.header-animation::after {
+  -webkit-animation: 2s fadeInUp .5s forwards;
+          animation: 2s fadeInUp .5s forwards
+}
+.header-animation .header__top {
+  -webkit-animation: 0.5s fadeInDown forwards;
+          animation: 0.5s fadeInDown forwards
+}
+.header-animation .header__lobe {
+  -webkit-animation: 2s slideIn 1s forwards;
+          animation: 2s slideIn 1s forwards
+}
+.header-animation .hero-navigation__item {
+  -webkit-animation: 2s slideInLeft forwards;
+          animation: 2s slideInLeft forwards
+}
+.header-animation .hero-navigation__item:nth-child(1) {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s
+}
+.header-animation .hero-navigation__item:nth-child(2) {
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s
+}
+.header-animation .hero-navigation__item:nth-child(3) {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s
+}
+.hero-animation .hero-item__title {
+  -webkit-animation: 1.5s fadeInLeft 1s forwards;
+          animation: 1.5s fadeInLeft 1s forwards
+}
+.hero-animation .hero-item__subtitle {
+  opacity: 1
+}
+.hero-animation .hero-item__animate {
+  -webkit-animation: 1s slideInUp 2s forwards;
+          animation: 1s slideInUp 2s forwards
+}
+.hero-animation .hero-image--spray {
+  -webkit-animation: 1s scale 1s forwards;
+          animation: 1s scale 1s forwards
+}
+.hero-animation .hero-image--girl {
+  -webkit-animation: 1s rotateInUpLeft 1.5s forwards;
+          animation: 1s rotateInUpLeft 1.5s forwards
+}
+.hero-animation .hero-image--starship {
+  -webkit-animation: 1s starship 0.5s forwards;
+          animation: 1s starship 0.5s forwards
+}
+.hero-animation .hero-image--tablet {
+  -webkit-animation: 1s slideInUp 0.5s forwards;
+          animation: 1s slideInUp 0.5s forwards
+}
+.hero-animation .hero-image--mobile-diagonal {
+  -webkit-animation: 1s slidePlusLeft 0.5s forwards;
+          animation: 1s slidePlusLeft 0.5s forwards
+}
+.hero-animation .hero-image--mobile-horizontal {
+  -webkit-animation: 1s slideInDown 0.5s forwards;
+          animation: 1s slideInDown 0.5s forwards
+}
 .no-webp .header {
   background-image: url("../images/content/header-bg.png")
 }
@@ -1091,12 +1228,12 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-image: image-set(url("../images/content/header-bg.png") 1x, url("../images/content/header-bg.png") 2x, url("../images/content/header-bg.png") 3x)
 }
 .header {
+  position: relative;
   padding-top: 30px;
-  overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative
+  overflow: hidden
 }
 .header::before,
 .header::after {
@@ -1105,7 +1242,8 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   border: 50px solid #d2d2d2;
   height: 500px;
   width: 500px;
-  border-radius: 50%
+  border-radius: 50%;
+  opacity: 0
 }
 .header::before {
   top: -215px;
@@ -1117,8 +1255,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 }
 .header__top {
   min-height: 96px;
-  -webkit-animation: 0.5s fadeInDown 2.5s forwards;
-          animation: 0.5s fadeInDown 2.5s forwards
+  opacity: 0
 }
 .header__container {
   display: -webkit-box;
@@ -1152,9 +1289,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   padding-top: 50px
 }
 .header__lobe {
-  position: absolute;
-  -webkit-animation: 2s slideIn 3s forwards;
-          animation: 2s slideIn 3s forwards
+  position: absolute
 }
 .header__lobe--up {
   top: 92px;
@@ -1583,37 +1718,10 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 .hero-item {
   overflow: hidden
 }
-.hero-item.slick-active .hero-item__title {
-  -webkit-animation: 1.5s fadeInLeft 1s forwards;
-          animation: 1.5s fadeInLeft 1s forwards
-}
-.hero-item.slick-active .hero-item__animate {
-  -webkit-animation: 1s slideInUp 3.5s forwards;
-          animation: 1s slideInUp 3.5s forwards
-}
-.hero-item.slick-active .hero-image--spray {
-  -webkit-animation: 1s scale 1s forwards;
-          animation: 1s scale 1s forwards
-}
-.hero-item.slick-active .hero-image--girl {
-  -webkit-animation: 1s rotateInUpLeft .5s forwards;
-          animation: 1s rotateInUpLeft .5s forwards
-}
-.hero-item.slick-active .hero-image--starship {
-  -webkit-animation: 1s starship .5s forwards;
-          animation: 1s starship .5s forwards
-}
-.hero-item.slick-active .hero-image--tablet {
-  -webkit-animation: 1s slideInUp .5s forwards;
-          animation: 1s slideInUp .5s forwards
-}
-.hero-item.slick-active .hero-image--mobile-diagonal {
-  -webkit-animation: 1s slidePlusLeft .5s forwards;
-          animation: 1s slidePlusLeft .5s forwards
-}
-.hero-item.slick-active .hero-image--mobile-horizontal {
-  -webkit-animation: 1s slideInDown .5s forwards;
-          animation: 1s slideInDown .5s forwards
+.hero-item__title,
+.hero-item__subtitle,
+.hero-item__animate {
+  opacity: 0
 }
 .hero-item__content {
   max-width: 500px;
@@ -1621,12 +1729,15 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   padding-top: 75px
 }
 .hero-item__title {
-  opacity: 0;
   margin-bottom: 20px
 }
+.hero-item__subtitle {
+  -webkit-transition: opacity 0.5s 1s ease-in;
+  -o-transition: opacity 0.5s 1s ease-in;
+  transition: opacity 0.5s 1s ease-in
+}
 .hero-item__animate {
-  margin-top: 30px;
-  opacity: 0
+  margin-top: 30px
 }
 .hero-item__result {
   font-size: 18px;
@@ -3434,6 +3545,13 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     display: -ms-flexbox !important;
     display: flex !important
   }
+}
+.preloader {
+  background-image: url(../images/content/header-bg.webp)
+}
+.preloader {
+  background-image: -webkit-image-set(url(../images/content/header-bg.webp) 1x, url(../images/content/header-bg.webp) 2x, url(../images/content/header-bg.webp) 3x);
+  background-image: image-set(url(../images/content/header-bg.webp) 1x, url(../images/content/header-bg.webp) 2x, url(../images/content/header-bg.webp) 3x)
 }
 .header {
   background-image: url(../images/content/header-bg.webp)
