@@ -1,0 +1,34 @@
+.burger-btn {
+  display: none;
+  width: 30px;
+  cursor: pointer;
+  outline: none;
+  @include max-width(930px) {
+    display: block;
+  }
+  &__row {
+    width: 100%;
+    height: 4px;
+    background-color: $main-color;
+    
+    transition: transform $fast ease-in;
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+  &--active {
+    .burger-btn__row {
+      &:nth-child(1) {
+        transform: translateY(200%) rotate(45deg);
+      }
+      &:nth-child(2) {
+        transform: scale(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-200%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+

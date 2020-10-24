@@ -28,8 +28,9 @@
   &__top {
     min-height: 96px;
     opacity: 0;
-    // transform: translate3d(0, -100%, 0);
-    // animation: $fast fadeInDown 2.5s forwards;
+    .header__logo {
+      transform: translateY(-10px);
+    }
   }
   &__container {
     display: flex;
@@ -53,7 +54,7 @@
   }
   &__lobe {
     position: absolute;
-    // animation: 2s slideIn 3s forwards;
+   
     &--up {
       top: 92px;
       left: 5%;
@@ -64,7 +65,7 @@
       left: 100px;
       right: 0;
       margin: 0 auto;
-      z-index: 1;
+      z-index: 50;
       width: 100px;
       transform: translate3d(0, -1200%, 0);
     }
@@ -76,9 +77,7 @@
   }
 }
 // .header__menu-btn{
-//   cursor: pointer;
-//   display: none;
-//   width: 30px;
+//   
 // }
 // .header__menu-row{
 //   width: 100%;

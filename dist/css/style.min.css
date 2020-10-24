@@ -632,27 +632,50 @@ a {
   width: 100%;
   height: 100%;
   opacity: 1;
+  background-color: #fff;
   background-repeat: repeat;
   background-size: cover;
-  z-index: 888;
-  visibility: visible;
-  overflow: hidden
+  z-index: 555;
+  overflow: hidden;
+  -webkit-transition: height 0.5s ease-in;
+  -o-transition: height 0.5s ease-in;
+  transition: height 0.5s ease-in
 }
-.preloader--done {
+.preloader__inner {
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  -o-transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in
+}
+.preloader--loading {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 12px;
+  left: 10px;
   right: 0;
   height: 100px;
   width: 200px;
   margin: 0 auto;
-  -webkit-transition: all 0.5s ease-in;
-  -o-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;
-  background-image: none !important
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0)
 }
-.preloader--done .preloader__line {
+.preloader--loading .preloader__line {
   width: 0 !important
+}
+.preloader--loading-mobile {
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0)
+}
+.preloader--loading-mobile .preloader__inner {
+  -webkit-transform: translateX(-500%);
+      -ms-transform: translateX(-500%);
+          transform: translateX(-500%)
+}
+.preloader--loading-mobile .preloader__line {
+  width: 0 !important
+}
+.preloader--end {
+  display: none
 }
 .preloader__line {
   display: block;
@@ -661,9 +684,9 @@ a {
   height: 2px;
   margin: 0 auto;
   background-color: #f88600;
-  -webkit-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out
+  -webkit-transition: width 0.5s ease-in-out;
+  -o-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out
 }
 .btn {
   padding: 17px 45px;
@@ -1220,6 +1243,45 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   -webkit-animation: 1s slideInDown 0.5s forwards;
           animation: 1s slideInDown 0.5s forwards
 }
+.burger-btn {
+  display: none;
+  width: 30px;
+  cursor: pointer;
+  outline: none
+}
+@media only screen and (max-width: 930px) {
+  .burger-btn {
+    display: block
+  }
+}
+.burger-btn__row {
+  width: 100%;
+  height: 4px;
+  background-color: #441110;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  -o-transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in
+}
+.burger-btn__row:not(:last-child) {
+  margin-bottom: 4px
+}
+.burger-btn--active .burger-btn__row:nth-child(1) {
+  -webkit-transform: translateY(200%) rotate(45deg);
+      -ms-transform: translateY(200%) rotate(45deg);
+          transform: translateY(200%) rotate(45deg)
+}
+.burger-btn--active .burger-btn__row:nth-child(2) {
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0)
+}
+.burger-btn--active .burger-btn__row:nth-child(3) {
+  -webkit-transform: translateY(-200%) rotate(-45deg);
+      -ms-transform: translateY(-200%) rotate(-45deg);
+          transform: translateY(-200%) rotate(-45deg)
+}
 .no-webp .header {
   background-image: url("../images/content/header-bg.png")
 }
@@ -1256,6 +1318,11 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 .header__top {
   min-height: 96px;
   opacity: 0
+}
+.header__top .header__logo {
+  -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+          transform: translateY(-10px)
 }
 .header__container {
   display: -webkit-box;
@@ -1302,7 +1369,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   left: 100px;
   right: 0;
   margin: 0 auto;
-  z-index: 1;
+  z-index: 50;
   width: 100px;
   -webkit-transform: translate3d(0, -1200%, 0);
           transform: translate3d(0, -1200%, 0)
@@ -1697,7 +1764,8 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   display: none
 }
 .hero {
-  z-index: 1
+  position: relative;
+  z-index: 10
 }
 .hero .hero__item {
   display: -webkit-box;
@@ -2444,6 +2512,12 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   bottom: 0;
   right: 5%
 }
+@media only screen and (max-width: 1199px) {
+  .question__girl {
+    right: 1%;
+    width: 350px
+  }
+}
 .question-accordion__item {
   position: relative;
   height: 60px;
@@ -2691,21 +2765,20 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     background-color: #fff
   }
 }
+@media (max-width: 1800px) {
+  .footer::before {
+    display: none
+  }
+}
 @media (max-width: 1600px) {
   .reviews,
   .team,
   .services,
   .about {
-    background-image: none
+    background-image: none !important
   }
-  .footer::before {
+  .header__lobe {
     display: none
-  }
-}
-@media (max-width: 1199px) {
-  .question__girl {
-    right: 1%;
-    width: 350px
   }
 }
 @media (max-width: 1149px) {
@@ -2832,7 +2905,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     padding-bottom: 24px
   }
   .services__subtitle::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -2886,68 +2959,65 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     max-width: 100%
   }
 }
-@media (max-width: 980px) {
-  .header__top {
-    position: relative;
-    z-index: 50
+@media (max-width: 930px) {
+  .header__top .header__logo {
+    margin-left: auto;
+    margin-right: 35px;
+    -webkit-transform: translate(-500%, -10px);
+        -ms-transform: translate(-500%, -10px);
+            transform: translate(-500%, -10px);
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    transition: -webkit-transform 0.5s ease-in;
+    -o-transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in
   }
-  .header__menu-btn {
-    display: block
+  .header__top .header__logo--active {
+    -webkit-transform: translate(0, -10px);
+        -ms-transform: translate(0, -10px);
+            transform: translate(0, -10px)
   }
-  .header__menu-btn--active .header__menu-row:nth-child(1) {
-    -webkit-transform: translateY(200%) rotate(45deg);
-        -ms-transform: translateY(200%) rotate(45deg);
-            transform: translateY(200%) rotate(45deg)
-  }
-  .header__menu-btn--active .header__menu-row:nth-child(2) {
-    -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-            transform: scale(0)
-  }
-  .header__menu-btn--active .header__menu-row:nth-child(3) {
-    -webkit-transform: translateY(-200%) rotate(-45deg);
-        -ms-transform: translateY(-200%) rotate(-45deg);
-            transform: translateY(-200%) rotate(-45deg)
-  }
-  .header__navigation .header__menu {
+  .header__navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     position: absolute;
-    top: 95px;
-    left: -300px;
-    bottom: 0;
-    height: 140vh;
-    width: 220px;
-    z-index: 100;
-    background-color: rgba(185, 185, 185, 0.8);
-    -webkit-transition: all .5s ease-out;
-    -o-transition: all .5s ease-out;
-    transition: all .5s ease-out
+    top: 96px;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(184, 184, 184, 0.8);
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    z-index: 120;
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%)
   }
-  .header__navigation .header__menu li {
-    display: block;
-    margin-top: 15px;
-    padding-left: 20px
+  .header__navigation .navigation__list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column
   }
-  .header__navigation .header__menu li + li {
-    margin-left: 0
+  .header__navigation .navigation__item + .navigation__item {
+    margin-left: 0;
+    margin-bottom: 15px
   }
-  .header__navigation .header__menu a {
-    display: block;
+  .header__navigation .navigation__link--header {
     padding: 5px;
-    font-weight: 700;
-    border-width: 0px
+    font-size: 38px;
+    font-weight: 700
   }
-  .header__navigation .header__menu a:hover {
-    border-width: 0px
-  }
-  .header__navigation .header__menu--active {
-    left: -15px
-  }
-  .header__contacts {
-    max-width: 290px
-  }
-  .header .header__number {
-    font-size: 12px;
-    padding: 17px 45px
+  .navigation--active {
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0)
   }
   .about__item {
     max-width: 375px
@@ -3020,65 +3090,10 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     font-size: 14px
   }
 }
-@media (max-width: 800px) {
-  .reviews__wrapper,
-  .services__wrapper,
-  .header-sliders__wrapper {
-    padding: 0
-  }
+@media (max-width: 768px) {
   .header::after,
   .header::before {
     display: none
-  }
-  .header__logo img {
-    width: 65px
-  }
-  .header-slider__navigation {
-    display: none
-  }
-  .header__contacts {
-    max-width: 80px
-  }
-  .header__socials a {
-    font-size: 14px;
-    width: 26px;
-    height: 26px
-  }
-  .header .header__number {
-    display: none
-  }
-  .header__slider {
-    margin-top: 0
-  }
-  .header__slider .header__item-content {
-    padding-top: 0;
-    max-width: 100%;
-    width: 100%
-  }
-  .header__slider .header__item-title {
-    text-align: center;
-    font-size: 34px
-  }
-  .header__slider .header__item-subtitle {
-    display: none
-  }
-  .header__slider .header__item-animate {
-    position: absolute;
-    top: 680px;
-    left: 0;
-    right: 0;
-    text-align: center
-  }
-  .header__slider .header__item-animate .header__item-result {
-    display: none
-  }
-  .header__slider .header__item-animate .header__item-btn {
-    font-size: 12px;
-    padding-top: 13px;
-    padding-bottom: 13px
-  }
-  .header__slider .header__item-images {
-    top: 135px
   }
   .reviews {
     background: none
@@ -3417,6 +3432,32 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     left: 395px
   }
 }
+@media (max-width: 600px) {
+  .header__top .header__logo {
+    margin-right: 0
+  }
+  .header__navigation {
+    padding: 10px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start
+  }
+  .header__contacts {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end
+  }
+  .header__phone {
+    margin-bottom: 20px
+  }
+  .navigation__link {
+    font-size: 30px
+  }
+}
 @media (max-width: 520px) {
   ul.question__list li {
     padding: 20px
@@ -3500,6 +3541,24 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     padding: 45px 15px 35px
   }
 }
+@media (max-width: 460px) {
+  .header__navigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end
+  }
+  .header__contacts {
+    max-width: 100%
+  }
+  .header__phone {
+    width: 100%;
+    text-align: center
+  }
+}
 @media (max-width: 425px) {
   .validate {
     max-width: 305px;
@@ -3537,13 +3596,6 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .full-form .jq-selectbox .jq-selectbox__select,
   .full-form .jq-selectbox .jq-selectbox__dropdown {
     font-size: 14px
-  }
-}
-@media (min-width: 980px) {
-  .header__menu {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important
   }
 }
 .preloader {

@@ -1,5 +1,6 @@
 .hero {
-  z-index: 1;
+  position: relative;
+  z-index: 10;
   &__slider {
   }
   .hero__item {
@@ -62,6 +63,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
+  
   opacity: 0;
   &--spray {
     top: 0;
