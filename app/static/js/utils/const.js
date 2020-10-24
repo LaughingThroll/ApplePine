@@ -9,7 +9,8 @@ const constant = {
   },
   adaptive: {
     HEADER_ADAPTIVE_WIDTHx930: 930,
-    HEADER_ADAPTIVE_WIDTHx600: 600
+    HEADER_ADAPTIVE_WIDTHx600: 600,
+    HERO_ADAPTIVE_WIDTHx768: 768
   }
 }
 

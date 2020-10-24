@@ -8,36 +8,8 @@ import 'ion-rangeslider/js/ion.rangeSlider'
 import { constant } from './utils/const'
 import { vars } from './utils/vars'
 import { adaptive } from './utils/adaptive'
-// const HEADER_ANIMATION = 'header-animation'
-// const HERO_ANIMATION = 'hero-animation'
-// const HEADER_LOGO_ACTIVE = 'header__logo--active'
-// const HERO_ANIMATION_BACKWARDS = 'hero-animation--backwards'
+import { addHeroAnimation } from './utils/functions'
 
-// const TEAM_ITEM_UNHOVER = 'team-item--unhover'
-// const TEAM_ITEM_HOVER = 'team-item--hover'
-
-
-// const HEADER_ADAPTIVE_WIDTHx930 = 930
-// const HEADER_ADAPTIVE_WIDTHx600 = 600
-
-
-
-// const images = Array.from(document.images)
-// const $header = $('#header')
-// const $headerContainer = $('.header__container')
-// const $headerLogo = $('.header__logo')
-// const $headerContacts = $('.header__contacts')
-// const $navigation = $('#navigation')
-// const $navigationList = $('.navigation__list')
-// const $heroSlider = $('#hero-slider')
-// const $burgerBtn = $('#burger-btn')
-// const $heroNavigation = $('#hero-navigation')
-// const $servicesItem = $('.services-item__text')
-// const $reviewsContentItemText = $('.reviews-content-item__text')
-// const $newsSliderArticleText = $('.news-slider-article__text')
-// const $teamSlider = $('#team-slider')
-// const $rangeSlider = $('.range-slider')
-// const $inputPhone = $('input[type="phone"]')
 
 
 // FUNCTIONS_START
@@ -128,8 +100,7 @@ $(document).on('DOMContentLoaded', function () {
     vars.$navigation.toggleClass('navigation--active')
   })
 
-  adaptive()
-  window.addEventListener('resize', adaptive)
+ 
 
   vars.$heroSlider.slick({
     slidesToShow: 1,
@@ -142,31 +113,21 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   })
 
-
-
-  vars.$heroNavigation.slick({
-    infinity: false,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '#hero-slider',
-    arrows: false,
-    dots: false,
-    focusOnSelect: true,
-    variableWidth: true,
-    rows: 0
-  })
-
-  // add active class currentSlider for animations
-  vars.$heroNavigation.on('afterChange', (_, __, nextSlide) => {
+  vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
     const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
-
-    if (!currentSlide.hasClass(constant.className.HERO_ANIMATION)) {
-      $('.' + constant.className.HERO_ANIMATION).removeClass(constant.className.HERO_ANIMATION)
-      window.requestAnimationFrame(() => {
-        currentSlide.addClass(constant.className.HERO_ANIMATION)
-      })
-    }
+    addHeroAnimation(currentSlide)
   })
+
+
+  adaptive()
+  window.addEventListener('resize', adaptive)
+ 
+
+  
+
+ 
+
+
 
 
   cutText(vars.$servicesItem, 205, '')

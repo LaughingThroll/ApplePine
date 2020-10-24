@@ -16,7 +16,20 @@ const vars = {
   $newsSliderArticleText: $('.news-slider-article__text'),
   $teamSlider: $('#team-slider'),
   $rangeSlider: $('.range-slider'),
-  $inputPhone: $('input[type="phone"]')
+  $inputPhone: $('input[type="phone"]'),
+  optionSlick: {
+    heroNavigationSlick: {
+      infinity: false,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '#hero-slider',
+      arrows: false,
+      dots: false,
+      focusOnSelect: true,
+      variableWidth: true,
+      rows: 0
+    }
+  }
 }
 
 
