@@ -10,6 +10,7 @@
   height: 100%;
   opacity: 1;
   background-image: url("../images/content/header-bg.png");
+  background-color: $white;
   background-image: image-set(
     url("../images/content/header-bg.png") 1x,
     url("../images/content/header-bg.png") 2x,
@@ -17,24 +18,38 @@
   );
   background-repeat: repeat;
   background-size: cover;
-  z-index: 888;
-  visibility: visible;
+  z-index: 555;
   overflow: hidden;
+  transition: height $fast ease-in;
   &__inner {
+    transition: transform $fast ease-in;
   }
-  &--done {
+  &--loading {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 12px;
+    left: 10px;
     right: 0;
     height: 100px;
     width: 200px;
     margin: 0 auto;
-    transition: all $fast ease-in;
     background-image: none !important;
+    background-color: rgba($white, 0);
     .preloader__line {
       width: 0 !important;
     }
+  }
+  &--loading-mobile {
+    .preloader__inner {
+      transform: translateX(-500%);
+    }
+    background-image: none !important;
+    background-color: rgba($white, 0);
+    .preloader__line {
+      width: 0 !important;
+    }
+  }
+  &--end {
+    display: none;
   }
   &__line {
     display: block;
@@ -43,6 +58,6 @@
     height: 2px;
     margin: 0 auto;
     background-color: $orange;
-    transition: all $fast ease-in-out;
+    transition: width $fast ease-in-out;
   }
 }

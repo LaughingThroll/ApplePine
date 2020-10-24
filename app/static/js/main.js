@@ -5,31 +5,17 @@ window.$ = window.jQuery = $;
 import 'slick-carousel/slick/slick'
 import 'jquery.maskedinput/src/jquery.maskedinput'
 import 'ion-rangeslider/js/ion.rangeSlider'
+import { constant } from './utils/const'
+import { vars } from './utils/vars'
+import { adaptive } from './utils/adaptive'
+import { addHeroAnimation } from './utils/functions'
 
-const HEADER_ANIMATION = 'header-animation' 
-const HERO_ANIMATION = 'hero-animation'
-const TEAM_ITEM_UNHOVER = 'team-item--unhover'
-const TEAM_ITEM_HOVER = 'team-item--hover'
-
-
-
-
-const images = Array.from(document.images)
-const $header = $('#header')
-const $heroSlider = $('#hero-slider')
-const $heroNavigation = $('#hero-navigation')
-const $servicesItem = $('.services-item__text')
-const $reviewsContentItemText = $('.reviews-content-item__text')
-const $newsSliderArticleText = $('.news-slider-article__text')
-const $teamSlider = $('#team-slider')
-const $rangeSlider = $('.range-slider')
-const $inputPhone = $('input[type="phone"]')
 
 
 // FUNCTIONS_START
 function countLoadedImages(selector) {
   const $loadLine = document.querySelector(selector)
-  const imagesTotal = images.length
+  const imagesTotal = vars.images.length
   // eslint-disable-next-line no-unused-vars
   let imagesLoaded = 0
   function counterWidth() {
@@ -41,12 +27,34 @@ function countLoadedImages(selector) {
 
 function succsesLoad(selector, ms) {
   window.setTimeout(function () {
+
     const preloader = $(selector)
-    if (!preloader.hasClass('preloader--done')) {
-      preloader.addClass('preloader--done')
-      $header.addClass(HEADER_ANIMATION)
-      $heroSlider.slick('getSlick').$slides.first().addClass(HERO_ANIMATION)
+
+    if (!preloader.hasClass('preloader--loading') || !preloader.hasClass('preloader--loading-mobile')) {
+
+      window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx930 ?
+      preloader.addClass('preloader--loading-mobile') : preloader.addClass('preloader--loading')
+      
+      vars.$header.addClass(constant.className.HEADER_ANIMATION)
+      vars.$heroSlider.slick('getSlick').$slides.first().addClass(constant.className.HERO_ANIMATION)
       $("body").css("overflow", "visible")
+
+      window.setTimeout(() => {
+        preloader.addClass('preloader--end')
+
+        if (window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx600) {
+
+          vars.$headerLogo.insertAfter(vars.$burgerBtn)
+        
+        } else if(window.innerWidth > constant.adaptive.HEADER_ADAPTIVE_WIDTHx600) {
+          
+          vars.$headerLogo.insertBefore(vars.$headerContacts)
+        }
+        
+        if (window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx930) {
+          vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
+        }
+      }, ms - 50)
     }
   }, ms)
 }
@@ -64,13 +72,13 @@ function cutText(node, length, separator = '') {
 
 // PRELOADER
 $(window).on('load', function () {
-  
+
   $('body').css('overflow', 'hidden')
   countLoadedImages('#load-line')
 
   function cloneImages() {
     return new Promise(resolve => {
-      images.forEach(() => {
+      vars.images.forEach(() => {
         let imageClone = new Image()
         imageClone.onload = imageClone.onerror = countLoadedImages
       })
@@ -78,8 +86,8 @@ $(window).on('load', function () {
     })
 
   }
-  
   cloneImages().then(succsesLoad.bind(this, '#preloader', 1000))
+
 
 })
 
@@ -87,7 +95,14 @@ $(window).on('load', function () {
 // MAIN_CONTENT
 $(document).on('DOMContentLoaded', function () {
 
-  $heroSlider.slick({
+  vars.$burgerBtn.on('click', function () {
+    $(this).toggleClass('burger-btn--active')
+    vars.$navigation.toggleClass('navigation--active')
+  })
+
+ 
+
+  vars.$heroSlider.slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -98,38 +113,28 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   })
 
-
-
-  $heroNavigation.slick({
-    infinity: false,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '#hero-slider',
-    arrows: false,
-    dots: false,
-    focusOnSelect: true,
-    variableWidth: true,
-    rows: 0
-  })
-
-  // add active class currentSlider for animations
-  $heroNavigation.on('afterChange', (_, __, nextSlide) => {
-    const currentSlide = $([...$heroSlider.slick('getSlick').$slides][nextSlide])
-
-    if (!currentSlide.hasClass(HERO_ANIMATION)) {
-      $('.' + HERO_ANIMATION).removeClass(HERO_ANIMATION)
-      window.requestAnimationFrame(() => {
-        currentSlide.addClass(HERO_ANIMATION)
-      })
-    }
+  vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
+    const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
+    addHeroAnimation(currentSlide)
   })
 
 
-  cutText($servicesItem, 205, '')
-  cutText($reviewsContentItemText, 500, '...')
-  cutText($newsSliderArticleText, 65, '...')
+  adaptive()
+  window.addEventListener('resize', adaptive)
+ 
 
-  $teamSlider.slick({
+  
+
+ 
+
+
+
+
+  cutText(vars.$servicesItem, 205, '')
+  cutText(vars.$reviewsContentItemText, 500, '...')
+  cutText(vars.$newsSliderArticleText, 65, '...')
+
+  vars.$teamSlider.slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -142,19 +147,19 @@ $(document).on('DOMContentLoaded', function () {
 
 
   function showTeamSocials() {
-    if ($(this).hasClass(TEAM_ITEM_UNHOVER)) {
-      $(this).removeClass(TEAM_ITEM_UNHOVER)
+    if ($(this).hasClass(constant.className.TEAM_ITEM_UNHOVER)) {
+      $(this).removeClass(constant.className.TEAM_ITEM_UNHOVER)
     }
-    $(this).addClass(TEAM_ITEM_HOVER)
+    $(this).addClass(constant.className.TEAM_ITEM_HOVER)
   }
 
   function hideShowSocials() {
-    $(this).removeClass(TEAM_ITEM_HOVER)
+    $(this).removeClass(constant.className.TEAM_ITEM_HOVER)
   }
 
-  $teamSlider.on('mouseenter', '.team-item', showTeamSocials).on('mouseleave', '.team-item', hideShowSocials)
+  vars.$teamSlider.on('mouseenter', '.team-item', showTeamSocials).on('mouseleave', '.team-item', hideShowSocials)
 
-  
+
 
   function maskedPhone(jQnode, mask = '+7(999) 999-99-99') {
     jQnode.mask(mask)
@@ -165,10 +170,10 @@ $(document).on('DOMContentLoaded', function () {
         $phoneStars.css('display', 'block')
     })
   }
-  maskedPhone($inputPhone)
+  maskedPhone(vars.$inputPhone)
 
 
-  $rangeSlider.ionRangeSlider({
+  vars.$rangeSlider.ionRangeSlider({
     postfix: "P",
     min: 0,
     max: 90000,
@@ -260,13 +265,13 @@ $(document).on('DOMContentLoaded', function () {
 
 
   function accordion(itemTarget, activeClass, e) {
-      let item = e.target.closest('.' + itemTarget)
-      $('.' + activeClass).removeClass(activeClass)
-      $(item).addClass(activeClass) 
+    let item = e.target.closest('.' + itemTarget)
+    $('.' + activeClass).removeClass(activeClass)
+    $(item).addClass(activeClass)
   }
   $('#question-accordion').on('click', accordion.bind(this, 'question-accordion__item', 'question-accordion__item--active'))
 
-  
+
 
 
 
@@ -281,27 +286,26 @@ $(document).ready(function () {
 
 
   //События кликак на бургер меню
-  $('.header__menu-btn').on('click', function () {
-    $(this).toggleClass('header__menu-btn--active')
-    $('.header__menu ').toggleClass('header__menu--active');
-  });
-  //По истечению этого таймера начнет действовать анимация контента шапки сайта
+  
+
+
+
 
 
   //Функция отвечает за планвый переход по якорным ссылкам
-  $('a[href^="#"]').on('click', function (event) {
-    // отменяем стандартное действие
-    event.preventDefault();
+  // $('a[href^="#"]').on('click', function (event) {
+  //   // отменяем стандартное действие
+  //   event.preventDefault();
 
-    var scrollToBlock = $(this).attr("href"),
-      blockPosition = $(scrollToBlock).offset().top;
-    /*
-    scrollToBlock - в переменную заносим информацию о том, к какому блоку надо перейти
-    blockPosition - определяем положение блока на странице
-    */
-    $('html, body').animate({ scrollTop: blockPosition }, 2000);
+  //   var scrollToBlock = $(this).attr("href"),
+  //     blockPosition = $(scrollToBlock).offset().top;
+  //   /*
+  //   scrollToBlock - в переменную заносим информацию о том, к какому блоку надо перейти
+  //   blockPosition - определяем положение блока на странице
+  //   */
+  //   $('html, body').animate({ scrollTop: blockPosition }, 2000);
 
-  });
+  // });
 
   //animation text header start
   // $('.header__item-subtitle').textillate({

@@ -22,6 +22,10 @@
     position: absolute;
     bottom: 0;
     right: 5%;
+    @include max-width(1199px) {
+      right: 1%;
+      width: 350px;
+    }
   }
 
 }

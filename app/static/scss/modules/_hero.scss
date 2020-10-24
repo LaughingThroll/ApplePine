@@ -1,5 +1,6 @@
 .hero {
-  z-index: 1;
+  position: relative;
+  z-index: 10;
   &__slider {
   }
   .hero__item {
@@ -11,7 +12,6 @@
     width: 100%;
     left: 20px;
     bottom: 90px;
-    z-index: 1;
     .slick-list {
       overflow: visible;
     }
@@ -62,6 +62,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
+  
   opacity: 0;
   &--spray {
     top: 0;
