@@ -2125,7 +2125,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-image: image-set(url("../images/content/lobe--up.png") 1x, url("../images/content/lobe--up.png") 2x, url("../images/content/lobe--up.png") 3x)
 }
 .team {
-  padding: 110px 0 125px;
+  padding: 30px 0 60px;
   text-align: center;
   background-repeat: no-repeat;
   background-color: #f9f9f9;
@@ -3075,6 +3075,19 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .slider-works-item__title {
     display: none
   }
+  .team {
+    padding: 20px 0
+  }
+  .team__title {
+    font-size: 38px;
+    line-height: 38px
+  }
+  .team__subtitle {
+    margin-bottom: 30px
+  }
+  .team__slider {
+    margin-bottom: 20px
+  }
 }
 @media (max-width: 600px) {
   .header__top {
@@ -3247,6 +3260,10 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     font-size: 40px;
     line-height: 40px
   }
+  .subtitle {
+    font-size: 14px;
+    text-align: center
+  }
   .about__text {
     margin-bottom: 40px
   }
@@ -3255,6 +3272,10 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
   .about-btn__icon {
     height: 100px
+  }
+  .team__title {
+    font-size: 30px;
+    line-height: 30px
   }
   .validate {
     max-width: 305px;

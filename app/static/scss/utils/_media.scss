@@ -72,7 +72,6 @@
   }
 }
 @media (max-width: 1600px) {
-  
   .reviews,
   .team,
   .services,
@@ -166,7 +165,6 @@
   // }
 }
 @media (max-width: 1140px) {
-  // 
   .hero-item {
     &__content {
       padding-top: 30px;
@@ -223,7 +221,6 @@
 }
 
 @media (max-width: 1000px) {
-  // ABOUT
   .about {
     &__btn {
       margin: 0 auto;
@@ -303,7 +300,6 @@
 }
 
 @media (max-width: 930px) {
-  // 
   .header__top {
     .header__logo {
       margin-left: auto;
@@ -432,7 +428,7 @@
   // .header-sliders__wrapper {
   //   padding: 0;
   // }
-  // 
+
   .header {
     &::after,
     &::before {
@@ -507,7 +503,6 @@
     }
   }
 
-  // ABOUT
   .about {
     padding: 50px 0px;
     text-align: center;
@@ -566,24 +561,19 @@
     }
   }
 
-  // .team {
-  //   padding-top: 60px;
-  //   padding-bottom: 80px;
-  //   background-image: none;
-  // }
-  // .team__subtitle {
-  //   margin-bottom: 50px;
-  // }
-  // .subtitle-slogan {
-  //   font-size: 14px;
-  //   text-align: center;
-  // }
-  // .team__slider-item {
-  //   margin-bottom: 0;
-  // }
-  // .team__btn {
-  //   display: none;
-  // }
+  .team {
+    padding: 20px 0;
+    &__title {
+      font-size: 38px;
+      line-height: 38px;
+    }
+    &__subtitle {
+      margin-bottom: 30px;
+    }
+    &__slider {
+      margin-bottom: 20px;
+    }
+  }
   // .question {
   //   min-height: auto;
   //   padding: 65px 0px;
@@ -744,7 +734,6 @@
 }
 
 @media (max-width: 600px) {
-  // 
   .header {
     &__top {
       min-height: 65px;
@@ -801,11 +790,9 @@
       transform: translateY(-50%);
     }
   }
-
 }
 
 @media (max-width: 500px) {
-  
   .hero-item {
     &__title {
       font-size: 28px;
@@ -855,11 +842,9 @@
   // .slider-images.slick-initialized .slick-slide {
   //   margin: 0 5px;
   // }
-
 }
 
 @media (max-width: 460px) {
-  
   .header {
     &__navigation {
       flex-direction: column-reverse;
@@ -873,7 +858,7 @@
       text-align: center;
     }
   }
-  
+
   .services-item {
     &__content {
       padding: 20px 30px;
@@ -961,6 +946,11 @@
     font-size: 40px;
     line-height: 40px;
   }
+  .subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
+
   .about__text {
     margin-bottom: 40px;
   }
@@ -969,6 +959,11 @@
     &__icon {
       height: 100px;
     }
+  }
+
+  .team__title {
+    font-size: 30px;
+    line-height: 30px;
   }
 
   .validate {
