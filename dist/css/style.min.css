@@ -1983,7 +1983,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-image: image-set(url("../images/content/services-pine.png") 1x, url("../images/content/services-pine.png") 2x, url("../images/content/services-pine.png") 3x)
 }
 .services {
-  padding-top: 5px 0 155px;
+  padding: 5px 0 70px;
   background-repeat: no-repeat;
   background-size: 198px 205px;
   background-position: center left
@@ -2786,89 +2786,8 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
 }
 @media (max-width: 1149px) {
-  .footer-slider__item .footer-slider__content-right {
-    max-width: 100%
-  }
-  .footer__main-info {
-    display: none
-  }
-  .footer-slider {
-    max-width: 600px
-  }
-  .footer-slider__item .footer-slider__content {
-    max-width: 500px
-  }
-  .footer__subscribe {
-    max-width: 320px;
-    margin-top: 10px
-  }
-  .reviews__box {
-    max-width: 525px
-  }
-  .reviews__form {
-    padding: 40px 20px
-  }
-  .reviews__form-title {
-    margin-bottom: 20px
-  }
-  .reviews__form-phone {
-    margin: 15px 0 20px
-  }
-  .reviews__form-phone span {
-    top: 15px
-  }
-  .reviews__form .irs--flat.irs-with-grid {
-    height: 50px
-  }
-  .reviews__form .reviews__form-range .irs--flat .irs-grid-pol {
-    top: -10px
-  }
-  .reviews__form .jq-checkbox {
-    vertical-align: 0px
-  }
-  .slider-content .slider-content__item-text {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    padding-bottom: 0
-  }
-  .slider-content .slider-content__item-name {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 30px
-  }
-  .slider-content .slider-content__item a {
-    display: none
-  }
-  .slider-content .slick-btn {
-    display: none !important
-  }
-  .services-slider .services-slider__item-content {
-    max-width: 500px
-  }
   .slider-works {
     max-width: 550px
-  }
-  #full-form {
-    overflow: auto
-  }
-  .full-form {
-    position: absolute;
-    top: 0;
-    border-radius: 0
-  }
-  .full-form__input {
-    margin-right: 30px
-  }
-  .full-form__item:last-child {
-    margin-left: 15px
-  }
-  .full-form .jq-checkbox {
-    margin-right: 10px
   }
 }
 @media (max-width: 1140px) {
@@ -2891,6 +2810,63 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     display: -ms-flexbox !important;
     display: flex !important;
     max-width: 440px
+  }
+  .services__title {
+    text-align: center
+  }
+  .services__subtitle {
+    text-align: center;
+    position: relative;
+    padding-bottom: 24px
+  }
+  .services__subtitle::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background-color: #f88600
+  }
+  .services-item__inner {
+    position: relative
+  }
+  .services-item__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    max-width: 500px;
+    color: #fff
+  }
+  .services-item__text {
+    color: #fff
+  }
+  .services-slider .main-slider-btn {
+    border-color: #f9f9f9
+  }
+  .services-slider .main-slider-btn::before {
+    color: #fff
+  }
+  .services-slider .main-slider-btn:hover {
+    background-color: rgba(242, 101, 34, 0.7)
+  }
+  .slider-works {
+    max-width: 100%
+  }
+  .slider-works .slick-dots {
+    left: auto;
+    right: 36px
+  }
+  .slider-works-item__images::before {
+    background-color: rgba(68, 77, 131, 0.8)
+  }
+  .slider-works-item__title {
+    left: auto;
+    right: 40px
   }
 }
 @media (max-width: 930px) {
@@ -3084,47 +3060,20 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .about-item__title {
     margin-bottom: 15px
   }
-}
-@media (max-width: 780px) {
-  .services-slider .slick-prev {
-    left: 420px
+  .services {
+    padding-bottom: 30px
   }
-  .services-slider .slick-next {
-    left: 470px
+  .services__container {
+    padding: 0
   }
-}
-@media (max-width: 770px) {
-  .footer__top-inner {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse
+  .slider-works .slick-dots {
+    display: none !important
   }
-  .footer__item--xl {
-    margin: 0 auto
+  .slider-works-item {
+    border-radius: 0
   }
-  .footer__subscribe {
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto 25px auto
-  }
-  .footer__subscribe .footer__subscribe-title {
-    margin: 0 auto 30px auto
-  }
-  .footer__subscribe-subtitle {
-    margin: 0 auto 25px auto
-  }
-  .footer__subscribe-form {
-    max-width: 400px;
-    margin: 0 auto
-  }
-}
-@media (max-width: 650px) {
-  .services-slider .slick-prev {
-    left: 345px
-  }
-  .services-slider .slick-next {
-    left: 395px
+  .slider-works-item__title {
+    display: none
   }
 }
 @media (max-width: 600px) {
@@ -3164,42 +3113,18 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
 }
 @media (max-width: 520px) {
-  ul.question__list li {
-    padding: 20px
-  }
-  .footer-slider {
-    max-width: 270px
-  }
   .services__subtitle {
-    color: #131313;
-    margin-bottom: 0px
+    margin-bottom: 20px
   }
   .services__subtitle::before {
     width: 76px
   }
-  .services-slider .slick-btn {
-    top: 35px
-  }
-  .services-slider .services-slider__item .services-slider__item-title {
-    font-size: 18px
-  }
-  .services-slider .services-slider__item .services-slider__item-text {
-    padding-bottom: 0;
-    color: #222;
-    margin-bottom: 20px
-  }
-  .services-slider .services-slider__item .services-slider__item-text::before {
-    display: none
-  }
-  .slider-works__item-images {
-    min-height: 240px
-  }
-  .slider-works .slick-dots {
-    bottom: 17px;
-    left: 18px
-  }
-  .slider-works .slick-dots button {
-    width: 25px
+  .services-item__content {
+    padding: 20px 55px 20px 60px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%)
   }
 }
 @media (max-width: 500px) {
@@ -3230,37 +3155,6 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     width: 300px
   }
 }
-@media (max-width: 480px) {
-  .reviews__title {
-    margin-bottom: 40px
-  }
-  .reviews__subtitle {
-    font-size: 14px;
-    margin-top: 5px
-  }
-  .slider-images {
-    margin-bottom: 15px
-  }
-  .slider-images .slick-track {
-    -webkit-transition: -webkit-transform 1s;
-    transition: -webkit-transform 1s;
-    -o-transition: transform 1s;
-    transition: transform 1s;
-    transition: transform 1s, -webkit-transform 1s
-  }
-  .slider-images.slick-initialized .slick-slide {
-    margin: 0 5px
-  }
-  .services-slider .slick-prev {
-    left: 260px
-  }
-  .services-slider .slick-next {
-    left: 310px
-  }
-  .services-slider .services-slider__item-content {
-    padding: 45px 15px 35px
-  }
-}
 @media (max-width: 460px) {
   .header__navigation {
     -webkit-box-orient: vertical;
@@ -3277,6 +3171,39 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .header__phone {
     width: 100%;
     text-align: center
+  }
+  .services-item__content {
+    padding: 20px 30px
+  }
+  .services-item__title {
+    text-align: center
+  }
+  .services-item__text {
+    text-align: center;
+    min-height: 120px;
+    height: 100%;
+    padding-bottom: 0;
+    margin-bottom: 20px
+  }
+  .services-item__text::before {
+    display: none
+  }
+  .services-item__btn {
+    padding: 12px 30px;
+    font-size: 14px
+  }
+  .services-item__subtext {
+    font-size: 16px
+  }
+  .services-slider .main-slider-btn {
+    top: 1%
+  }
+  .services-slider .main-slider-btn--prev {
+    left: 5%
+  }
+  .services-slider .main-slider-btn--next {
+    left: auto;
+    right: 5%
   }
 }
 @media (max-width: 440px) {
@@ -3339,12 +3266,6 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     background-size: contain;
     width: 30px;
     height: 30px
-  }
-  .services-slider .slick-next {
-    left: 270px
-  }
-  .services-slider .slick-prev {
-    left: 220px
   }
   .full-form .jq-selectbox .jq-selectbox__select,
   .full-form .jq-selectbox .jq-selectbox__dropdown {
