@@ -8,7 +8,7 @@ import 'ion-rangeslider/js/ion.rangeSlider'
 import { constant } from './utils/const'
 import { vars } from './utils/vars'
 import { adaptive } from './utils/adaptive'
-import { addHeroAnimation } from './utils/functions'
+import { addHeroAnimation, aboutInLocalStorage } from './utils/functions'
 
 
 
@@ -32,7 +32,7 @@ function succsesLoad(selector, ms) {
 
     if (!preloader.hasClass('preloader--loading') || !preloader.hasClass('preloader--loading-mobile')) {
 
-      window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx930 ?
+      window.innerWidth <= constant.adaptive.WIDTHx930 ?
       preloader.addClass('preloader--loading-mobile') : preloader.addClass('preloader--loading')
       
       vars.$header.addClass(constant.className.HEADER_ANIMATION)
@@ -42,16 +42,16 @@ function succsesLoad(selector, ms) {
       window.setTimeout(() => {
         preloader.addClass('preloader--end')
 
-        if (window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx600) {
+        if (window.innerWidth <= constant.adaptive.WIDTHx600) {
 
           vars.$headerLogo.insertAfter(vars.$burgerBtn)
         
-        } else if(window.innerWidth > constant.adaptive.HEADER_ADAPTIVE_WIDTHx600) {
+        } else if(window.innerWidth > constant.adaptive.WIDTHx600) {
           
           vars.$headerLogo.insertBefore(vars.$headerContacts)
         }
         
-        if (window.innerWidth <= constant.adaptive.HEADER_ADAPTIVE_WIDTHx930) {
+        if (window.innerWidth <= constant.adaptive.WIDTHx930) {
           vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
         }
       }, ms - 50)
@@ -122,13 +122,8 @@ $(document).on('DOMContentLoaded', function () {
   adaptive()
   window.addEventListener('resize', adaptive)
  
-
   
-
- 
-
-
-
+  aboutInLocalStorage()
 
   cutText(vars.$servicesItem, 205, '')
   cutText(vars.$reviewsContentItemText, 500, '...')
@@ -327,30 +322,30 @@ $(document).ready(function () {
   // });
   //animation text header end
   //hide Modal start
-  $('.modal').on('click', function () {
-    $(this).fadeOut();
-    $('body').css('overflow', 'visible');
-  }).on('click', '.audit, .full-form, .set-form', function (event) {
-    event.stopPropagation();
-  });
-  $('#validate').on('click', function () {
-    let modal = $('.modal').attr('style');
-    $(this).fadeOut();
-    $('body').css('overflow', 'visible');
-    if (modal == 'display: block;') {
-      $('body').css('overflow', 'hidden');
-    }
-  });
+  // $('.modal').on('click', function () {
+  //   $(this).fadeOut();
+  //   $('body').css('overflow', 'visible');
+  // }).on('click', '.audit, .full-form, .set-form', function (event) {
+  //   event.stopPropagation();
+  // });
+  // $('#validate').on('click', function () {
+  //   let modal = $('.modal').attr('style');
+  //   $(this).fadeOut();
+  //   $('body').css('overflow', 'visible');
+  //   if (modal == 'display: block;') {
+  //     $('body').css('overflow', 'hidden');
+  //   }
+  // });
   //hide Modal end
   //show Modal start
-  const MODALCALL = $('[data-modal]');
-  MODALCALL.on('click', function () {
-    event.preventDefault();
-    let modalId = $(this).data('modal');
-    $(modalId).fadeIn();
-    includeModal(modalId);
-    $('body').css('overflow', 'hidden');
-  });
+  // const MODALCALL = $('[data-modal]');
+  // MODALCALL.on('click', function () {
+  //   event.preventDefault();
+  //   let modalId = $(this).data('modal');
+  //   $(modalId).fadeIn();
+  //   includeModal(modalId);
+  //   $('body').css('overflow', 'hidden');
+  // });
 
 
 
@@ -383,13 +378,13 @@ $(document).ready(function () {
   //show Modal end
 
   //close start
-  $('.modal').on('click', '.close', function () {
-    $(this).closest('.modal').fadeOut();
-    $('.validate').fadeOut(800);
-    $('body').css('overflow', 'visible');
-  }).on('mouseenter', '.close', function () {
-    $(this).toggleClass('close--active');
-  });
+  // $('.modal').on('click', '.close', function () {
+  //   $(this).closest('.modal').fadeOut();
+  //   $('.validate').fadeOut(800);
+  //   $('body').css('overflow', 'visible');
+  // }).on('mouseenter', '.close', function () {
+  //   $(this).toggleClass('close--active');
+  // });
   //close end 
 
   function universalValidInput(name) {
@@ -538,24 +533,22 @@ $(document).ready(function () {
         $('#validate').fadeIn().load('validate.html #error-fill');
       }
     });
-  };
+  }
+
+
 
 
 
   validForm();
+  
+  
+ 
+  
   $(window).on('resize', function () {
     var win = $(this);
     if (win.width() <= 800) {
       //about start
-      $('#about__btn').appendTo('.about .container');
-      $('.about__inner').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: false,
-        variableWidth: true,
-        infinite: true,
-        rows: 0
-      });
+   
 
       //about end
       //services start 
@@ -566,8 +559,7 @@ $(document).ready(function () {
     }
     else {
       //about start
-      $('.about__inner').slick("unslick");
-      $('#about__btn').appendTo('.about__inner');
+  
       //about end 
       //services start 
       for (let i = 0; i < 2; i++) {

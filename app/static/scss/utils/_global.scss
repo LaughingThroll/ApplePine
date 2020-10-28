@@ -111,6 +111,7 @@ a {
 }
 
 
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -122,19 +123,19 @@ a {
   overflow: hidden;
 }
 
-
 .subtitle {
   margin-top: 15px;
   font-size: 18px;
   color: $dove-gray;
 }
 .between-h1-h2 {
-font-weight: 900;
-font-size: 48px;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
 }
 
 .service-svg {
-	display: none;
+  display: none;
 }
 
 // OLD  =======================
@@ -200,7 +201,6 @@ font-size: 48px;
     transform: translate(-50%, -50%) rotate(45deg);
   }
 }
-
 
 .breadcrumbs {
   padding-top: 65px;

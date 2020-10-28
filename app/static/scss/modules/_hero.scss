@@ -1,6 +1,9 @@
 .hero {
   position: relative;
   z-index: 10;
+  &__container {
+    position: relative;
+  }
   &__slider {
   }
   .hero__item {

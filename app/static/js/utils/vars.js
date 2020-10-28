@@ -11,6 +11,9 @@ const vars = {
   $heroSlider: $('#hero-slider'),
   $burgerBtn: $('#burger-btn'),
   $heroNavigation: $('#hero-navigation'),
+  $aboutItems: $('#about-items'),
+  $aboutText: $('#about__text'),
+  $aboutBtn: $('#about-btn'),
   $servicesItem: $('.services-item__text'),
   $reviewsContentItemText: $('.reviews-content-item__text'),
   $newsSliderArticleText: $('.news-slider-article__text'),
@@ -28,7 +31,32 @@ const vars = {
       focusOnSelect: true,
       variableWidth: true,
       rows: 0
+    },
+    aboutItemsSlick: {
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: false,
+      variableWidth: true,
+      infinite: true,
+      rows: 0
+
     }
+  },
+  html: {
+    aboutTextMobile: `
+    <div class="about-text-mobile__content">
+     Маркетинговое агентство PineApple - Ваш
+     надежный партнер. Комплексный
+     подход к продвижению в интернете.
+     </div>
+     <div class="about-text-mobile__content">
+     Выполним работу качественно, в срок.
+     Даем <strong class="about-text-mobile__strong">100% гарантию</strong> результата.
+     </div>
+     <div class="about-text-mobile__content">
+     Поможем построить бизнес сочно
+     и со вкусом.
+     </div>`
   }
 }
 

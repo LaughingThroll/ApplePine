@@ -14,4 +14,8 @@ export function addHeroAnimation(currentSlide) {
   }
 }
 
+export function aboutInLocalStorage() {
+  window.localStorage.setItem(constant.className.ABOUT_TEXT_MOBILE, vars.$aboutText.text()) 
+}
+
 

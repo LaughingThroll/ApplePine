@@ -5,12 +5,14 @@ const constant = {
     HEADER_LOGO_ACTIVE: 'header__logo--active',
     HERO_ANIMATION_BACKWARDS: 'hero-animation--backwards',
     TEAM_ITEM_UNHOVER: 'team-item--unhover',    
-    TEAM_ITEM_HOVER: 'team-item--hover'
+    TEAM_ITEM_HOVER: 'team-item--hover',
+    ABOUT_TEXT_MOBILE: 'about-text-mobile',
   },
   adaptive: {
-    HEADER_ADAPTIVE_WIDTHx930: 930,
-    HEADER_ADAPTIVE_WIDTHx600: 600,
-    HERO_ADAPTIVE_WIDTHx768: 768
+    WIDTHx1000: 1000,
+    WIDTHx930: 930,
+    WIDTHx768: 768,
+    WIDTHx600: 600,
   }
 }
 
