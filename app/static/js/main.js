@@ -1,4 +1,4 @@
-/*global Image  Promise */
+/*global Promise */
 import './utils/modernizr'
 import * as $ from 'jquery'
 window.$ = window.jQuery = $;
@@ -13,51 +13,70 @@ import { addHeroAnimation, aboutInLocalStorage } from './utils/functions'
 
 
 // FUNCTIONS_START
-function countLoadedImages(selector) {
-  const $loadLine = document.querySelector(selector)
-  const imagesTotal = vars.images.length
-  // eslint-disable-next-line no-unused-vars
-  let imagesLoaded = 0
-  function counterWidth() {
-    imagesLoaded++
-    $loadLine.style.width = ((100 / imagesTotal) * imagesTotal) + '%'
+function loadingPage(node, time) {
+
+  let percent = Math.ceil(100 / (Math.ceil(time / 300)))
+
+  let widthPercent = 0
+
+  while (100 > widthPercent) {
+    widthPercent += percent
   }
-  counterWidth()
+
+  node.css('width', widthPercent > 100 ? 100 + '%' : widthPercent + '%')
+
 }
 
-function succsesLoad(selector, ms) {
-  window.setTimeout(function () {
 
-    const preloader = $(selector)
+function succsesLoad(node) {
 
-    if (!preloader.hasClass('preloader--loading') || !preloader.hasClass('preloader--loading-mobile')) {
+  if (!node.hasClass('preloader--loading') || !node.hasClass('preloader--loading-mobile')) {
 
-      window.innerWidth <= constant.adaptive.WIDTHx930 ?
-      preloader.addClass('preloader--loading-mobile') : preloader.addClass('preloader--loading')
-      
-      vars.$header.addClass(constant.className.HEADER_ANIMATION)
-      vars.$heroSlider.slick('getSlick').$slides.first().addClass(constant.className.HERO_ANIMATION)
-      $("body").css("overflow", "visible")
+    if (window.innerWidth <= constant.adaptive.WIDTHx930) {
 
-      window.setTimeout(() => {
-        preloader.addClass('preloader--end')
-
-        if (window.innerWidth <= constant.adaptive.WIDTHx600) {
-
-          vars.$headerLogo.insertAfter(vars.$burgerBtn)
-        
-        } else if(window.innerWidth > constant.adaptive.WIDTHx600) {
-          
-          vars.$headerLogo.insertBefore(vars.$headerContacts)
-        }
-        
-        if (window.innerWidth <= constant.adaptive.WIDTHx930) {
-          vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
-        }
-      }, ms - 50)
+      node.addClass('preloader--loading-mobile')
+      let $loader = node.children().first()
+      $loader.on('transitionend', (e) => transEndPreloader(node, e)) 
+    } else {
+      node.addClass('preloader--loading')
+      node.on('transitionend', (e) => transEndPreloader(node, e))
     }
-  }, ms)
+       
+    
+    vars.$header.addClass(constant.className.HEADER_ANIMATION)
+    vars.$heroSlider.slick('getSlick').$slides.first().addClass(constant.className.HERO_ANIMATION)
+    $("body").css("overflow", "visible")
+    vars.$wrapper.off('touchmove', vars.fn.prevent)
+
+   
+  }
 }
+
+function transEndPreloader(node, e) {
+
+  if (e.target.id === 'preloader' || e.target.id === 'loader') { 
+    node.addClass('preloader--end')
+    adaptiveAnimationAfterLoad()
+  }
+}
+
+function adaptiveAnimationAfterLoad() {
+
+  if (window.innerWidth <= constant.adaptive.WIDTHx600) {
+
+    vars.$headerLogo.insertAfter(vars.$burgerBtn)
+
+  } else if (window.innerWidth > constant.adaptive.WIDTHx600) {
+
+    vars.$headerLogo.insertBefore(vars.$headerContacts)
+  }
+ 
+  if (window.innerWidth <= constant.adaptive.WIDTHx930) {
+    vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
+  }
+ 
+}
+
 
 function cutText(node, length, separator = '') {
   node.text(function (_, text) {
@@ -69,38 +88,33 @@ function cutText(node, length, separator = '') {
 // FUNCTIONS_END
 
 
-
-// PRELOADER
 $(window).on('load', function () {
 
+  let time = Math.ceil(window.performance.now())
+
   $('body').css('overflow', 'hidden')
-  countLoadedImages('#load-line')
+  vars.$wrapper.on('touchmove', vars.fn.prevent)
 
   function cloneImages() {
     return new Promise(resolve => {
-      vars.images.forEach(() => {
-        let imageClone = new Image()
-        imageClone.onload = imageClone.onerror = countLoadedImages
-      })
-      resolve(true)
+      loadingPage(vars.$loadLine, time)
+      vars.$loadLine.on('transitionend', () => resolve(true))
     })
 
   }
-  cloneImages().then(succsesLoad.bind(this, '#preloader', 1000))
 
-
+  cloneImages().then(succsesLoad.bind(this, vars.$preloader))
 })
 
 
-// MAIN_CONTENT
+// PRELOADER
+
 $(document).on('DOMContentLoaded', function () {
 
   vars.$burgerBtn.on('click', function () {
     $(this).toggleClass('burger-btn--active')
     vars.$navigation.toggleClass('navigation--active')
   })
-
- 
 
   vars.$heroSlider.slick({
     slidesToShow: 1,
@@ -113,16 +127,16 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   })
 
+
   vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
     const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
     addHeroAnimation(currentSlide)
   })
 
-
   adaptive()
   window.addEventListener('resize', adaptive)
- 
-  
+
+
   aboutInLocalStorage()
 
   cutText(vars.$servicesItem, 205, '')
@@ -210,15 +224,15 @@ $(document).on('DOMContentLoaded', function () {
     autoplaySpeed: 2000,
     responsive: [
       {
-        breakpoint: 1149,
+        breakpoint: 769,
         settings: {
           slidesToShow: 3,
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 481,
         settings: {
-          variableWidth: true
+          slidesToShow: 1,
         }
       },
     ]
@@ -270,18 +284,24 @@ $(document).on('DOMContentLoaded', function () {
 
 
 
+
 })
+
+
+
+// MAIN_CONTENT
+
 
 
 
 
 // document.addEventListener('DOMContentLoaded', function() {
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
 
   //События кликак на бургер меню
-  
+
 
 
 
@@ -387,188 +407,188 @@ $(document).ready(function () {
   // });
   //close end 
 
-  function universalValidInput(name) {
-    if (name.val() != '') {
-      $(name).css('border-color', '#c76d02');
-      return true;
-    } else {
-      $(name).css('border-color', '#e93b50');
-    }
-  };
-  function universalValidSelect(name) {
-    if (name.hasClass('changed')) {
-      $('.jq-selectbox__select').css('border-color', '#c76d02');
-      return true;
-    } else {
-      $('.jq-selectbox__select').css('border-color', '#e93b50');
-    }
-  };
-  function universalValidCheck(name) {
-    if (name.hasClass('checked')) {
-      return true;
-    }
-  }
-  // validation form start
-  function validForm() {
-    let audit = $('#audit'),
-      reviews = $('#reviews'),
-      set = $('#set'),
-      subscribe = $('.footer__subscribe-form'),
-      fullForm = $('#full-form'),
-      pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1-6}\.)?[a-z]{2,6}$/i;
+//   function universalValidInput(name) {
+//     if (name.val() != '') {
+//       $(name).css('border-color', '#c76d02');
+//       return true;
+//     } else {
+//       $(name).css('border-color', '#e93b50');
+//     }
+//   };
+//   function universalValidSelect(name) {
+//     if (name.hasClass('changed')) {
+//       $('.jq-selectbox__select').css('border-color', '#c76d02');
+//       return true;
+//     } else {
+//       $('.jq-selectbox__select').css('border-color', '#e93b50');
+//     }
+//   };
+//   function universalValidCheck(name) {
+//     if (name.hasClass('checked')) {
+//       return true;
+//     }
+//   }
+//   // validation form start
+//   function validForm() {
+//     let audit = $('#audit'),
+//       reviews = $('#reviews'),
+//       set = $('#set'),
+//       subscribe = $('.footer__subscribe-form'),
+//       fullForm = $('#full-form'),
+//       pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1-6}\.)?[a-z]{2,6}$/i;
 
-    audit.on('submit', function () {
-      event.preventDefault();
-      let validName = $('.audit input[type="text"]'),
-        validPhone = $('.audit input[type="phone"]');
-      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
-        $.ajax({
-          url: 'send.php',
-          type: 'POST',
-          dataType: 'html'
-        }).done(function () {
-          audit.fadeOut();
-          $('#validate').fadeIn().load('validate.html #succses-submit');
-        })
-          .fail(function () {
-            $('#validate').fadeIn().load('validate.html #error-submit');
-          });
-      } else {
-        $('#validate').fadeIn().load('validate.html #error-fill');
-      }
-    });
-    fullForm.on('submit', function () {
-      event.preventDefault();
-      let validName = $('.full-form input[type="text"]'),
-        validPhone = $('.full-form input[type="phone"]'),
-        validUrl = $('.full-form input[type="url"]'),
-        validSelect = $('.full-form .jq-selectbox.jqselect'),
-        validCheck = $('.full-form .jq-checkbox');
-      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidInput(validUrl) == true && universalValidSelect(validSelect) == true && universalValidCheck(validCheck) == true) {
-        $.ajax({
-          url: 'send.php',
-          type: 'POST',
-          dataType: 'html'
-        }).done(function () {
-          fullForm.fadeOut();
-          $('#validate').fadeIn().load('validate.html #succses-submit');
-        })
-          .fail(function () {
-            $('#validate').fadeIn().load('validate.html #error-submit');
-          });
-      } else {
-        $('#validate').fadeIn().load('validate.html #error-fill');
-      }
-    });
-    set.on('submit', function () {
-      event.preventDefault();
-      let validName = $('.set-form input[type="text"]'),
-        validPhone = $('.set-form input[type="phone"]'),
-        validCheck = $('.set-form .jq-checkbox');
-      if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidCheck(validCheck) == true) {
-        $.ajax({
-          url: 'send.php',
-          type: 'POST',
-          dataType: 'html'
-        }).done(function () {
-          set.fadeOut();
-          $('#validate').fadeIn().load('validate.html #succses-submit');
-        })
-          .fail(function () {
-            $('#validate').fadeIn().load('validate.html #error-submit');
-          });
-      } else {
-        $('#validate').fadeIn().load('validate.html #error-fill');
-      }
-    });
-    reviews.on('submit', function () {
-      event.preventDefault();
-      $('body').css('overflow', 'hidden');
-      let validName = $('.reviews__form input[type="text"]'),
-        validPhone = $('.reviews__form input[type="phone"]'),
-        validConfi = $('.reviews__form #input__confidentiality-styler');
-      if (universalValidCheck(validConfi) == true) {
-        if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
-          $.ajax({
-            url: 'send.php',
-            type: 'POST',
-            dataType: 'html'
-          }).done(function () {
-            validName.val('');
-            validPhone.val('');
-            validConfi.removeClass('checked');
-            $('#validate').fadeIn().load('validate.html #succses-submit');
-          })
-            .fail(function () {
-              $('#validate').fadeIn().load('validate.html #error-submit');
-            });
-        } else {
-          $('#validate').fadeIn().load('validate.html #error-fill');
-        }
-      } else {
-        $('#validate').fadeIn().load('validate.html #error-confidentiality');
-      }
-    });
-    subscribe.on('submit', function () {
-      event.preventDefault();
-      $('body').css('overflow', 'hidden');
-      let validName = $('.footer__subscribe-form input[type="text"]');
-      if (universalValidInput(validName) == true) {
-        if (validName.val().search(pattern) == 0) {
-          $.ajax({
-            url: 'send.php',
-            type: 'POST',
-            dataType: 'html'
-          }).done(function () {
-            validName.val('');
-            $('#validate').fadeIn().load('validate.html #succses-subscribe');
-          })
-            .fail(function () {
-              $('#validate').fadeIn().load('validate.html #error-submit');
-            });
-        } else {
-          $('#validate').fadeIn().load('validate.html #error-email');
-        }
-      } else {
-        $('#validate').fadeIn().load('validate.html #error-fill');
-      }
-    });
-  }
-
-
+//     audit.on('submit', function () {
+//       event.preventDefault();
+//       let validName = $('.audit input[type="text"]'),
+//         validPhone = $('.audit input[type="phone"]');
+//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
+//         $.ajax({
+//           url: 'send.php',
+//           type: 'POST',
+//           dataType: 'html'
+//         }).done(function () {
+//           audit.fadeOut();
+//           $('#validate').fadeIn().load('validate.html #succses-submit');
+//         })
+//           .fail(function () {
+//             $('#validate').fadeIn().load('validate.html #error-submit');
+//           });
+//       } else {
+//         $('#validate').fadeIn().load('validate.html #error-fill');
+//       }
+//     });
+//     fullForm.on('submit', function () {
+//       event.preventDefault();
+//       let validName = $('.full-form input[type="text"]'),
+//         validPhone = $('.full-form input[type="phone"]'),
+//         validUrl = $('.full-form input[type="url"]'),
+//         validSelect = $('.full-form .jq-selectbox.jqselect'),
+//         validCheck = $('.full-form .jq-checkbox');
+//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidInput(validUrl) == true && universalValidSelect(validSelect) == true && universalValidCheck(validCheck) == true) {
+//         $.ajax({
+//           url: 'send.php',
+//           type: 'POST',
+//           dataType: 'html'
+//         }).done(function () {
+//           fullForm.fadeOut();
+//           $('#validate').fadeIn().load('validate.html #succses-submit');
+//         })
+//           .fail(function () {
+//             $('#validate').fadeIn().load('validate.html #error-submit');
+//           });
+//       } else {
+//         $('#validate').fadeIn().load('validate.html #error-fill');
+//       }
+//     });
+//     set.on('submit', function () {
+//       event.preventDefault();
+//       let validName = $('.set-form input[type="text"]'),
+//         validPhone = $('.set-form input[type="phone"]'),
+//         validCheck = $('.set-form .jq-checkbox');
+//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidCheck(validCheck) == true) {
+//         $.ajax({
+//           url: 'send.php',
+//           type: 'POST',
+//           dataType: 'html'
+//         }).done(function () {
+//           set.fadeOut();
+//           $('#validate').fadeIn().load('validate.html #succses-submit');
+//         })
+//           .fail(function () {
+//             $('#validate').fadeIn().load('validate.html #error-submit');
+//           });
+//       } else {
+//         $('#validate').fadeIn().load('validate.html #error-fill');
+//       }
+//     });
+//     reviews.on('submit', function () {
+//       event.preventDefault();
+//       $('body').css('overflow', 'hidden');
+//       let validName = $('.reviews__form input[type="text"]'),
+//         validPhone = $('.reviews__form input[type="phone"]'),
+//         validConfi = $('.reviews__form #input__confidentiality-styler');
+//       if (universalValidCheck(validConfi) == true) {
+//         if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
+//           $.ajax({
+//             url: 'send.php',
+//             type: 'POST',
+//             dataType: 'html'
+//           }).done(function () {
+//             validName.val('');
+//             validPhone.val('');
+//             validConfi.removeClass('checked');
+//             $('#validate').fadeIn().load('validate.html #succses-submit');
+//           })
+//             .fail(function () {
+//               $('#validate').fadeIn().load('validate.html #error-submit');
+//             });
+//         } else {
+//           $('#validate').fadeIn().load('validate.html #error-fill');
+//         }
+//       } else {
+//         $('#validate').fadeIn().load('validate.html #error-confidentiality');
+//       }
+//     });
+//     subscribe.on('submit', function () {
+//       event.preventDefault();
+//       $('body').css('overflow', 'hidden');
+//       let validName = $('.footer__subscribe-form input[type="text"]');
+//       if (universalValidInput(validName) == true) {
+//         if (validName.val().search(pattern) == 0) {
+//           $.ajax({
+//             url: 'send.php',
+//             type: 'POST',
+//             dataType: 'html'
+//           }).done(function () {
+//             validName.val('');
+//             $('#validate').fadeIn().load('validate.html #succses-subscribe');
+//           })
+//             .fail(function () {
+//               $('#validate').fadeIn().load('validate.html #error-submit');
+//             });
+//         } else {
+//           $('#validate').fadeIn().load('validate.html #error-email');
+//         }
+//       } else {
+//         $('#validate').fadeIn().load('validate.html #error-fill');
+//       }
+//     });
+//   }
 
 
 
-  validForm();
-  
-  
- 
-  
-  $(window).on('resize', function () {
-    var win = $(this);
-    if (win.width() <= 800) {
-      //about start
-   
 
-      //about end
-      //services start 
-      for (let i = 0; i < 2; i++) {
-        $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-inner');
-      };
-      //services end
-    }
-    else {
-      //about start
-  
-      //about end 
-      //services start 
-      for (let i = 0; i < 2; i++) {
-        $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-content');
-      }
-      //services end 
-    }
-  });
-});
+
+//   validForm();
+
+
+
+
+//   $(window).on('resize', function () {
+//     var win = $(this);
+//     if (win.width() <= 800) {
+//       //about start
+
+
+//       //about end
+//       //services start 
+//       for (let i = 0; i < 2; i++) {
+//         $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-inner');
+//       };
+//       //services end
+//     }
+//     else {
+//       //about start
+
+//       //about end 
+//       //services start 
+//       for (let i = 0; i < 2; i++) {
+//         $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-content');
+//       }
+//       //services end 
+//     }
+//   });
+// });
 
 
 // })

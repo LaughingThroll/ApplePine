@@ -34,9 +34,6 @@
     margin: 0 auto;
     background-image: none !important;
     background-color: rgba($white, 0);
-    .preloader__line {
-      width: 0 !important;
-    }
   }
   &--loading-mobile {
     .preloader__inner {
@@ -44,9 +41,6 @@
     }
     background-image: none !important;
     background-color: rgba($white, 0);
-    .preloader__line {
-      width: 0 !important;
-    }
   }
   &--end {
     display: none;
@@ -58,6 +52,6 @@
     height: 2px;
     margin: 0 auto;
     background-color: $orange;
-    transition: width $fast ease-in-out;
+    transition: width 1s ease-in-out;
   }
 }

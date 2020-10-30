@@ -1,5 +1,5 @@
 .reviews {
-  padding: 125px 0 55px;
+  padding: 40px 0 60px;
   background-image: url("../images/content/reviews-green.png");
   background-image: image-set(
     url("../images/content/reviews-green.png") 1x,
@@ -31,6 +31,7 @@
     font-size: 30px;
   }
 }
+
 .slider-images {
   margin-bottom: 45px;
   &__item {
@@ -86,6 +87,7 @@
     }
   }
 }
+
 .reviews-slider-content {
   position: relative;
   &::before {
@@ -102,13 +104,14 @@
 
 .reviews-main-btns {
   position: absolute;
-  bottom: 60px;
+  bottom: 0;
   left: 0;
   right: 0;
+  margin: 0 auto;
   height: 54px;
   max-width: 150px;
   background-color: $white;
-  margin: 0 auto;
+  transform: translateY(-50%);
   .main-slider-btn {
     &--prev {
       left: 15px;
@@ -118,6 +121,7 @@
     }
   }
 }
+
 .reviews-form {
   background-color: $orange;
   border-radius: 10px;
@@ -236,10 +240,8 @@
   }
   &__settings {
     margin-left: auto;
+    
   }
 }
 
-.jq-checkbox {
-}
-.jq-checkbox.checked .jq-checkbox__div {
-}
+

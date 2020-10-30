@@ -1,7 +1,12 @@
 import * as $ from 'jquery'
 
+import { constant } from './const'
+
 const vars = {
-  images: Array.from(document.images),
+  $wrapper: $('.wrapper'),
+  $preloader: $('#preloader'),
+  $laoder: $('#laoder'),
+  $loadLine: $('#load-line'),
   $header: $('#header'),
   $headerContainer: $('.header__container'),
   $headerLogo: $('.header__logo'),
@@ -15,7 +20,10 @@ const vars = {
   $aboutText: $('#about__text'),
   $aboutBtn: $('#about-btn'),
   $servicesItem: $('.services-item__text'),
+  // $reviewsContainer: $('.reviews__container'),
+  $reviewsForm: $('#reviews-form'),
   $reviewsContentItemText: $('.reviews-content-item__text'),
+  // $reviewsFormTitle: $('.reviews-form__title'),
   $newsSliderArticleText: $('.news-slider-article__text'),
   $teamSlider: $('#team-slider'),
   $rangeSlider: $('.range-slider'),
@@ -57,6 +65,9 @@ const vars = {
      Поможем построить бизнес сочно
      и со вкусом.
      </div>`
+  },
+  fn: {
+    prevent(e) {e.preventDefault()}
   }
 }
 

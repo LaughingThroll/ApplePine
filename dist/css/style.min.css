@@ -331,10 +331,10 @@ h6 {
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?rrcnnj");
-  src: url("../fonts/icomoon.eot?rrcnnj#iefix") format("embedded-opentype"),url("../fonts/icomoon.ttf?rrcnnj") format("truetype"),url("../fonts/icomoon.woff?rrcnnj") format("woff"),url("../fonts/icomoon.svg?rrcnnj#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?rrcnnj#iefix") format("embedded-opentype"),url("../fonts/icomoon.woff?rrcnnj") format("woff"),url("../fonts/icomoon.svg?rrcnnj#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: block
+  font-display: swap
 }
 [class^="icon-"],
 [class*=" icon-"] {
@@ -660,9 +660,6 @@ a {
   background-image: none !important;
   background-color: rgba(255, 255, 255, 0)
 }
-.preloader--loading .preloader__line {
-  width: 0 !important
-}
 .preloader--loading-mobile {
   background-image: none !important;
   background-color: rgba(255, 255, 255, 0)
@@ -671,9 +668,6 @@ a {
   -webkit-transform: translateX(-500%);
       -ms-transform: translateX(-500%);
           transform: translateX(-500%)
-}
-.preloader--loading-mobile .preloader__line {
-  width: 0 !important
 }
 .preloader--end {
   display: none
@@ -685,9 +679,9 @@ a {
   height: 2px;
   margin: 0 auto;
   background-color: #f88600;
-  -webkit-transition: width 0.5s ease-in-out;
-  -o-transition: width 0.5s ease-in-out;
-  transition: width 0.5s ease-in-out
+  -webkit-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out
 }
 .btn {
   padding: 17px 45px;
@@ -776,15 +770,7 @@ a {
   left: 50%
 }
 .settings-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
   width: 58px;
   height: 58px;
   background-color: #fff;
@@ -795,6 +781,12 @@ a {
   outline: none
 }
 .settings-btn__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 30px;
   fill: #878686;
   -webkit-transition: all 0.5s ease-in;
@@ -805,9 +797,9 @@ a {
   background-color: #e6e6e6
 }
 .settings-btn:hover .settings-btn__icon {
-  -webkit-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-          transform: rotate(90deg)
+  -webkit-transform: translate(-50%, -50%) rotate(90deg);
+      -ms-transform: translate(-50%, -50%) rotate(90deg);
+          transform: translate(-50%, -50%) rotate(90deg)
 }
 .subscribe-btn {
   display: -webkit-box;
@@ -1285,6 +1277,39 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   -webkit-transform: translateY(-200%) rotate(-45deg);
       -ms-transform: translateY(-200%) rotate(-45deg);
           transform: translateY(-200%) rotate(-45deg)
+}
+.reviews-form-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  height: 50px;
+  width: 50px;
+  background-color: #f88600;
+  border-radius: 20px;
+  padding: 10px;
+  z-index: 300;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  outline: none
+}
+.reviews-form-btn__icon {
+  fill: #f9f9f9;
+  width: 30px;
+  height: 30px;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in
+}
+.reviews-form-btn--active {
+  right: 5px;
+  bottom: 5px;
+  background-color: #441110
+}
+.reviews-form-btn--active .reviews-form-btn__icon {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg)
 }
 .no-webp .header {
   background-image: url("../images/content/header-bg.png")
@@ -2248,7 +2273,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-image: image-set(url("../images/content/reviews-green.png") 1x, url("../images/content/reviews-green.png") 2x, url("../images/content/reviews-green.png") 3x)
 }
 .reviews {
-  padding: 125px 0 55px;
+  padding: 40px 0 60px;
   background-repeat: no-repeat;
   background-position: top 70% left;
   background-size: 221px 331px
@@ -2349,13 +2374,16 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 }
 .reviews-main-btns {
   position: absolute;
-  bottom: 60px;
+  bottom: 0;
   left: 0;
   right: 0;
+  margin: 0 auto;
   height: 54px;
   max-width: 150px;
   background-color: #fff;
-  margin: 0 auto
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%)
 }
 .reviews-main-btns .main-slider-btn--prev {
   left: 15px
@@ -2789,6 +2817,56 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .slider-works {
     max-width: 550px
   }
+  .reviews {
+    padding-bottom: 80px
+  }
+  .reviews__container {
+    padding: 0
+  }
+  .reviews__title {
+    margin-bottom: 30px
+  }
+  .reviews__box {
+    max-width: 100%;
+    margin-right: 0
+  }
+  .slider-images {
+    margin-bottom: 30px
+  }
+  .reviews-slider-content::before {
+    bottom: -35px
+  }
+  .reviews-content-item__text {
+    padding: 0 20px;
+    text-align: center
+  }
+  .reviews-main-btns {
+    -webkit-transform: translateY(110%);
+        -ms-transform: translateY(110%);
+            transform: translateY(110%)
+  }
+  .reviews-form {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+            transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    transition: -webkit-transform 0.5s ease-in;
+    -o-transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+    z-index: 200;
+    height: 100%;
+    overflow-y: scroll
+  }
+  .reviews-form--active {
+    -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+            transform: translateX(0%)
+  }
 }
 @media (max-width: 1140px) {
   .hero-item__content {
@@ -3088,6 +3166,18 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .team__slider {
     margin-bottom: 20px
   }
+  .reviews-content-item__text {
+    min-height: 126px;
+    height: 100%
+  }
+  .reviews-content-item__name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px
+  }
+  .reviews-content-item__link {
+    display: none
+  }
 }
 @media (max-width: 600px) {
   .header__top {
@@ -3166,6 +3256,27 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
   .hero-image--mobile-horizontal {
     width: 300px
+  }
+}
+@media (max-width: 480px) {
+  .slider-images {
+    margin-bottom: 5px
+  }
+  .reviews-form {
+    border-radius: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    max-width: 100%
+  }
+  .reviews-form__title {
+    margin-bottom: 30px
+  }
+  .reviews-form__buttons {
+    font-size: 12px
+  }
+  .reviews-form__range {
+    margin-top: 0px
   }
 }
 @media (max-width: 460px) {

@@ -3,10 +3,43 @@ import * as $ from 'jquery'
 import { constant } from './const'
 import { vars } from './vars'
 
+
+
+
+// ========================================= max-width 1149px ========================================================
+
+function adaptiveReviewsFormx1149() {
+
+  if (window.innerWidth <= constant.adaptive.WIDTHx1149 && !document.querySelector('.' + constant.className.REVIEWS_FORM_BTN)) {
+    const btn = `
+      <button class="${constant.className.REVIEWS_FORM_BTN}">
+        <svg class="${constant.className.REVIEWS_FORM_BTN}__icon">
+          <use xlink:href="images/icons/sprite.svg#offer">
+        </svg>
+      </button>
+    `
+    $('.wrapper').append(btn)
+    
+    const $reviewsBtn = document.querySelector('.' + constant.className.REVIEWS_FORM_BTN)
+    
+    $reviewsBtn.addEventListener('click', function() {
+      this.classList.toggle(constant.className.REVIEWS_FORM_BTN + '--active')
+      vars.$reviewsForm.toggleClass('reviews-form--active')
+
+      adaptiveReviewsFormx480()
+    })
+
+  } else if (window.innerWidth > constant.adaptive.WIDTHx1149 && document.querySelector('.' + constant.className.REVIEWS_FORM_BTN)) {
+    document.querySelector('.' + constant.className.REVIEWS_FORM_BTN).remove()
+
+  }
+}
+
+
 // ========================================= max-width 1000px =========================================================
 
 function adaptiveAboutSliderx1000() {
- 
+
   if (window.innerWidth <= constant.adaptive.WIDTHx1000 && !vars.$aboutItems.hasClass('slick-initialized')) {
     vars.$aboutBtn.insertAfter(vars.$aboutItems)
     vars.$aboutItems.slick(vars.optionSlick.aboutItemsSlick)
@@ -32,16 +65,16 @@ function adaptiveHeaderMenux930() {
 // =============================================== max-width 768px ==============================================================================
 
 function adaptiveHeroNavigationx768() {
-  if (window.innerWidth <= constant.adaptive.WIDTHx768 
+  if (window.innerWidth <= constant.adaptive.WIDTHx768
     && vars.$heroNavigation.hasClass('slick-initialized')) {
-    
-      vars.$heroNavigation.slick('unslick')
-    
-  } else if (window.innerWidth > constant.adaptive.WIDTHx768 
+
+    vars.$heroNavigation.slick('unslick')
+
+  } else if (window.innerWidth > constant.adaptive.WIDTHx768
     && !vars.$heroNavigation.hasClass('slick-initialized')) {
-      vars.$heroNavigation.slick(vars.optionSlick.heroNavigationSlick)
+    vars.$heroNavigation.slick(vars.optionSlick.heroNavigationSlick)
   }
-  
+
 }
 
 
@@ -51,8 +84,8 @@ function adaptiveHeroNavigationx768() {
 function adaptiveAboutTextx768() {
 
   if (window.innerWidth <= constant.adaptive.WIDTHx768 && !vars.$aboutText.hasClass(constant.className.ABOUT_TEXT_MOBILE)) {
-     vars.$aboutText.addClass(constant.className.ABOUT_TEXT_MOBILE)
-     vars.$aboutText.html(vars.html.aboutTextMobile) 
+    vars.$aboutText.addClass(constant.className.ABOUT_TEXT_MOBILE)
+    vars.$aboutText.html(vars.html.aboutTextMobile)
   } else if (window.innerWidth > constant.adaptive.WIDTHx768 && vars.$aboutText.hasClass(constant.className.ABOUT_TEXT_MOBILE)) {
     vars.$aboutText.removeClass(constant.className.ABOUT_TEXT_MOBILE)
     vars.$aboutText.html(window.localStorage.getItem(constant.className.ABOUT_TEXT_MOBILE))
@@ -74,6 +107,19 @@ function adaptiveHeaderMenux600() {
   }
 }
 
+// ========================================= max-width 480px =========================================================
+
+function adaptiveReviewsFormx480() {
+  if (window.innerWidth <= constant.adaptive.WIDTHx480 && vars.$reviewsForm.hasClass('reviews-form--active')) {
+    $('body').css('overflow', 'hidden')
+    vars.$wrapper.on('touchmove', vars.fn.prevent)
+    
+  } else if (window.innerWidth <= constant.adaptive.WIDTHx480 && !vars.$reviewsForm.hasClass('reviews-form--active')) {
+    $('body').css('overflow', 'visible')
+    vars.$wrapper.off('touchmove', vars.fn.prevent)
+   
+  }
+}
 
 
 
@@ -82,8 +128,13 @@ function adaptive() {
   adaptiveHeaderMenux930()
   adaptiveHeaderMenux600()
   adaptiveHeroNavigationx768()
+
   adaptiveAboutSliderx1000()
   adaptiveAboutTextx768()
+
+  adaptiveReviewsFormx1149()
+  adaptiveReviewsFormx480()
+  
 }
 
 export { adaptive }

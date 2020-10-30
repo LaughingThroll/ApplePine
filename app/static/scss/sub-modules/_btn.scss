@@ -79,9 +79,7 @@
 }
 
 .settings-btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	position: relative;
 	width: 58px;
 	height: 58px;
 	background-color: $white;
@@ -89,6 +87,10 @@
 	transition: all $fast ease-in;
 	outline: none;
 	&__icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 30px;
 		fill: $gray;
 		transition: all $fast ease-in;
@@ -96,7 +98,7 @@
 	&:hover {
 		background-color: darken($white, 10%);
 		.settings-btn__icon {
-			transform: rotate(90deg);
+			transform: translate(-50%, -50%) rotate(90deg);
 		}
 	}
 }
