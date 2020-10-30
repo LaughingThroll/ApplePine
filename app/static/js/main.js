@@ -36,25 +36,25 @@ function succsesLoad(node) {
 
       node.addClass('preloader--loading-mobile')
       let $loader = node.children().first()
-      $loader.on('transitionend', (e) => transEndPreloader(node, e)) 
+      $loader.on('transitionend', (e) => transEndPreloader(node, e))
     } else {
       node.addClass('preloader--loading')
       node.on('transitionend', (e) => transEndPreloader(node, e))
     }
-       
-    
+
+
     vars.$header.addClass(constant.className.HEADER_ANIMATION)
     vars.$heroSlider.slick('getSlick').$slides.first().addClass(constant.className.HERO_ANIMATION)
     $("body").css("overflow", "visible")
     vars.$wrapper.off('touchmove', vars.fn.prevent)
 
-   
+
   }
 }
 
 function transEndPreloader(node, e) {
 
-  if (e.target.id === 'preloader' || e.target.id === 'loader') { 
+  if (e.target.id === 'preloader' || e.target.id === 'loader') {
     node.addClass('preloader--end')
     adaptiveAnimationAfterLoad()
   }
@@ -70,11 +70,11 @@ function adaptiveAnimationAfterLoad() {
 
     vars.$headerLogo.insertBefore(vars.$headerContacts)
   }
- 
+
   if (window.innerWidth <= constant.adaptive.WIDTHx930) {
     vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
   }
- 
+
 }
 
 
@@ -274,11 +274,18 @@ $(document).on('DOMContentLoaded', function () {
 
 
   function accordion(itemTarget, activeClass, e) {
-    let item = e.target.closest('.' + itemTarget)
+    let item = $(e.target.closest('.' + itemTarget))
     $('.' + activeClass).removeClass(activeClass)
-    $(item).addClass(activeClass)
+    Array.from(this.children()).forEach(el => {
+      $(el).children().last().css('display', 'none')
+    })
+
+    item.children().last().slideToggle('slow')
+    item.addClass(activeClass)
+
+
   }
-  $('#question-accordion').on('click', accordion.bind(this, 'question-accordion__item', 'question-accordion__item--active'))
+  $('#question-accordion').on('click', accordion.bind($('#question-accordion'), 'question-accordion__item', 'question-accordion__item--active'))
 
 
 

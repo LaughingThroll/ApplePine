@@ -2525,7 +2525,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-image: image-set(url("../images/content/question-bg.png") 1x, url("../images/content/question-bg.png") 2x, url("../images/content/question-bg.png") 3x)
 }
 .question {
-  padding-top: 150px;
+  padding-top: 60px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2552,35 +2552,26 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 }
 .question-accordion__item {
   position: relative;
-  height: 60px;
+  min-height: 60px;
+  height: auto;
   border-radius: 10px;
-  padding: 0 45px 20px 35px;
+  padding: 0 45px 0 35px;
   background-color: #fff;
   border: 2px solid #d2d2d2;
   cursor: pointer;
   -webkit-transition: all 0.5s ease-in;
   -o-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in
+  transition: all 0.5s ease-in;
+  overflow: scroll
 }
 .question-accordion__item + .question-accordion__item {
   margin-top: 7px
-}
-.question-accordion__item--active {
-  height: 160px;
-  overflow: scroll
 }
 .question-accordion__item--active .question-accordion__title::before {
   border: 9px solid transparent;
   border-left: 13px solid #f88600;
   -webkit-animation: fadeInRight 0.5s ease-in forwards;
           animation: fadeInRight 0.5s ease-in forwards
-}
-.question-accordion__item--active .question-accordion__text {
-  display: block;
-  -webkit-transition: all 1s ease-in;
-  -o-transition: all 1s ease-in;
-  transition: all 1s ease-in;
-  opacity: 1
 }
 .question-accordion__title {
   position: -webkit-sticky;
@@ -2589,7 +2580,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   left: 0;
   background-color: #fff;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 0 0;
   font-weight: 400;
   font-size: 18px
 }
@@ -2598,9 +2589,9 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   position: absolute;
   top: 50%;
   right: 0;
-  -webkit-transform: translateY(-25%);
-      -ms-transform: translateY(-25%);
-          transform: translateY(-25%);
+  -webkit-transform: translateY(25%);
+      -ms-transform: translateY(25%);
+          transform: translateY(25%);
   border: 9px solid transparent;
   border-top: 13px solid #b8b8b8
 }
@@ -2608,8 +2599,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   display: none;
   font-size: 14px;
   margin-top: 20px;
-  color: #1a1a1a;
-  opacity: 0
+  color: #1a1a1a
 }
 .footer {
   position: relative;
@@ -2877,6 +2867,18 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   .hero-item__images {
     margin-left: auto;
     width: 82%
+  }
+}
+@media (max-width: 1023px) {
+  .question {
+    padding: 40px 0 30px;
+    min-height: auto
+  }
+  .question__girl {
+    display: none
+  }
+  .question-accordion {
+    max-width: 100%
   }
 }
 @media (max-width: 1000px) {
@@ -3176,6 +3178,21 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     margin-bottom: 10px
   }
   .reviews-content-item__link {
+    display: none
+  }
+  .question {
+    padding: 30px 0
+  }
+  .question__subtitle {
+    margin-bottom: 20px
+  }
+  .question-accordion__item {
+    font-size: 14px
+  }
+  .question-accordion__item--active {
+    height: 210px
+  }
+  .question-accordion__title::before {
     display: none
   }
 }
