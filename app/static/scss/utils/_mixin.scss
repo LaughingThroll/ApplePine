@@ -3,12 +3,12 @@
     font-family: 'icomoon';
     src:  url('#{$path}/icomoon.eot?#{$id}');
     src:  url('#{$path}/icomoon.eot?#{$id}#iefix') format('embedded-opentype'),
-      url('#{$path}/icomoon.ttf?#{$id}') format('truetype'),
+      // url('#{$path}/icomoon.ttf?#{$id}') format('truetype'),
       url('#{$path}/icomoon.woff?#{$id}') format('woff'),
       url('#{$path}/icomoon.svg?#{$id}#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
   }
   
   [class^="icon-"], [class*=" icon-"] {

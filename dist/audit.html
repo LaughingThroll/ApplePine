@@ -18,27 +18,26 @@
     <div class="content">
       <div class="container">
 
-        <div class="block modal">
-          <form class="audit" action="#" method="POST">
-            <div class="audit__inner">
-              <input class="input" type="text" placeholder="Ваше имя">
-              <div class="phone">
-                <input class="input" type="phone" placeholder="+7 (___) ___-__-__">
-                <span>*</span>
-              </div>
-              <button class="btn btn--white" type="submit">Заказать</button>
-              <button class="close" type="button">
-                <span></span>
-                <span></span>
-              </button>
+        <div class="modal">
+          <form class="audit" action="#" method="#">
+            <input class="audit__input input" type="text" placeholder="Ваше имя">
+            <div class="audit__phone phone">
+              <input class="audit__input input" type="phone" placeholder="+7 (___) ___-__-__">
+              <span class="phone__stars">*</span>
             </div>
+            <button class="audit__btn btn btn--white" type="submit"><span class="span-border-animation"> Заказать </span></button>
+            <button class="audit__btn-close btn-close" type="button">
+              <span class="btn-close__line"></span>
+              <span class="btn-close__line"></span>
+            </button>
+
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="js/libs.min.js"></script>
+  <script src="js/vendors.min.js"></script>
   <script src="js/main.min.js"></script>
 
 </body>

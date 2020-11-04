@@ -111,6 +111,7 @@ a {
 }
 
 
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -122,22 +123,20 @@ a {
   overflow: hidden;
 }
 
-
 .subtitle {
   margin-top: 15px;
   font-size: 18px;
   color: $dove-gray;
 }
 .between-h1-h2 {
-font-weight: 900;
-font-size: 48px;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
 }
 
 .service-svg {
-	display: none;
+  display: none;
 }
-
-// OLD  =======================
 
 .input {
   max-width: 325px;
@@ -155,66 +154,8 @@ font-size: 48px;
     top: 24px;
     left: 136px;
     color: $cinnabar;
-
     font-size: 14px;
   }
 }
 
-.modal__headline {
-  text-align: center;
-  .modal__title {
-    font-size: 24px;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-}
-.close {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 50%;
-  border: 2px solid #fffcf9;
-  position: relative;
-  outline: none;
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 18px;
-    width: 2px;
-    background-color: #fffcf9;
-    transition: all 0.5s;
-  }
-  span:first-child {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  span:last-child {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-}
-.close--active {
-  span:first-child {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-  span:last-child {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-}
 
-
-.breadcrumbs {
-  padding-top: 65px;
-  text-align: center;
-  &__list {
-    li + li {
-      padding-left: 10px;
-      position: relative;
-      &::before {
-        content: "/";
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-}

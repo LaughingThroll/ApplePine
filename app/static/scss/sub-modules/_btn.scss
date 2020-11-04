@@ -79,9 +79,7 @@
 }
 
 .settings-btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	position: relative;
 	width: 58px;
 	height: 58px;
 	background-color: $white;
@@ -89,6 +87,10 @@
 	transition: all $fast ease-in;
 	outline: none;
 	&__icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: 30px;
 		fill: $gray;
 		transition: all $fast ease-in;
@@ -96,7 +98,7 @@
 	&:hover {
 		background-color: darken($white, 10%);
 		.settings-btn__icon {
-			transform: rotate(90deg);
+			transform: translate(-50%, -50%) rotate(90deg);
 		}
 	}
 }
@@ -118,4 +120,65 @@
 		height: 45px;
 		fill: $white;
 	}
+}
+
+.footer-subscribe-btn {
+	outline: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100px;
+	transform: translate(-80%, 0);
+	background-color: $orange;
+	color: $white;
+	border-radius: 50px 0 0 50px;
+	transition: all $fast ease-in;
+	z-index: -1;
+	&__text {
+		position: absolute;
+		top: 80%;
+		left: 15%;
+		display: block;
+		font-size: 20px;
+		font-weight: 700;
+		height: 0;
+		width: 0;
+		transform: rotate(-90deg);
+	}
+}
+
+
+.btn-close {
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  border: 2px solid $floral-white;
+  position: relative;
+  outline: none;
+  &__line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 18px;
+    width: 2px;
+    background-color: $floral-white;
+		transition: all 0.5s;
+		&:first-child {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+		&:last-child {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	} 
+	&--active {
+		&__line {
+			&:first-child {
+				transform: translate(-50%, -50%) rotate(-45deg);
+			}
+			&:last-child {
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+		}	
+	}  
 }

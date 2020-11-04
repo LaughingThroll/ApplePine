@@ -5,22 +5,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PineApple</title>
-	<link href="//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
-		rel="stylesheet">
-	<link rel="icon" href="images/favicon/favicon-16x16.ico">
+	<link href="//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+	
+	<link rel="icon" href="images/favicon/favicon.ico">
 
 
-	<link rel="manifest" href="/manifest.json">
+	<link rel="manifest" href="manifest.json">
 
 	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/style.min.css">
+
 
 </head>
 
 <body>
 	<div class="preloader" id="preloader">
 		<div class="preloader__inner" id="loader">
-			<a class="header__logo preloader__logo logo" href="#header" >
+			<a class="header__logo preloader__logo logo" href="#header">
 				<div class="logo__inner">
 					<img src="images/content/logo/logo--1.svg" alt="Glass with juice">
 					<img src="images/content/logo/logo--2.svg" alt="logo text JUICE">
@@ -29,18 +30,19 @@
 			<div class="preloader__line" id="load-line"></div>
 		</div>
 	</div>
+	
 	<div class="wrapper">
 		<div class="content">
 			<header class="header" id="header">
 				<div class="header__top">
 					<div class="container header__container">
-						<nav class="header__navigation navigation">
-							<button type="button" class="header__menu-btn navigation__btn">
-								<div class="navigation__row"></div>
-								<div class="navigation__row"></div>
-								<div class="header__menu-row navigation__row"></div>
-							</button>
-							<ul class="header__menu navigation__list">
+						<button type="button" class="burger-btn" id="burger-btn">
+							<div class="burger-btn__row"></div>
+							<div class="burger-btn__row"></div>
+							<div class="burger-btn__row"></div>
+						</button>
+						<nav class="header__navigation navigation" id="navigation">
+							<ul class="navigation__list">
 								<li class="navigation__item"><a class="navigation__link navigation__link--header" href="#about"><span
 											class="span-animation-border">Наша</span></a></li>
 								<li class="navigation__item"><a class="navigation__link navigation__link--header" href="#services"><span
@@ -56,8 +58,8 @@
 						<div class="header__contacts">
 							<ul class="header__socials socials">
 								<li class="socials__item">
-									<a class="socials__link socials__link--dark icon-instagram" href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u"
-										target="_blank">
+									<a class="socials__link socials__link--dark icon-instagram"
+										href="https://instagram.com/pingvi__shop?igshid=68libx5eq79u" target="_blank">
 									</a>
 								</li>
 								<li class="socials__item">
@@ -72,7 +74,7 @@
 					</div>
 				</div>
 				<div class="header__hero hero">
-					<div class="container">
+					<div class="container hero__container">
 						<div class="hero__slider" id="hero-slider">
 
 							<div class="hero__item hero-item">
@@ -83,7 +85,7 @@
 									<h2 class="hero-item__subtitle">
 										Создаем поток клиентов из социальных сетей
 									</h2>
-									<div class="header__item-animate hero-item__animate">
+									<div class="hero-item__animate">
 										<div class="hero-item__result">
 											Увеличиваем прибыль, а не просмотры и лайки
 										</div>
@@ -122,7 +124,7 @@
 									<h2 class="hero-item__subtitle">
 										Создаем поток клиентов из социальных сетей
 									</h2>
-									<div class="header__item-animate hero-item__animate">
+									<div class="hero-item__animate">
 										<div class="hero-item__result">
 											Увеличиваем прибыль, а не просмотры и лайки
 										</div>
@@ -162,7 +164,7 @@
 									<h2 class="hero-item__subtitle">
 										Комплексный подход к продвижению
 									</h2>
-									<div class="hero-item__animate header__item-animate">
+									<div class="hero-item__animate">
 										<div class="hero-item__result">
 											Увеличиваем прибыль, а не просмотры и лайки
 										</div>
@@ -181,7 +183,7 @@
 												srcset="images/content/spray.png 1x, images/content/spray@2x.png 2x, images/content/spray@3x.png 3x">
 										</picture>
 									</div>
-									<div class="img-wrapper hero-image hero-image--tablet header__image-devices1">
+									<div class="img-wrapper hero-image hero-image--tablet ">
 										<picture>
 											<source
 												srcset="images/content/header-tablet.webp 1x, images/content/header-tablet@2x.webp 2x, images/content/header-tablet@3x.webp 3x"
@@ -213,27 +215,27 @@
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="hero__navigation hero-navigation" id="hero-navigation">
-						<div class="hero-navigation__item">
-							<div class="hero-navigation__backnumber">01</div>
-							<div class="hero-navigation__first-word">СОЧНЫЙ</div>
-							<div class="hero-navigation__second-word">МАРКЕТИНГ</div>
-						</div>
-						<div class="hero-navigation__item">
-							<div class="hero-navigation__backnumber">02</div>
-							<div class="hero-navigation__first-word">СОЗДАНИЕ</div>
-							<div class="hero-navigation__second-word">САЙТА</div>
-						</div>
-						<div class="hero-navigation__item">
-							<div class="hero-navigation__backnumber">03</div>
-							<div class="hero-navigation__first-word">УМНОЕ</div>
-							<div class="hero-navigation__second-word">SEO</div>
+
+						<div class="hero__navigation hero-navigation" id="hero-navigation">
+							<div class="hero-navigation__item">
+								<div class="hero-navigation__backnumber">01</div>
+								<div class="hero-navigation__first-word">СОЧНЫЙ</div>
+								<div class="hero-navigation__second-word">МАРКЕТИНГ</div>
+							</div>
+							<div class="hero-navigation__item">
+								<div class="hero-navigation__backnumber">02</div>
+								<div class="hero-navigation__first-word">СОЗДАНИЕ</div>
+								<div class="hero-navigation__second-word">САЙТА</div>
+							</div>
+							<div class="hero-navigation__item">
+								<div class="hero-navigation__backnumber">03</div>
+								<div class="hero-navigation__first-word">УМНОЕ</div>
+								<div class="hero-navigation__second-word">SEO</div>
+							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="img-wrapper header__lobe header__lobe--up">
 					<picture>
 						<source
@@ -265,13 +267,15 @@
 				</div>
 
 			</header>
+
+
 			<section class="about" id="about">
 				<div class="container">
 
 					<h2 class="about__title between-h1-h2">
 						Делаем то, что работает
 					</h2>
-					<p class="about__text">
+					<p class="about__text" id="about__text">
 						Маркетинговое агентство PineApple - надежный партнер для Вашего бизнеса. Только комплексный
 						подход к продвижению
 						в интернете. Команда специалистов широкого профиля выполнит работу качественно, в срок. Мы
@@ -279,22 +283,7 @@
 						Вашем успехе, поэтому даем 100% гарантию результата.
 						<span>Помогаем построить бизнес сочно и со вкусом.</span>
 					</p>
-					<!-- <div class="about__content-mobile">
-						<p class="content-mobile__text">
-							Маркетинговое агентство PineApple - Ваш
-							надежный партнер. Комплексный
-							подход к продвижению в интернете.
-						</p>
-						<p class="content-mobile__text">
-							Выполним работу качественно, в срок.
-							Даем <strong class="content-mobile__strong">100% гарантию</strong> результата.
-						</p>
-						<p class="content-mobile__text">
-							Поможем построить бизнес сочно
-							и со вкусом.
-						</p>
-					</div> -->
-					<div class="about__items">
+					<div class="about__items" id="about-items">
 						<div class="about-item">
 							<div class="img-wrapper about-item__img">
 								<picture>
@@ -311,7 +300,8 @@
 									Сроки
 								</h3>
 								<p class="about-item__text">
-									Понимание следующего шага партнера – залог успешного продвижения и отлаженной коммуникации. Мы всегда
+									Понимание следующего шага партнера – залог успешного продвижения и отлаженной коммуникации. Мы
+									всегда
 									стремимся играть на опережение, предвосхищая ожидания клиентов
 								</p>
 							</div>
@@ -373,7 +363,8 @@
 									Прозрачность
 								</h2>
 								<p class="about-item__text">
-									Все отношения внутри компании базируются на открытости, являющейся обязательной частью коммуникации с
+									Все отношения внутри компании базируются на открытости, являющейся обязательной частью коммуникации
+									с
 									партнером. Полная прозрачность процесса.
 								</p>
 							</div>
@@ -397,7 +388,7 @@
 								</p>
 							</div>
 						</div>
-						<button class="about-btn" id="about-btn" type="button" data-modal="#full-form">
+						<button class="about__btn about-btn" id="about-btn" type="button" data-modal="#full-form">
 							<svg class="about-btn__icon">
 								<use xlink:href="images/icons/sprite.svg#document"></use>
 							</svg>
@@ -408,8 +399,8 @@
 				</div>
 			</section>
 
-			<section class="services" id="services">
-				<div class="container">
+				<section class="services" id="services">
+				<div class="container services__container">
 					<h2 class="services__title between-h1-h2">
 						Выберите услугу
 					</h2>
@@ -768,64 +759,64 @@
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-1.webp 1x, images/content/reviews/reviews-2x.webp 2x, images/content/reviews/reviews-3x.webp 3x"
+										srcset="images/content/reviews/reviews-1.webp 1x, images/content/reviews/reviews-1@2x.webp 2x, images/content/reviews/reviews-1@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-1.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-1.jpg 1x, images/content/reviews/reviews-2x.jpg 2x, images/content/reviews/reviews-3x.jpg 3x">
+										srcset="images/content/reviews/reviews-1.jpg 1x, images/content/reviews/reviews-21@2x.jpg 2x, images/content/reviews/reviews-1@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-2.webp 1x, images/content/reviews/reviews-3x.webp 2x, images/content/reviews/reviews-4x.webp 3x"
+										srcset="images/content/reviews/reviews-2.webp 1x, images/content/reviews/reviews-2@2x.webp 2x, images/content/reviews/reviews-2@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-2.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-2.jpg 1x, images/content/reviews/reviews-3x.jpg 2x, images/content/reviews/reviews-4x.jpg 3x">
+										srcset="images/content/reviews/reviews-2.jpg 1x, images/content/reviews/reviews-2@2x.jpg 2x, images/content/reviews/reviews-2@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-3.webp 1x, images/content/reviews/reviews-4x.webp 2x, images/content/reviews/reviews-5x.webp 3x"
+										srcset="images/content/reviews/reviews-3.webp 1x, images/content/reviews/reviews-3@2x.webp 2x, images/content/reviews/reviews-3@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-3.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-3.jpg 1x, images/content/reviews/reviews-4x.jpg 2x, images/content/reviews/reviews-5x.jpg 3x">
+										srcset="images/content/reviews/reviews-3.jpg 1x, images/content/reviews/reviews-3@2x.jpg 2x, images/content/reviews/reviews-3@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-4.webp 1x, images/content/reviews/reviews-5x.webp 2x, images/content/reviews/reviews-6x.webp 3x"
+										srcset="images/content/reviews/reviews-4.webp 1x, images/content/reviews/reviews-4@2x.webp 2x, images/content/reviews/reviews-4@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-4.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-4.jpg 1x, images/content/reviews/reviews-5x.jpg 2x, images/content/reviews/reviews-6x.jpg 3x">
+										srcset="images/content/reviews/reviews-4.jpg 1x, images/content/reviews/reviews-4@2x.jpg 2x, images/content/reviews/reviews-4@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-5.webp 1x, images/content/reviews/reviews-6x.webp 2x, images/content/reviews/reviews-7x.webp 3x"
+										srcset="images/content/reviews/reviews-5.webp 1x, images/content/reviews/reviews-5@2x.webp 2x, images/content/reviews/reviews-5@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-5.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-5.jpg 1x, images/content/reviews/reviews-6x.jpg 2x, images/content/reviews/reviews-7x.jpg 3x">
+										srcset="images/content/reviews/reviews-5.jpg 1x, images/content/reviews/reviews-5@2x.jpg 2x, images/content/reviews/reviews-5@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-6.webp 1x, images/content/reviews/reviews-7x.webp 2x, images/content/reviews/reviews-8x.webp 3x"
+										srcset="images/content/reviews/reviews-6.webp 1x, images/content/reviews/reviews-6@2x.webp 2x, images/content/reviews/reviews-6@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-6.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-6.jpg 1x, images/content/reviews/reviews-7x.jpg 2x, images/content/reviews/reviews-8x.jpg 3x">
+										srcset="images/content/reviews/reviews-6.jpg 1x, images/content/reviews/reviews-6@2x.jpg 2x, images/content/reviews/reviews-6@3x.jpg 3x">
 								</picture>
 							</div>
 							<div class="img-wrapper slider-images__item">
 								<picture>
 									<source
-										srcset="images/content/reviews/reviews-7.webp 1x, images/content/reviews/reviews-8x.webp 2x, images/content/reviews/reviews-9x.webp 3x"
+										srcset="images/content/reviews/reviews-7.webp 1x, images/content/reviews/reviews-7@2x.webp 2x, images/content/reviews/reviews-7@3x.webp 3x"
 										type="image/webp">
 									<img src="images/content/reviews/reviews-7.jpg" alt="reviews images"
-										srcset="images/content/reviews/reviews-7.jpg 1x, images/content/reviews/reviews-8x.jpg 2x, images/content/reviews/reviews-9x.jpg 3x">
+										srcset="images/content/reviews/reviews-7.jpg 1x, images/content/reviews/reviews-7@2x.jpg 2x, images/content/reviews/reviews-7@3x.jpg 3x">
 								</picture>
 							</div>
 
@@ -972,7 +963,7 @@
 								class="main-slider-btn main-slider-btn--big main-slider-btn--next slick-btn slick-next"></button>
 						</div>
 					</div>
-					<form class="reviews__form reviews-form">
+					<form class="reviews__form reviews-form" id="reviews-form">
 						<div class="reviews-form__title">
 							<div class="reviews-form__suptitle">
 								получить
@@ -1019,9 +1010,9 @@
 						Наша работа — наше достоинство
 					</div>
 					<ul class="question__list question-accordion" id="question-accordion">
-						<li class="question-accordion__item  question-accordion__item--active">
+						<li class="question-accordion__item  question-accordion__item--active" >
 							<h3 class="question-accordion__title">Дорого ли стоит продвижение? </h3>
-							<p class="question-accordion__text">Как видите, большинство бюджета вкладывается в Ваш проект. А комиссия
+							<p class="question-accordion__text" style="display: block">Как видите, большинство бюджета вкладывается в Ваш проект. А комиссия
 								агентства – это не абстрактное понятие, а большой объем квалифицированных работ. Каждый специалист
 								выполняет свои задачи, что позволяет добиться максимально профессионального их выполнения для
 								достижения поставленных клиентом целей продвижения сайта. Но это, в свою очередь, не может стоить
@@ -1065,7 +1056,7 @@
 						</picture>
 					</div>
 				</div>
-			</section>
+			</section> 
 		</div>
 		<footer class="footer">
 			<h2 class="visually-hidden">Конец сайта</h2>
@@ -1247,17 +1238,16 @@
 			<div class="footer__copy">
 				Juice. Все права защещены. 2019
 			</div>
-		</footer>
+		</footer> 
 
-
+		<!-- 
 		<div class="modal" id="audit"></div>
 		<div class="modal" id="full-form"></div>
 		<div class="modal" id="set"></div>
-		<div id="validate"></div>
+		<div id="validate"></div> -->
 
 
 	</div>
-
 	<svg class="service-svg" xmlns="http://www.w3.org/2000/svg">
 		<filter id="grayscale">
 			<feColorMatrix type="matrix"
@@ -1265,9 +1255,10 @@
 		</filter>
 	</svg>
 
-
 	<script src="js/vendors.min.js"></script>
 	<script src="js/main.min.js"></script>
+
+
 </body>
 
 </html>

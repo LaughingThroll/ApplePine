@@ -1,0 +1,28 @@
+.reviews-form-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  height: 50px;
+  width: 50px;
+  background-color: $orange;
+  border-radius: 20px;
+  padding: 10px;
+  z-index: 300;
+  transition: all $fast ease-in;
+  outline: none;
+  &__icon {
+    fill: $alabaster;
+    width: 30px;
+    height: 30px;
+    transition: all $fast ease-in;
+  }
+  &--active {
+    right: 5px;
+    bottom: 5px;
+    background-color: $main-color;
+    .reviews-form-btn__icon {
+      transform: rotate(-45deg);
+    }
+    // transform: translateX(-50%);
+  }
+}

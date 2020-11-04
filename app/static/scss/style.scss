@@ -1,7 +1,7 @@
 @import 'utils/vars';
+@import 'utils/mixin';
 @import 'utils/sprite';
 @import 'utils/animation';
-@import 'utils/mixin';
 @import 'utils/fonts';
 @import 'utils/global';
 
@@ -13,9 +13,20 @@
 @import './sub-modules/span-animation';
 @import './sub-modules/hero-navigation';
 @import './sub-modules/custom-checkbox';
+@import './sub-modules/custom-select';
 @import './sub-modules/news-slider';
 @import './sub-modules/subscribe-form';
 @import './sub-modules/header-animation';
+@import './sub-modules/burger-btn';
+@import './sub-modules/reviews-form-btn';
+@import './sub-modules/validate';
+
+
+@import './sub-modules/modals/modal';
+@import './sub-modules/modals/audit';
+@import './sub-modules/modals/full-form';
+@import './sub-modules/modals/set-form';
+
 
 @import './modules/header';
 @import './modules/hero';
