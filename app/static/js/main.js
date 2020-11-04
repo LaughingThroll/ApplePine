@@ -5,6 +5,7 @@ window.$ = window.jQuery = $;
 import 'slick-carousel/slick/slick'
 import 'jquery.maskedinput/src/jquery.maskedinput'
 import 'ion-rangeslider/js/ion.rangeSlider'
+import customSelect from 'custom-select';
 import { constant } from './utils/const'
 import { vars } from './utils/vars'
 import { adaptive } from './utils/adaptive'
@@ -290,8 +291,7 @@ $(document).on('DOMContentLoaded', function () {
     ]
   })
 
-
-
+  customSelect('.custom-select')
 })
 
 

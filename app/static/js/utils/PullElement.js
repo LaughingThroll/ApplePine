@@ -1,11 +1,11 @@
 export default class PullElement {
  
   constructor(node, direction = '') {
-    this.node = node
+    this.node =  node ? node : document.createElement('div')    
     this._direction = direction
     this.startTouchElementXaxix = 0
     this.startTouchElementYaxix = 0
-    this.matrix = window.getComputedStyle(node, null).transform
+    this.matrix = window.getComputedStyle(this.node, null).transform
     this.translate = this.#getTranslateWithMatrix(this.matrix)
     this.currentTranslate = Object.assign({}, this.translate)
     this.computedTranslate = Object.assign({}, this.translate)
@@ -18,9 +18,10 @@ export default class PullElement {
       x: 0,
       y: 0
     }
-
-    if (matrix === 'none') {
-      throw new Error('set transform for element')
+    
+    if (matrix === 'none' || !matrix) {
+      console.error(new Error('set transform for element'))
+      return 
     } else {
       // eslint-disable-next-line no-useless-escape 
       pureMatrix = matrix.match(/(\(.*\))/g)[0].match(/[-\d+\.]+/g)

@@ -1,0 +1,130 @@
+.full-form {
+  position: fixed;
+  top: 0%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: $alabaster;
+  border-radius: 20px;
+  margin: 0 auto;
+  max-width: 1170px;
+  padding: 50px 50px 50px 70px;
+  @include max-width(768px) {
+    padding: 60px 10px 50px 25px;
+  }
+  &__headline {
+    margin-bottom: 45px;
+    @include max-width(768px) {
+      margin-bottom: 20px;
+    }
+  }
+  &__btn-close {
+    position: absolute;
+    top: 8px;
+    right: 4%;
+    border-color: $dark-gray;
+    span,
+    div {
+      background-color: $dark-gray;
+    }
+  }
+  &__inner {
+    display: flex;
+    @include max-width(1000px) {
+      flex-direction: column-reverse;
+    }
+  }
+  &__inputs {
+    max-width: 325px;
+    width: 100%;
+    margin-right: 80px;
+    @include max-width(1140px) {
+      margin-right: 40px;
+    }
+    @include max-width(1000px) {
+      margin: 30px 0 0;
+      max-width: 100%;
+      text-align: center;
+    }
+    @include max-width(768px) {
+      margin: 20px 0 0;
+    }
+    @include max-width(600px) {
+      margin: 5px 0 0;
+    }
+  }
+  &__input {
+    outline: none;
+    @include max-width(1000px) {
+      max-width: 100%;
+    }
+  }
+  &__phone {
+    margin: 21px 0;
+  }
+  .custom-select-container {
+    margin: 21px 0 39px;
+    width: 100%;
+    @include max-width(1000px) {
+      text-align: left;
+    }
+    @include max-width(768px) {
+      margin: 21px 0;
+    }
+  }
+  &__btn {
+    outline: none;
+    @include max-width(425px) {
+      font-size: 14px;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  &__items {
+    margin-top: 30px;
+    column-count: 2;
+    @include max-width(768px) {
+      margin-top: 15px;
+    }
+  }
+}
+
+.checks {
+  @include max-width(600px) {
+    margin-top: 20px;
+    column-count: 1;
+  }
+  &__item {
+    margin-bottom: 50px;
+    &:last-child {
+      margin-left: 60px;
+      label:last-child {
+        margin-top: 45px;
+        @include max-width(600px) {
+          margin-top: 20px;
+        }
+      }
+      @include max-width(1140px) {
+        margin-left: 10px;
+      }
+      @include max-width(768px) {
+        margin-left: 0;
+      }
+    }
+    @include max-width(1000px) {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.check-item {
+  &__label {
+    display: flex;
+    margin-top: 15px;
+  }
+  &__checkbox {
+    @include max-width(1140px) {
+      margin-right: 10px;
+    }
+  }
+}

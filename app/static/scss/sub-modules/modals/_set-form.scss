@@ -1,0 +1,16 @@
+.set-form {
+  &__headline {
+    margin-bottom: 20px;
+  }
+  &__checkbox + .set-form__checkbox {
+    margin-top: 20px;
+  }
+  &__inputs {
+    @include max-width(600px) {
+      margin: 20px 0 0 ;
+    }
+  }
+  &__btn {
+    width: 100%;
+  } 
+}

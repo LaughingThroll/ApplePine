@@ -147,3 +147,38 @@
 		transform: rotate(-90deg);
 	}
 }
+
+
+.btn-close {
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  border: 2px solid $floral-white;
+  position: relative;
+  outline: none;
+  &__line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 18px;
+    width: 2px;
+    background-color: $floral-white;
+		transition: all 0.5s;
+		&:first-child {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+		&:last-child {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	} 
+	&--active {
+		&__line {
+			&:first-child {
+				transform: translate(-50%, -50%) rotate(-45deg);
+			}
+			&:last-child {
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+		}	
+	}  
+}
