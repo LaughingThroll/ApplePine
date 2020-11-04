@@ -14,6 +14,7 @@ const constant = {
     WIDTHx1149: 1149,
     WIDTHx1000: 1000,
     WIDTHx930: 930,
+    WIDTHx875: 875,
     WIDTHx768: 768,
     WIDTHx600: 600,
     WIDTHx480: 480

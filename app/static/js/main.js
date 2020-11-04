@@ -13,6 +13,7 @@ import { addHeroAnimation, aboutInLocalStorage } from './utils/functions'
 
 
 // FUNCTIONS_START
+
 function loadingPage(node, time) {
 
   let percent = Math.ceil(100 / (Math.ceil(time / 300)))
@@ -55,19 +56,18 @@ function succsesLoad(node) {
 function transEndPreloader(node, e) {
 
   if (e.target.id === 'preloader' || e.target.id === 'loader') {
+    
+    adaptiveAnimationAfterLoad(node)
     node.addClass('preloader--end')
-    adaptiveAnimationAfterLoad()
   }
 }
 
 function adaptiveAnimationAfterLoad() {
 
   if (window.innerWidth <= constant.adaptive.WIDTHx600) {
-
     vars.$headerLogo.insertAfter(vars.$burgerBtn)
 
   } else if (window.innerWidth > constant.adaptive.WIDTHx600) {
-
     vars.$headerLogo.insertBefore(vars.$headerContacts)
   }
 
@@ -254,22 +254,7 @@ $(document).on('DOMContentLoaded', function () {
 
 
 
-  $('#news-slider').slick({
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
-    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
-    infinite: false,
-    responsive: [
-      {
-        breakpoint: 876,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-    ]
-  })
+  
 
 
 
@@ -288,7 +273,22 @@ $(document).on('DOMContentLoaded', function () {
   $('#question-accordion').on('click', accordion.bind($('#question-accordion'), 'question-accordion__item', 'question-accordion__item--active'))
 
 
-
+  $('#news-slider').slick({
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    prevArrow: '<button type="button" class="slick-btn slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-btn slick-next"></button>',
+    infinite: false,
+    responsive: [
+      {
+        breakpoint: 1150,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+    ]
+  })
 
 
 

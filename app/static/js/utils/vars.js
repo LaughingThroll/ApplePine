@@ -26,8 +26,10 @@ const vars = {
   // $reviewsFormTitle: $('.reviews-form__title'),
   $newsSliderArticleText: $('.news-slider-article__text'),
   $teamSlider: $('#team-slider'),
+  $footerSubscribe: $('.footer-subscribe'),
   $rangeSlider: $('.range-slider'),
   $inputPhone: $('input[type="phone"]'),
+
   optionSlick: {
     heroNavigationSlick: {
       infinity: false,

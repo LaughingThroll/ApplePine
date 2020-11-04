@@ -121,3 +121,29 @@
 		fill: $white;
 	}
 }
+
+.footer-subscribe-btn {
+	outline: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100px;
+	transform: translate(-80%, 0);
+	background-color: $orange;
+	color: $white;
+	border-radius: 50px 0 0 50px;
+	transition: all $fast ease-in;
+	z-index: -1;
+	&__text {
+		position: absolute;
+		top: 80%;
+		left: 15%;
+		display: block;
+		font-size: 20px;
+		font-weight: 700;
+		height: 0;
+		width: 0;
+		transform: rotate(-90deg);
+	}
+}

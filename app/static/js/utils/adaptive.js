@@ -1,5 +1,5 @@
 import * as $ from 'jquery'
-
+import PullElement from './PullElement'
 import { constant } from './const'
 import { vars } from './vars'
 
@@ -19,10 +19,10 @@ function adaptiveReviewsFormx1149() {
       </button>
     `
     $('.wrapper').append(btn)
-    
+
     const $reviewsBtn = document.querySelector('.' + constant.className.REVIEWS_FORM_BTN)
-    
-    $reviewsBtn.addEventListener('click', function() {
+
+    $reviewsBtn.addEventListener('click', function () {
       this.classList.toggle(constant.className.REVIEWS_FORM_BTN + '--active')
       vars.$reviewsForm.toggleClass('reviews-form--active')
 
@@ -61,6 +61,57 @@ function adaptiveHeaderMenux930() {
     vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
   }
 }
+// =============================================== max-width 875px ==============================================================================
+  
+
+function adaptiveFooterSubscribex875() {
+  const $footerSubscribeBtn = document.querySelector('.footer-subscribe-btn')
+  let pullElement
+  if (window.innerWidth <= constant.adaptive.WIDTHx875 && !$footerSubscribeBtn) {
+    const footerBtn = `
+      <button class="footer-subscribe-btn" type="button">
+        <span class="footer-subscribe-btn__text">Подписывайтесь</span>
+      </button>   
+    `
+    vars.$footerSubscribe.append(footerBtn)
+
+    const $footerSubscrBtn = $('.footer-subscribe-btn')
+
+    pullElement = new PullElement(vars.$footerSubscribe[0], 'right')
+
+    // touchMoveElement($footerSubscrBtn)
+    // 
+    // 
+    // // eslint-disable-next-line no-inner-declarations
+    // function touchMoveFooterSubscribe(e) {
+    //   // THIS function needed computed transform translate footerBtnSubscribe 
+    //   const moveXaxis = e.changedTouches[0].pageX
+    //   const translateSubscribe = startXaxis - moveXaxis 
+
+    //   vars.$footerSubscribe.css('transform', `translateX(
+    //     ${360 - translateSubscribe <= 0 ? 0 
+    //       : 360 - translateSubscribe >= 360 ? 360  
+    //       : 360 - translateSubscribe}px)`)
+    // }
+
+    // $footerSubscrBtn.on('touchstart', (e) => {
+    //   const translateFooterSubscr = vars.$footerSubscribe[0].style.cssText
+    //   startTranslate = translateFooterSubscr && translateFooterSubscr.match(/\d+/)[0]
+      
+    //   startXaxis = +startTranslate + e.changedTouches[0].pageX
+    // })
+
+    // $footerSubscrBtn.on('touchmove', touchMoveFooterSubscribe)
+
+
+  } else if (window.innerWidth > constant.adaptive.WIDTHx875 && $footerSubscribeBtn) {
+    if (pullElement) {
+      pullElement.destroy()
+    }
+    $footerSubscribeBtn.remove()
+  }
+}
+
 
 // =============================================== max-width 768px ==============================================================================
 
@@ -113,11 +164,11 @@ function adaptiveReviewsFormx480() {
   if (window.innerWidth <= constant.adaptive.WIDTHx480 && vars.$reviewsForm.hasClass('reviews-form--active')) {
     $('body').css('overflow', 'hidden')
     vars.$wrapper.on('touchmove', vars.fn.prevent)
-    
+
   } else if (window.innerWidth <= constant.adaptive.WIDTHx480 && !vars.$reviewsForm.hasClass('reviews-form--active')) {
     $('body').css('overflow', 'visible')
     vars.$wrapper.off('touchmove', vars.fn.prevent)
-   
+
   }
 }
 
@@ -134,7 +185,9 @@ function adaptive() {
 
   adaptiveReviewsFormx1149()
   adaptiveReviewsFormx480()
-  
+
+  adaptiveFooterSubscribex875()
+
 }
 
 export { adaptive }

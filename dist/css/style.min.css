@@ -656,13 +656,7 @@ a {
   right: 0;
   height: 100px;
   width: 200px;
-  margin: 0 auto;
-  background-image: none !important;
-  background-color: rgba(255, 255, 255, 0)
-}
-.preloader--loading-mobile {
-  background-image: none !important;
-  background-color: rgba(255, 255, 255, 0)
+  margin: 0 auto
 }
 .preloader--loading-mobile .preloader__inner {
   -webkit-transform: translateX(-500%);
@@ -825,6 +819,37 @@ a {
   width: 45px;
   height: 45px;
   fill: #fff
+}
+.footer-subscribe-btn {
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100px;
+  -webkit-transform: translate(-80%, 0);
+      -ms-transform: translate(-80%, 0);
+          transform: translate(-80%, 0);
+  background-color: #f88600;
+  color: #fff;
+  border-radius: 50px 0 0 50px;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  z-index: -1
+}
+.footer-subscribe-btn__text {
+  position: absolute;
+  top: 80%;
+  left: 15%;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  height: 0;
+  width: 0;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg)
 }
 .logo__inner {
   display: -webkit-box;
@@ -2603,6 +2628,7 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 }
 .footer {
   position: relative;
+  overflow: hidden;
   color: #fffefe
 }
 .no-webp .footer::before {
@@ -2651,7 +2677,8 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   background-color: #3a0c0b
 }
 .footer-top {
-  background-color: #441110
+  background-color: #441110;
+  position: relative
 }
 .footer-top__container {
   display: -webkit-box;
@@ -2700,21 +2727,26 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
 }
 .footer-contacts__link--email::after,
 .footer-contacts__link--phone::after {
-  position: absolute
+  position: absolute;
+  top: 50%
 }
 .footer-contacts__link--phone::after {
   content: url("../images/icons/sprite.svg#phone");
   width: 15px;
   height: 15px;
-  top: 2px;
-  left: 5px
+  left: 5px;
+  -webkit-transform: translateY(-65%);
+      -ms-transform: translateY(-65%);
+          transform: translateY(-65%)
 }
 .footer-contacts__link--email::after {
   content: url("../images/icons/sprite.svg#envelop");
   width: 20px;
   height: 20px;
-  top: 0;
-  left: 1px
+  left: 1px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%)
 }
 .footer-news__title {
   margin-bottom: 25px
@@ -2857,6 +2889,9 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
         -ms-transform: translateX(0%);
             transform: translateX(0%)
   }
+  .news-slider {
+    max-width: 270px
+  }
 }
 @media (max-width: 1140px) {
   .hero-item__content {
@@ -2948,6 +2983,9 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     left: auto;
     right: 40px
   }
+  .footer__navigation {
+    display: none
+  }
 }
 @media (max-width: 930px) {
   .header__top .header__logo {
@@ -3019,6 +3057,40 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
   .hero-item__result {
     font-size: 16px
+  }
+}
+@media (max-width: 875px) {
+  .footer-news {
+    margin-right: auto
+  }
+  .footer-subscribe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 10px 0 0;
+    -webkit-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+            transform: translateX(110%);
+    height: 100%;
+    background-color: #f88600;
+    z-index: 100;
+    color: #441110
+  }
+  .footer-subscribe .subscribe-form__input {
+    border-color: #441110;
+    background-color: #2f0c0b;
+    color: #fff
+  }
+  .footer-subscribe .subscribe-form__btn {
+    background-color: #441110
+  }
+  .footer-subscribe__privacy {
+    color: #441110
+  }
+  .footer-subscribe--active {
+    -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+            transform: translateX(0%)
   }
 }
 @media (max-width: 768px) {
@@ -3196,6 +3268,36 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     display: none
   }
 }
+@media (max-width: 650px) {
+  .footer__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto
+  }
+  .footer-top__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column
+  }
+  .footer-info {
+    padding-right: 10%;
+    margin-bottom: 30px
+  }
+  .footer-contacts__link {
+    padding-left: 30px
+  }
+  .footer-contacts__link + .footer-contacts__link {
+    margin-top: 0;
+    margin-left: 20px
+  }
+  .footer-subscribe {
+    padding-top: 70px
+  }
+  .footer-subscribe-btn__text {
+    top: 72%
+  }
+}
 @media (max-width: 600px) {
   .header__top {
     min-height: 65px
@@ -3346,6 +3448,17 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     left: auto;
     right: 5%
   }
+  .footer-info {
+    padding-right: 0;
+    max-width: 265px
+  }
+  .footer-contacts__link {
+    display: block
+  }
+  .footer-contacts__link + .footer-contacts__link {
+    margin-top: 10px;
+    margin-left: 0
+  }
 }
 @media (max-width: 440px) {
   .header {
@@ -3405,20 +3518,20 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
     font-size: 30px;
     line-height: 30px
   }
-  .validate {
-    max-width: 305px;
-    font-size: 13px;
-    height: 56px
+  .footer-subscribe {
+    max-width: 240px
   }
-  .validate::before {
-    top: 11px;
-    background-size: contain;
-    width: 30px;
-    height: 30px
+  .footer-subscribe-btn {
+    width: 75px
   }
-  .full-form .jq-selectbox .jq-selectbox__select,
-  .full-form .jq-selectbox .jq-selectbox__dropdown {
-    font-size: 14px
+  .footer-subscribe-btn__text {
+    left: 8%
+  }
+  .footer-news__slider .slick-prev {
+    right: 40px
+  }
+  .footer-news__slider .slick-next {
+    right: 10px
   }
 }
 .preloader {

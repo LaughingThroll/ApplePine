@@ -32,18 +32,16 @@
     height: 100px;
     width: 200px;
     margin: 0 auto;
-    background-image: none !important;
-    background-color: rgba($white, 0);
   }
   &--loading-mobile {
     .preloader__inner {
       transform: translateX(-500%);
     }
-    background-image: none !important;
-    background-color: rgba($white, 0);
+
+
   }
   &--end {
-    display: none;
+   display: none;
   }
   &__line {
     display: block;

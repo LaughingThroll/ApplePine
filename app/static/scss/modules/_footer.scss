@@ -1,5 +1,6 @@
 .footer {
   position: relative;
+  overflow: hidden;
   color: $rose-white;
   &::before {
     content: "";
@@ -44,6 +45,7 @@
 
 .footer-top {
   background-color: $main-color;
+  position: relative;
   &__container {
     display: flex;
     justify-content: space-between;
@@ -94,20 +96,21 @@
     &--email::after,
     &--phone::after {
       position: absolute;
+      top: 50%;
     }
     &--phone::after {
       content: url("../images/icons/sprite.svg#phone");
       width: 15px;
       height: 15px;
-      top: 2px;
       left: 5px;
+      transform: translateY(-65%);
     }
     &--email::after {
       content: url("../images/icons/sprite.svg#envelop");
       width: 20px;
       height: 20px;
-      top: 0;
       left: 1px;
+      transform: translateY(-50%);
     }
   }
 }
