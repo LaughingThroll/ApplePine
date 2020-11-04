@@ -43,6 +43,19 @@
   &--end {
    display: none;
   }
+  &--loading-mobile {
+    .preloader__inner {
+      transform: translateX(-500%);
+    }
+    background-image: none !important;
+    background-color: rgba($white, 0);
+    .preloader__line {
+      width: 0 !important;
+    }
+  }
+  &--end {
+    display: none;
+  }
   &__line {
     display: block;
     position: relative;

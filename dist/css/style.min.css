@@ -602,6 +602,21 @@ a {
 .preloader--end {
   display: none
 }
+.preloader--loading-mobile {
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0)
+}
+.preloader--loading-mobile .preloader__inner {
+  -webkit-transform: translateX(-500%);
+      -ms-transform: translateX(-500%);
+          transform: translateX(-500%)
+}
+.preloader--loading-mobile .preloader__line {
+  width: 0 !important
+}
+.preloader--end {
+  display: none
+}
 .preloader__line {
   display: block;
   position: relative;
@@ -2997,6 +3012,15 @@ input[type="checkbox"]:checked + .custom-checkbox .custom-checkbox__icon::after 
   }
   .services-item__text {
     color: #fff
+  }
+  .services-item .irs--flat.irs-with-grid {
+    height: 50px
+  }
+  .services-item .reviews__form-range .irs--flat .irs-grid-pol {
+    top: -10px
+  }
+  .services-item .jq-checkbox {
+    vertical-align: 0px
   }
   .services-slider .main-slider-btn {
     border-color: #f9f9f9

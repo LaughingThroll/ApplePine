@@ -79,30 +79,6 @@ function adaptiveFooterSubscribex875() {
 
     pullElement = new PullElement(vars.$footerSubscribe[0], 'right')
 
-    // touchMoveElement($footerSubscrBtn)
-    // 
-    // 
-    // // eslint-disable-next-line no-inner-declarations
-    // function touchMoveFooterSubscribe(e) {
-    //   // THIS function needed computed transform translate footerBtnSubscribe 
-    //   const moveXaxis = e.changedTouches[0].pageX
-    //   const translateSubscribe = startXaxis - moveXaxis 
-
-    //   vars.$footerSubscribe.css('transform', `translateX(
-    //     ${360 - translateSubscribe <= 0 ? 0 
-    //       : 360 - translateSubscribe >= 360 ? 360  
-    //       : 360 - translateSubscribe}px)`)
-    // }
-
-    // $footerSubscrBtn.on('touchstart', (e) => {
-    //   const translateFooterSubscr = vars.$footerSubscribe[0].style.cssText
-    //   startTranslate = translateFooterSubscr && translateFooterSubscr.match(/\d+/)[0]
-      
-    //   startXaxis = +startTranslate + e.changedTouches[0].pageX
-    // })
-
-    // $footerSubscrBtn.on('touchmove', touchMoveFooterSubscribe)
-
 
   } else if (window.innerWidth > constant.adaptive.WIDTHx875 && $footerSubscribeBtn) {
     if (pullElement) {

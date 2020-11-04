@@ -187,6 +187,15 @@
     &__text {
       color: $white;
     }
+    .irs--flat.irs-with-grid {
+      height: 50px;
+    }
+    .reviews__form-range .irs--flat .irs-grid-pol {
+      top: -10px;
+    }
+    .jq-checkbox {
+      vertical-align: 0px;
+    }
   }
 
   .services-slider {

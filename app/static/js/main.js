@@ -128,6 +128,10 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   })
 
+  vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
+    const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
+    addHeroAnimation(currentSlide)
+  })
 
   vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
     const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
