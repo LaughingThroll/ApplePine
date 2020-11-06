@@ -54,13 +54,24 @@ function adaptiveAboutSliderx1000() {
 
 // ========================================= max-width 930px =========================================================
 function adaptiveHeaderMenux930() {
+  
   if (window.innerWidth <= constant.adaptive.WIDTHx930) {
+    
     vars.$header.append(vars.$navigation)
+    vars.$navigation.on('click', function(e) {
+      if (e.target.closest('.navigation__item')) {
+       $(this).removeClass('navigation--active')
+       vars.$burgerBtn.removeClass('burger-btn--active')
+      }
+    })
   } else if (window.innerWidth > constant.adaptive.WIDTHx930) {
     vars.$navigation.insertAfter(vars.$burgerBtn)
     vars.$headerLogo.addClass(constant.className.HEADER_LOGO_ACTIVE)
   }
 }
+
+
+
 // =============================================== max-width 875px ==============================================================================
   
 
@@ -75,7 +86,7 @@ function adaptiveFooterSubscribex875() {
     `
     vars.$footerSubscribe.append(footerBtn)
 
-    const $footerSubscrBtn = $('.footer-subscribe-btn')
+    // const $footerSubscrBtn = $('.footer-subscribe-btn')
 
     pullElement = new PullElement(vars.$footerSubscribe[0], 'right')
 
@@ -127,9 +138,10 @@ function adaptiveAboutTextx768() {
 
 // ========================================= max-width 600px =========================================================
 function adaptiveHeaderMenux600() {
-  if (window.innerWidth <= constant.adaptive.WIDTHx600) {
+  if (window.innerWidth <= constant.adaptive.WIDTHx600 && !vars.$navigation.children()[1]) {
     vars.$headerContacts.insertAfter(vars.$navigationList)
-  } else if (window.innerWidth > constant.adaptive.WIDTHx600) {
+  } else if (window.innerWidth > constant.adaptive.WIDTHx600 && vars.$navigation.children()[1]) {
+    vars.$navigation.children()[1].remove()
     vars.$headerContainer.append(vars.$headerContacts)
   }
 }

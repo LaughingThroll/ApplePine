@@ -18,28 +18,28 @@
     <div class="content">
       <div class="container">
 
-          <div class="modal full-form set-form">
+          <div class="full-form set-form">
             <div class="set-form__headline modal__headline">
               <h4 class="full-form__title modal__title">Поставить Задачу</h4>
-              <button class="full-form__btn-close btn-close" type="button">
+              <button class="full-form__btn-close btn-close" data-close type="button">
                 <span class="btn-close__line"></span>
                 <span class="btn-close__line"></span>
               </button>
             </div>
             <form class=" full-form__inner" action="#">
               <div class="set-form__inputs full-form__inputs">
-                <input class="full-form__input input" type="text" placeholder="Ваше имя">
+                <input name="set-form-name" class="full-form__input input" type="text" placeholder="Ваше имя">
                 <div class="full-form__phone phone">
-                  <input class="full-form__input input" type="phone" placeholder="+7 (___) ___-__-__">
+                  <input name="set-form-phone" class="full-form__input input" type="phone" placeholder="+7 (___) ___-__-__">
                   <span class="phone__stars">*</span>
                 </div>
-                <button class="set-form__btn btn btn--orange" type="submit"><span class="span-border-animation">Поставить Цель</span></button>
+                <button class="set-form__btn btn btn--orange" type="submit"><span class="span-animation-border">Поставить Цель</span></button>
               </div>
 
               <div class="check-item">
                 <h6 class="check-item__title">Реклама, продвижение</h6>
                 <label class="check-item__label">
-                  <input class="visually-hidden" type="checkbox">
+                  <input name="set-form-check-context-advertising" class="visually-hidden" type="checkbox">
                   <div class="check-item__checkbox custom-checkbox">
                     <span class="custom-checkbox__icon"></span>
                   </div>
@@ -47,7 +47,7 @@
 
                 </label>
                 <label class="check-item__label">
-                  <input class="visually-hidden" type="checkbox">
+                  <input name="set-form-check-target-advertising" class="visually-hidden" type="checkbox">
                   <div class="set-form__checkbox check-item__checkbox custom-checkbox">
                     <span class="custom-checkbox__icon"></span>
                   </div>
@@ -55,7 +55,7 @@
 
                 </label>
                 <label class="check-item__label">
-                  <input class="visually-hidden" type="checkbox">
+                  <input name="set-form-check-key-word" class="visually-hidden" type="checkbox">
                   <div class="set-form__checkbox check-item__checkbox custom-checkbox">
                     <span class="custom-checkbox__icon"></span>
                   </div>
@@ -63,7 +63,7 @@
 
                 </label>
                 <label class="check-item__label">
-                  <input class="visually-hidden" type="checkbox">
+                  <input name="set-form-check-audit-socials" class="visually-hidden" type="checkbox">
                   <div class="set-form__checkbox check-item__checkbox custom-checkbox">
                     <span class="custom-checkbox__icon"></span>
                   </div>
