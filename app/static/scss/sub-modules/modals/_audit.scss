@@ -1,19 +1,13 @@
 .audit {
-  position: fixed;
-  bottom: 50%;
-  left: 0;
-  right: 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+ 
   background-color: $orange;
   padding: 35px 30px 35px 50px;
   border-radius: 15px;
-  transform: translateY(50%);
-  @include max-width(875px) {
-    
-  }
   @include max-width(768px) {
     flex-direction: column;
     padding: 60px 30px 25px 50px;

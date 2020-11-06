@@ -423,7 +423,7 @@
 											Поставьте нам задачу,
 											<div>и мы найдем </div>
 										</div>
-										<button class="services-item__btn btn btn--orange" type="button" data-modal="#set"><span
+										<button class="services-item__btn btn btn--orange" type="button" data-modal="#set-form"><span
 												class="span-animation-border">Поставить</span></button>
 									</div>
 								</div>
@@ -504,7 +504,7 @@
 											Поставьте нам задачу,
 											<div>и мы найдем решение</div>
 										</div>
-										<button class="services-item__btn btn btn--orange" type="button" data-modal="#set"><span
+										<button class="services-item__btn btn btn--orange" type="button" data-modal="#full-form"><span
 												class="span-animation-border">Поставить</span></button>
 									</div>
 								</div>
@@ -971,16 +971,16 @@
 							ПЕРСОНАЛЬНОЕ
 							предложение
 						</div>
-						<input class="reviews-form__input input" type="text" placeholder="Ваше имя">
+						<input name="reviews-form-name" class="reviews-form__input input" type="text" placeholder="Ваше имя">
 						<div class="phone reviews-form__phone">
-							<input class="reviews-form__input input" type="phone" placeholder="+7 (___) ___-__-__">
+							<input name="reviews-form-phone" class="reviews-form__input input" type="phone" placeholder="+7 (___) ___-__-__">
 							<span class="phone__stars">*</span>
 						</div>
 						<div class="reviews-form__range">
 							<div class="reviews-form__text">Бюджет на рекламу</div>
-							<input type="text" class="range-slider">
+							<input name="reviews-form-range" type="text" class="range-slider">
 							<label class="reviews-form__politycal">
-								<input class="visually-hidden" type="checkbox">
+								<input name="reviews-form-check-political"  class="visually-hidden" type="checkbox">
 								<div class="reviews-form__checkbox custom-checkbox">
 									<span class="custom-checkbox__icon"></span>
 								</div>
@@ -1207,10 +1207,9 @@
 							на новости!</h5>
 						<div class="footer-subscribe__subtitle">Будьте вкурсе свежих идей
 							в маркетинге</div>
-						<form class="footer-subscribe__form subscribe-form" action="#" method="POST">
-							<input class="subscribe-form__input" type="text" placeholder="Ваша почта">
+						<form class="footer-subscribe__form subscribe-form" id="subscribe-form"  action="#" method="#" >
+							<input name="subscribe-email" class="subscribe-form__input" type="text" placeholder="Ваша почта">
 							<button class="subscribe-form__btn subscribe-btn" type="submit">
-
 								<svg class="subscribe-btn__icon">
 									<use xlink:href="images/icons/sprite.svg#envelop"></use>
 								</svg>
@@ -1240,11 +1239,23 @@
 			</div>
 		</footer> 
 
-		<!-- 
-		<div class="modal" id="audit"></div>
-		<div class="modal" id="full-form"></div>
-		<div class="modal" id="set"></div>
-		<div id="validate"></div> -->
+		
+		<div class="modal" id="audit">
+			<div class="modal__inner modal__inner--audit">
+
+			</div>
+		</div>
+		<div class="modal" id="full-form">
+			<div class="modal__inner modal__inner--full-form">
+				
+			</div>
+		</div>
+		<div class="modal" id="set-form">
+			<div class="modal__inner modal__inner--set-form">
+				
+			</div>
+		</div> 
+		<div class="modal" id="validate"></div> 
 
 
 	</div>

@@ -5,31 +5,16 @@ window.$ = window.jQuery = $;
 import 'slick-carousel/slick/slick'
 import 'jquery.maskedinput/src/jquery.maskedinput'
 import 'ion-rangeslider/js/ion.rangeSlider'
-import customSelect from 'custom-select';
+import 'jquery.formstyler-modern'
+import {loadingPage} from './utils/preloader'
+import {makeRequest, checkEmail, checkURL, checkLength} from './utils/validation'
+import { loadModal } from './utils/modal'
 import { constant } from './utils/const'
 import { vars } from './utils/vars'
 import { adaptive } from './utils/adaptive'
-import { addHeroAnimation, aboutInLocalStorage } from './utils/functions'
+import { addHeroAnimation, aboutInLocalStorage, maskedPhone, accordion, showTeamSocials, hideShowSocials, cutText } from './utils/functions'
 
-
-
-// FUNCTIONS_START
-
-function loadingPage(node, time) {
-
-  let percent = Math.ceil(100 / (Math.ceil(time / 300)))
-
-  let widthPercent = 0
-
-  while (100 > widthPercent) {
-    widthPercent += percent
-  }
-
-  node.css('width', widthPercent > 100 ? 100 + '%' : widthPercent + '%')
-
-}
-
-
+// PROCEDURE_PRELOADER
 function succsesLoad(node) {
 
   if (!node.hasClass('preloader--loading') || !node.hasClass('preloader--loading-mobile')) {
@@ -57,7 +42,7 @@ function succsesLoad(node) {
 function transEndPreloader(node, e) {
 
   if (e.target.id === 'preloader' || e.target.id === 'loader') {
-    
+
     adaptiveAnimationAfterLoad(node)
     node.addClass('preloader--end')
   }
@@ -78,17 +63,7 @@ function adaptiveAnimationAfterLoad() {
 
 }
 
-
-function cutText(node, length, separator = '') {
-  node.text(function (_, text) {
-    if (text.length > length) {
-      $(this).text(text.substring(0, length) + separator)
-    }
-  })
-}
-// FUNCTIONS_END
-
-
+//  PRELOADER
 $(window).on('load', function () {
 
   let time = Math.ceil(window.performance.now())
@@ -101,16 +76,35 @@ $(window).on('load', function () {
       loadingPage(vars.$loadLine, time)
       vars.$loadLine.on('transitionend', () => resolve(true))
     })
-
   }
 
   cloneImages().then(succsesLoad.bind(this, vars.$preloader))
 })
 
 
-// PRELOADER
+// MAIN
 
 $(document).on('DOMContentLoaded', function () {
+
+  adaptive()
+  window.addEventListener('resize', adaptive)
+
+
+  aboutInLocalStorage()
+
+  cutText(vars.$servicesItem, 205, '')
+  cutText(vars.$reviewsContentItemText, 500, '...')
+  cutText(vars.$newsSliderArticleText, 65, '...')
+
+  // HEADER
+  $('a[href^="#"]').on('click', function (e) {
+    e.preventDefault()
+    let scrollToBlock = $(this).attr("href")
+    let blockPosition = $(scrollToBlock).offset().top
+    $('html').animate({ scrollTop: blockPosition }, 1000)
+  })
+
+
 
   vars.$burgerBtn.on('click', function () {
     $(this).toggleClass('burger-btn--active')
@@ -133,21 +127,8 @@ $(document).on('DOMContentLoaded', function () {
     addHeroAnimation(currentSlide)
   })
 
-  vars.$heroSlider.on('afterChange', (_, __, nextSlide) => {
-    const currentSlide = $([...vars.$heroSlider.slick('getSlick').$slides][nextSlide])
-    addHeroAnimation(currentSlide)
-  })
-
-  adaptive()
-  window.addEventListener('resize', adaptive)
-
-
-  aboutInLocalStorage()
-
-  cutText(vars.$servicesItem, 205, '')
-  cutText(vars.$reviewsContentItemText, 500, '...')
-  cutText(vars.$newsSliderArticleText, 65, '...')
-
+  
+  // TEAM
   vars.$teamSlider.slick({
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -158,46 +139,10 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   });
 
-
-
-  function showTeamSocials() {
-    if ($(this).hasClass(constant.className.TEAM_ITEM_UNHOVER)) {
-      $(this).removeClass(constant.className.TEAM_ITEM_UNHOVER)
-    }
-    $(this).addClass(constant.className.TEAM_ITEM_HOVER)
-  }
-
-  function hideShowSocials() {
-    $(this).removeClass(constant.className.TEAM_ITEM_HOVER)
-  }
-
   vars.$teamSlider.on('mouseenter', '.team-item', showTeamSocials).on('mouseleave', '.team-item', hideShowSocials)
 
 
-
-  function maskedPhone(jQnode, mask = '+7(999) 999-99-99') {
-    jQnode.mask(mask)
-    jQnode.on('change', function () {
-      const $phoneStars = $(this).next();
-      /\d/.test($(this).val()) ?
-        $phoneStars.css('display', 'none') :
-        $phoneStars.css('display', 'block')
-    })
-  }
-  maskedPhone(vars.$inputPhone)
-
-
-  vars.$rangeSlider.ionRangeSlider({
-    postfix: "P",
-    min: 0,
-    max: 90000,
-    from: 0,
-    grid: true,
-    step: 10000,
-    grid_num: 9
-  })
-
-
+  // SERVICES
   $('#services-slider').slick({
     prevArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--prev slick-btn slick-prev"></button>',
     nextArrow: '<button type="button" class="main-slider-btn main-slider-btn--small main-slider-btn--next slick-btn slick-next"></button>',
@@ -216,7 +161,7 @@ $(document).on('DOMContentLoaded', function () {
     rows: 0
   })
 
-  //reviews sliders start
+  //REVIEWS
   $('#slider-images').slick({
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -254,30 +199,26 @@ $(document).on('DOMContentLoaded', function () {
     autoplay: true,
     autoplaySpeed: 2000
   })
-  //reviews sliders end
-  //services start 
+
+  maskedPhone(vars.$inputPhone)
 
 
-
+  vars.$rangeSlider.ionRangeSlider({
+    postfix: "P",
+    min: 0,
+    max: 90000,
+    from: 0,
+    grid: true,
+    step: 10000,
+    grid_num: 9
+  })
   
 
-
-
-  function accordion(itemTarget, activeClass, e) {
-    let item = $(e.target.closest('.' + itemTarget))
-    $('.' + activeClass).removeClass(activeClass)
-    Array.from(this.children()).forEach(el => {
-      $(el).children().last().css('display', 'none')
-    })
-
-    item.children().last().slideToggle('slow')
-    item.addClass(activeClass)
-
-
-  }
+ 
+  // QUESTION
   $('#question-accordion').on('click', accordion.bind($('#question-accordion'), 'question-accordion__item', 'question-accordion__item--active'))
 
-
+  // FOOTER
   $('#news-slider').slick({
     slidesToShow: 2,
     slidesToScroll: 2,
@@ -295,314 +236,154 @@ $(document).on('DOMContentLoaded', function () {
     ]
   })
 
-  customSelect('.custom-select')
+  // MODAL
+  $('.modal').on('click', function (e) {
+    if (e.target.classList.contains('modal') || e.target.closest('[data-close]')) {
+      $(this).fadeOut()
+      $('body').css('overflow', 'visible')
+      $('body').off('touchmove', vars.fn.prevent)
+      return
+    }
+    e.stopPropagation()
+
+  }).on('mouseenter', '.btn-close', function () {
+    $(this).toggleClass('btn-close--active')
+  })
+
+  $('[data-modal]').on('click', function (e) {
+    e.preventDefault()
+    let modalId = $(this).data('modal')
+    $(modalId).fadeIn()
+    loadModal(modalId)
+    $('body').css('overflow', 'hidden')
+    $('body').on('touchmove', vars.fn.prevent)
+  })
+
+  // VALIDATE
+  const allForm = [{ form: $('#audit') }, { form: $('#full-form') }, { form: $('#set-form') }, { form: $('#reviews-form') }, { form: $('#subscribe-form') }]
+  const { 0: audit, 1: fullForm, 2: setForm, 3: reviewsForm, 4: subsribeForm } = allForm
+
+  audit.form.on('submit', (e) => {
+    e.preventDefault()
+    audit.name = $('[name="audit-name"]').val()
+    audit.phone = $('[name="audit-phone"]').val()
+
+    if (!checkLength(audit.name) && !checkLength(audit.phone)) {
+      $('#validate').fadeIn().load('validate.html #error-fill')
+      return
+    }
+    makeRequest({
+      url: 'send.php',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify({ name: audit.name, phone: audit.phone })
+    })
+    vars.fn.prevent()
+  })
+
+
+  fullForm.form.on('submit', (e) => {
+    e.preventDefault()
+    fullForm.name = $('[name="full-form-name"]').val()
+    fullForm.phone = $('[name="full-form-phone"]').val()
+    fullForm.url = $('[name="full-form-url"]').val()
+    fullForm.checkbox = Array.from($('[name^="full-form-check"]')).map(checkbox => ({
+      name: checkbox.name,
+      checked: checkbox.checked
+    }))
+
+    if (!checkLength(fullForm.name) && !checkLength(fullForm.phone)) {
+      $('#validate').fadeIn().load('validate.html #error-fill')
+      return
+    }
+
+    if (!checkURL(fullForm.url)) {
+      $('#validate').fadeIn().load('validate.html #error-url')
+      return
+    }
+
+    makeRequest({
+      url: 'send.php',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify({ name: fullForm.name, phone: fullForm.phone, url: fullForm.url, checkbox: fullForm.checkbox })
+    })
+  })
+
+  setForm.form.on('submit', () => {
+    setForm.name = $('[name="full-form-name"]').val()
+    setForm.phone = $('[name="full-form-phone"]').val()
+    setForm.checkbox = Array.from($('[name^="set-form-check"]')).map(checkbox => ({
+      name: checkbox.name,
+      checked: checkbox.checked
+    }))
+
+    if (!checkLength(fullForm.name) && !checkLength(fullForm.phone)) {
+      $('#validate').fadeIn().load('validate.html #error-fill')
+      return
+    }
+
+    makeRequest({
+      url: 'send.php',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify({ name: setForm.name, phone: setForm.phone, checkbox: setForm.checkbox })
+    })
+
+  })
+
+
+
+  reviewsForm.form.on('submit', (e) => {
+    e.preventDefault()
+    reviewsForm.name = $('[name="reviews-form-name"]').val()
+    reviewsForm.phone = $('[name="reviews-form-phone"]').val()
+    reviewsForm.range = +$('#reviews-form .irs-single').text().match(/[\d\s+]+/g)[0].replace(/\s+/g, '')
+    reviewsForm.checkPolitical = $('[name="reviews-form-check-political"]')[0].checked
+
+    if (!checkLength(reviewsForm.name) && !checkLength(reviewsForm.phone)) {
+      $('#validate').fadeIn().load('validate.html #error-fill')
+      return
+    }
+
+
+    if (!reviewsForm.checkPolitical) {
+      $('#validate').fadeIn().load('validate.html #error-confidentiality')
+      return
+    }
+
+
+    makeRequest({
+      url: 'send.php',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify({ name: reviewsForm.name, phone: reviewsForm.phone, checkboxPolitical: reviewsForm.checkPolitical, range: reviewsForm.range })
+    })
+  })
+
+  subsribeForm.form.on('submit', (e) => {
+    e.preventDefault()
+    subsribeForm.email = $('[name="subscribe-email"]').val()
+
+    if (!checkEmail(subsribeForm.email)) {
+      $('#validate').fadeIn().load('validate.html #error-email')
+      return
+    }
+
+    makeRequest({
+      url: 'send.php',
+      type: 'POST',
+      dataType: 'json',
+      data: JSON.stringify({ email: subsribeForm.email })
+    }, () => {
+      $(this).fadeOut()
+      $('#validate').fadeIn().load('validate.html #succses-subscribe')
+    })
+  })
 })
 
 
 
-// MAIN_CONTENT
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-
-// $(document).ready(function () {
-
-
-  //События кликак на бургер меню
-
-
-
-
-
-
-  //Функция отвечает за планвый переход по якорным ссылкам
-  // $('a[href^="#"]').on('click', function (event) {
-  //   // отменяем стандартное действие
-  //   event.preventDefault();
-
-  //   var scrollToBlock = $(this).attr("href"),
-  //     blockPosition = $(scrollToBlock).offset().top;
-  //   /*
-  //   scrollToBlock - в переменную заносим информацию о том, к какому блоку надо перейти
-  //   blockPosition - определяем положение блока на странице
-  //   */
-  //   $('html, body').animate({ scrollTop: blockPosition }, 2000);
-
-  // });
-
-  //animation text header start
-  // $('.header__item-subtitle').textillate({
-  //   in: {
-  //     effect: 'fadeIn'
-  //   },
-  // });
-  // $('.header-slider__navigation-item').on('click', function () {
-  //   if ($(this).hasClass('slick-current')) {
-  //     $('.header__item-subtitle > span[style]').remove();
-  //     $('.header__item-subtitle .texts .current > span[style]').remove();
-  //     $('.header__item-subtitle .texts').css('display', 'block');
-  //     $('.header__item-subtitle .texts .current').textillate({
-  //       in: {
-  //         effect: 'fadeIn'
-  //       },
-  //     });
-  //   }
-  // });
-  //animation text header end
-  //hide Modal start
-  // $('.modal').on('click', function () {
-  //   $(this).fadeOut();
-  //   $('body').css('overflow', 'visible');
-  // }).on('click', '.audit, .full-form, .set-form', function (event) {
-  //   event.stopPropagation();
-  // });
-  // $('#validate').on('click', function () {
-  //   let modal = $('.modal').attr('style');
-  //   $(this).fadeOut();
-  //   $('body').css('overflow', 'visible');
-  //   if (modal == 'display: block;') {
-  //     $('body').css('overflow', 'hidden');
-  //   }
-  // });
-  //hide Modal end
-  //show Modal start
-  // const MODALCALL = $('[data-modal]');
-  // MODALCALL.on('click', function () {
-  //   event.preventDefault();
-  //   let modalId = $(this).data('modal');
-  //   $(modalId).fadeIn();
-  //   includeModal(modalId);
-  //   $('body').css('overflow', 'hidden');
-  // });
-
-
-
-
-
-  //search Modal start 
-  // function includeModal(modalId) {
-  //   let modal = $('.modal');
-  //   switch (modalId) {
-  //     case '#audit':
-  //       $(modalId).load('audit.html .audit', function () {
-  //         phone(modal);
-  //       });
-  //       break;
-  //     case '#full-form':
-  //       $(modalId).load('fullForm.html .full-form', function () {
-  //         phone(modal);
-  //         $('input, select').styler();
-  //       });
-  //       break;
-  //     case '#set':
-  //       $(modalId).load('setForm.html .set-form', function () {
-  //         phone(modal);
-  //         $('input, select').styler();
-  //       });
-  //       break;
-  //   }
-  // };
-  //search Modal end 
-  //show Modal end
-
-  //close start
-  // $('.modal').on('click', '.close', function () {
-  //   $(this).closest('.modal').fadeOut();
-  //   $('.validate').fadeOut(800);
-  //   $('body').css('overflow', 'visible');
-  // }).on('mouseenter', '.close', function () {
-  //   $(this).toggleClass('close--active');
-  // });
-  //close end 
-
-//   function universalValidInput(name) {
-//     if (name.val() != '') {
-//       $(name).css('border-color', '#c76d02');
-//       return true;
-//     } else {
-//       $(name).css('border-color', '#e93b50');
-//     }
-//   };
-//   function universalValidSelect(name) {
-//     if (name.hasClass('changed')) {
-//       $('.jq-selectbox__select').css('border-color', '#c76d02');
-//       return true;
-//     } else {
-//       $('.jq-selectbox__select').css('border-color', '#e93b50');
-//     }
-//   };
-//   function universalValidCheck(name) {
-//     if (name.hasClass('checked')) {
-//       return true;
-//     }
-//   }
-//   // validation form start
-//   function validForm() {
-//     let audit = $('#audit'),
-//       reviews = $('#reviews'),
-//       set = $('#set'),
-//       subscribe = $('.footer__subscribe-form'),
-//       fullForm = $('#full-form'),
-//       pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1-6}\.)?[a-z]{2,6}$/i;
-
-//     audit.on('submit', function () {
-//       event.preventDefault();
-//       let validName = $('.audit input[type="text"]'),
-//         validPhone = $('.audit input[type="phone"]');
-//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
-//         $.ajax({
-//           url: 'send.php',
-//           type: 'POST',
-//           dataType: 'html'
-//         }).done(function () {
-//           audit.fadeOut();
-//           $('#validate').fadeIn().load('validate.html #succses-submit');
-//         })
-//           .fail(function () {
-//             $('#validate').fadeIn().load('validate.html #error-submit');
-//           });
-//       } else {
-//         $('#validate').fadeIn().load('validate.html #error-fill');
-//       }
-//     });
-//     fullForm.on('submit', function () {
-//       event.preventDefault();
-//       let validName = $('.full-form input[type="text"]'),
-//         validPhone = $('.full-form input[type="phone"]'),
-//         validUrl = $('.full-form input[type="url"]'),
-//         validSelect = $('.full-form .jq-selectbox.jqselect'),
-//         validCheck = $('.full-form .jq-checkbox');
-//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidInput(validUrl) == true && universalValidSelect(validSelect) == true && universalValidCheck(validCheck) == true) {
-//         $.ajax({
-//           url: 'send.php',
-//           type: 'POST',
-//           dataType: 'html'
-//         }).done(function () {
-//           fullForm.fadeOut();
-//           $('#validate').fadeIn().load('validate.html #succses-submit');
-//         })
-//           .fail(function () {
-//             $('#validate').fadeIn().load('validate.html #error-submit');
-//           });
-//       } else {
-//         $('#validate').fadeIn().load('validate.html #error-fill');
-//       }
-//     });
-//     set.on('submit', function () {
-//       event.preventDefault();
-//       let validName = $('.set-form input[type="text"]'),
-//         validPhone = $('.set-form input[type="phone"]'),
-//         validCheck = $('.set-form .jq-checkbox');
-//       if (universalValidInput(validName) == true && universalValidInput(validPhone) == true && universalValidCheck(validCheck) == true) {
-//         $.ajax({
-//           url: 'send.php',
-//           type: 'POST',
-//           dataType: 'html'
-//         }).done(function () {
-//           set.fadeOut();
-//           $('#validate').fadeIn().load('validate.html #succses-submit');
-//         })
-//           .fail(function () {
-//             $('#validate').fadeIn().load('validate.html #error-submit');
-//           });
-//       } else {
-//         $('#validate').fadeIn().load('validate.html #error-fill');
-//       }
-//     });
-//     reviews.on('submit', function () {
-//       event.preventDefault();
-//       $('body').css('overflow', 'hidden');
-//       let validName = $('.reviews__form input[type="text"]'),
-//         validPhone = $('.reviews__form input[type="phone"]'),
-//         validConfi = $('.reviews__form #input__confidentiality-styler');
-//       if (universalValidCheck(validConfi) == true) {
-//         if (universalValidInput(validName) == true && universalValidInput(validPhone) == true) {
-//           $.ajax({
-//             url: 'send.php',
-//             type: 'POST',
-//             dataType: 'html'
-//           }).done(function () {
-//             validName.val('');
-//             validPhone.val('');
-//             validConfi.removeClass('checked');
-//             $('#validate').fadeIn().load('validate.html #succses-submit');
-//           })
-//             .fail(function () {
-//               $('#validate').fadeIn().load('validate.html #error-submit');
-//             });
-//         } else {
-//           $('#validate').fadeIn().load('validate.html #error-fill');
-//         }
-//       } else {
-//         $('#validate').fadeIn().load('validate.html #error-confidentiality');
-//       }
-//     });
-//     subscribe.on('submit', function () {
-//       event.preventDefault();
-//       $('body').css('overflow', 'hidden');
-//       let validName = $('.footer__subscribe-form input[type="text"]');
-//       if (universalValidInput(validName) == true) {
-//         if (validName.val().search(pattern) == 0) {
-//           $.ajax({
-//             url: 'send.php',
-//             type: 'POST',
-//             dataType: 'html'
-//           }).done(function () {
-//             validName.val('');
-//             $('#validate').fadeIn().load('validate.html #succses-subscribe');
-//           })
-//             .fail(function () {
-//               $('#validate').fadeIn().load('validate.html #error-submit');
-//             });
-//         } else {
-//           $('#validate').fadeIn().load('validate.html #error-email');
-//         }
-//       } else {
-//         $('#validate').fadeIn().load('validate.html #error-fill');
-//       }
-//     });
-//   }
-
-
-
-
-
-//   validForm();
-
-
-
-
-//   $(window).on('resize', function () {
-//     var win = $(this);
-//     if (win.width() <= 800) {
-//       //about start
-
-
-//       //about end
-//       //services start 
-//       for (let i = 0; i < 2; i++) {
-//         $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-inner');
-//       };
-//       //services end
-//     }
-//     else {
-//       //about start
-
-//       //about end 
-//       //services start 
-//       for (let i = 0; i < 2; i++) {
-//         $('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-action').appendTo('.services-slider__item[data-slick-index="' + i + '"] .services-slider__item-content');
-//       }
-//       //services end 
-//     }
-//   });
-// });
-
-
-// })
 
 
 

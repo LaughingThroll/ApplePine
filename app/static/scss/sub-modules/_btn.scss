@@ -161,9 +161,9 @@
     top: 50%;
     left: 50%;
     height: 18px;
-    width: 2px;
-    background-color: $floral-white;
-		transition: all 0.5s;
+		width: 2px;
+		background-color: $floral-white;
+		transition: transform $fast ease;
 		&:first-child {
 			transform: translate(-50%, -50%) rotate(45deg);
 		}
@@ -172,7 +172,7 @@
 		}
 	} 
 	&--active {
-		&__line {
+		.btn-close__line {
 			&:first-child {
 				transform: translate(-50%, -50%) rotate(-45deg);
 			}
