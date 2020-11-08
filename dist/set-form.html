@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Juicy</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/libs.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <div class="container">
+
+          <div class="full-form set-form">
+            <div class="set-form__headline modal__headline">
+              <h4 class="full-form__title modal__title">Поставить Задачу</h4>
+              <button class="full-form__btn-close btn-close" data-close type="button">
+                <span class="btn-close__line"></span>
+                <span class="btn-close__line"></span>
+              </button>
+            </div>
+            <form class=" full-form__inner" action="#">
+              <div class="set-form__inputs full-form__inputs">
+                <input name="set-form-name" class="full-form__input input" type="text" placeholder="Ваше имя">
+                <div class="full-form__phone phone">
+                  <input name="set-form-phone" class="full-form__input input" type="phone" placeholder="+7 (___) ___-__-__">
+                  <span class="phone__stars">*</span>
+                </div>
+                <button class="set-form__btn btn btn--orange" type="submit"><span class="span-animation-border">Поставить Цель</span></button>
+              </div>
+
+              <div class="check-item">
+                <h6 class="check-item__title">Реклама, продвижение</h6>
+                <label class="check-item__label">
+                  <input name="set-form-check-context-advertising" class="visually-hidden" type="checkbox">
+                  <div class="check-item__checkbox custom-checkbox">
+                    <span class="custom-checkbox__icon"></span>
+                  </div>
+                  Контекстная реклама
+
+                </label>
+                <label class="check-item__label">
+                  <input name="set-form-check-target-advertising" class="visually-hidden" type="checkbox">
+                  <div class="set-form__checkbox check-item__checkbox custom-checkbox">
+                    <span class="custom-checkbox__icon"></span>
+                  </div>
+                  Таргетированная реклама
+
+                </label>
+                <label class="check-item__label">
+                  <input name="set-form-check-key-word" class="visually-hidden" type="checkbox">
+                  <div class="set-form__checkbox check-item__checkbox custom-checkbox">
+                    <span class="custom-checkbox__icon"></span>
+                  </div>
+                  Подбор ключевых слов
+
+                </label>
+                <label class="check-item__label">
+                  <input name="set-form-check-audit-socials" class="visually-hidden" type="checkbox">
+                  <div class="set-form__checkbox check-item__checkbox custom-checkbox">
+                    <span class="custom-checkbox__icon"></span>
+                  </div>
+                  Аудит соцсетей
+
+                </label>
+              </div>
+            </form>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/vendors.min.js"></script>
+  <script src="js/main.min.js"></script>
+
+</body>
+
+</html>

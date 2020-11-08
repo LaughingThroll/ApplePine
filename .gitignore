@@ -3,7 +3,7 @@
 .LSOverride
 .vs
 
-/dist
+# /dist
 /build
 /layout
 /PineApple
