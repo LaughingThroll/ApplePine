@@ -16,11 +16,11 @@ function responsiveSizes(format) {
         width: 100 * 1 + '%'
       },
       {
-        width: 100 * 2 + '%',
+        width: 100 * 1.25 + '%',
         rename: { suffix: '@2x' }
       },
       {
-        width: 100 * 3 + '%',
+        width: 100 * 1.5 + '%',
         rename: { suffix: '@3x' }
       }
     ]

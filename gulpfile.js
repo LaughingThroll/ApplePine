@@ -66,7 +66,7 @@ G.gulp.task('default', G.gulp.series(
 G.gulp.task('build', G.gulp.series(
   'clean',
   'export',
-  // 'images',
+  'images',
   'styleLibs',
   'sass',
   'html',

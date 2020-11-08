@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp build",
-    "retina": "gulp images",
+    "retina": "cross-env NODE_ENV=production gulp images",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
